@@ -10,8 +10,11 @@
  */
 
 get_header(); ?>
-		
+
+	<main>
 		<?php the_post_thumbnail( 'full' ); ?>
+		<div id="main_content">
+		
 		<div id="container">
 			<div id="content" role="main">
 
