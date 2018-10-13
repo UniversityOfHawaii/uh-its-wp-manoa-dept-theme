@@ -60,9 +60,11 @@
    </div>
    <div id="footer_btm">
       <div id="footer_btm_content">
-The University of Hawai&#699;i is an <a href="https://www.hawaii.edu/offices/eeo/policies/?policy=antidisc">equal opportunity/affirmative action institution</a><br />
-&copy;2018 University of Hawai&#699;i at M&#257;noa &bull; 2500 Campus Road &bull; Honolulu, HI 96822 &bull; (808) 956-8111
-</div>
+         <div class="container">
+            The University of Hawai&#699;i is an <a href="https://www.hawaii.edu/offices/eeo/policies/?policy=antidisc">equal opportunity/affirmative action institution</a><br />
+            &copy;<?php echo date("Y"); ?> University of Hawai&#699;i at M&#257;noa &bull; 2500 Campus Road &bull; Honolulu, HI 96822 &bull; (808) 956-8111
+         </div>
+      </div>
    </div>
 </footer>
 
