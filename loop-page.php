@@ -25,6 +25,8 @@ if ( have_posts() ) {
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					<?php } ?>
 
+					<?php the_post_thumbnail( 'full' ); ?>
+
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php
