@@ -2,17 +2,6 @@
 /**
  * The loop that displays posts
  *
- * The loop displays the posts and the post content. See
- * https://codex.wordpress.org/The_Loop to understand it and
- * https://codex.wordpress.org/Template_Tags to understand
- * the tags used in it.
- *
- * This can be overridden in child themes with loop.php or
- * loop-template.php, where 'template' is the loop context
- * requested by a template. For example, loop-index.php would
- * be used if it exists and we ask for the loop with:
- * <code>get_template_part( 'loop', 'index' );</code>
- *
  */
 ?>
 
@@ -34,6 +23,7 @@
 		</div><!-- .entry-content -->
 	</div><!-- #post-0 -->
 <?php endif; ?>
+
 
 <?php
 	/*
@@ -57,145 +47,35 @@ while ( have_posts() ) :
 	the_post();
 ?>
 
-<?php /* How to display posts of the Gallery format. The gallery category is the old way. */ ?>
-
-	<?php if ( ( function_exists( 'get_post_format' ) && 'gallery' == get_post_format( $post->ID ) ) || in_category( _x( 'gallery', 'gallery category slug', 'manoa2018' ) ) ) : ?>
-                <?php // featured image
-                if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-                <div class="entry-thumbnail"><?php the_post_thumbnail('large', ['alt' => 'featured image for post '.get_the_title()]); ?></div>
-                <?php endif; ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<?php // featured image
+    		if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
+        		<div class="entry-thumbnail"><?php the_post_thumbnail('thumbnail', ['alt' => 'featured image for post '.get_the_title()]); ?></div>
+            <?php endif; ?>
+            <div class="post-content">
+				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
-			<div class="entry-meta">
-				<?php manoa2018_posted_on(); ?>
-			</div><!-- .entry-meta -->
+				<div class="entry-meta">
+					<?php manoa2018_posted_on(); ?>
+				</div><!-- .entry-meta -->
 
-			<div class="entry-content">
-<?php if ( post_password_required() ) : ?>
-				<?php the_content(); ?>
-<?php else : ?>
-				<?php
-					$images = manoa2018_get_gallery_images();
-				if ( $images ) :
-					$total_images = count( $images );
-					$image        = reset( $images );
-				?>
-					<div class="gallery-thumb">
-						<a class="size-thumbnail" href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image, 'thumbnail' ); ?></a>
-					</div><!-- .gallery-thumb -->
-					<p><em>
+				<div class="entry-content">
+					<?php the_excerpt(); ?>
 					<?php
-						printf(
-							_n( 'This gallery contains <a %1$s>%2$s photo</a>.', 'This gallery contains <a %1$s>%2$s photos</a>.', $total_images, 'manoa2018' ),
-							'href="' . esc_url( get_permalink() ) . '" title="' . esc_attr( sprintf( __( 'Permalink to %s', 'manoa2018' ), the_title_attribute( 'echo=0' ) ) ) . '" rel="bookmark"',
-							number_format_i18n( $total_images )
-						);
-							?>
-							</em></p>
-				<?php endif; // end manoa2018_get_gallery_images() check ?>
-						<?php the_excerpt(); ?>
-<?php endif; ?>
-			</div><!-- .entry-content -->
+					wp_link_pages(
+						array(
+							'before' => '<div class="page-link">' . __( 'Pages:', 'manoa2018' ),
+							'after'  => '</div>',
+						)
+					);
+					?>
+				</div><!-- .entry-content -->
+			</div>
 
-			<div class="entry-utility">
-			<?php if ( function_exists( 'get_post_format' ) && 'gallery' == get_post_format( $post->ID ) ) : ?>
-				<a href="<?php echo esc_url( get_post_format_link( 'gallery' ) ); ?>" title="<?php esc_attr_e( 'View Galleries', 'manoa2018' ); ?>"><?php _e( 'More Galleries', 'manoa2018' ); ?></a>
-				<span class="meta-sep">|</span>
-			<?php elseif ( $gallery = get_term_by( 'slug', _x( 'gallery', 'gallery category slug', 'manoa2018' ), 'category' ) && in_category( $gallery->term_id ) ) : ?>
-				<a href="<?php echo esc_url( get_category_link( $gallery ) ); ?>" title="<?php esc_attr_e( 'View posts in the Gallery category', 'manoa2018' ); ?>"><?php _e( 'More Galleries', 'manoa2018' ); ?></a>
-				<span class="meta-sep">|</span>
-			<?php endif; ?>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'manoa2018' ), __( '1 Comment', 'manoa2018' ), __( '% Comments', 'manoa2018' ) ); ?></span>
-				<?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
-			</div><!-- .entry-utility -->
-		</div><!-- #post-## -->
-
-<?php /* How to display posts of the Aside format. The asides category is the old way. */ ?>
-
-	<?php elseif ( ( function_exists( 'get_post_format' ) && 'aside' == get_post_format( $post->ID ) ) || in_category( _x( 'asides', 'asides category slug', 'manoa2018' ) ) ) : ?>
-                <?php // featured image
-                if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-                <div class="entry-thumbnail"><?php the_post_thumbnail('large', ['alt' => 'featured image for post '.get_the_title()]); ?></div>
-                <?php endif; ?>
-
-		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-		<?php if ( is_archive() || is_search() ) : // Display excerpts for archives and search. ?>
-			<div class="entry-summary">
-				<?php the_excerpt(); ?>
-			</div><!-- .entry-summary -->
-		<?php else : ?>
-			<div class="entry-content">
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'manoa2018' ) ); ?>
-			</div><!-- .entry-content -->
-		<?php endif; ?>
-
-			<div class="entry-utility">
-				<?php manoa2018_posted_on(); ?>
-				<span class="meta-sep">|</span>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'manoa2018' ), __( '1 Comment', 'manoa2018' ), __( '% Comments', 'manoa2018' ) ); ?></span>
-				<?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
-			</div><!-- .entry-utility -->
-		</div><!-- #post-## -->
-
-<?php /* How to display all other posts. */ ?>
-
-	<?php else : ?>
-                <?php // featured image
-                if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-                <div class="entry-thumbnail"><?php the_post_thumbnail('large', ['alt' => 'featured image for post '.get_the_title()]); ?></div>
-                <?php endif; ?>
-
-		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-
-			<div class="entry-meta">
-				<?php manoa2018_posted_on(); ?>
-			</div><!-- .entry-meta -->
-
-	<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>
-			<div class="entry-summary">
-				<?php the_excerpt(); ?>
-			</div><!-- .entry-summary -->
-	<?php else : ?>
-			<div class="entry-content">
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'manoa2018' ) ); ?>
-				<?php
-				wp_link_pages(
-					array(
-						'before' => '<div class="page-link">' . __( 'Pages:', 'manoa2018' ),
-						'after'  => '</div>',
-					)
-				);
-?>
-			</div><!-- .entry-content -->
-	<?php endif; ?>
-
-			<div class="entry-utility">
-				<?php if ( count( get_the_category() ) ) : ?>
-					<span class="cat-links">
-						<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'manoa2018' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
-					</span>
-					<span class="meta-sep">|</span>
-				<?php endif; ?>
-				<?php
-					$tags_list = get_the_tag_list( '', ', ' );
-				if ( $tags_list ) :
-				?>
-				<span class="tag-links">
-					<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', 'manoa2018' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
-				</span>
-				<span class="meta-sep">|</span>
-				<?php endif; ?>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'manoa2018' ), __( '1 Comment', 'manoa2018' ), __( '% Comments', 'manoa2018' ) ); ?></span>
-				<?php edit_post_link( __( 'Edit', 'manoa2018' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
-			</div><!-- .entry-utility -->
 		</div><!-- #post-## -->
 
 		<?php comments_template( '', true ); ?>
 
-	<?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
 
 <?php endwhile; // End the loop. Whew. ?>
 
