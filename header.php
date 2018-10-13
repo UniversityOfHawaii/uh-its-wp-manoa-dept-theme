@@ -62,7 +62,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
    <div id="header_top">
       <div id="header_top_content">
          <ul id="header_mainmenu">
-            <li><a href="https://manoa.hawaii.edu/">Home</a></li>
+            <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
             <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
             <li><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
             <li><a href="https://manoa.hawaii.edu/students/">Students</a></li>
