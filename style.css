@@ -237,10 +237,11 @@ header,footer {
    display: block;
    color: #fff;
    text-align: center;
-   padding: 0 20px 0 0;
    text-decoration: none;
 }
-
+#header_top_content li:not(:last-child) a {
+   padding: 0 20px 0 0;
+}
 #header_top_content li a:hover {
    text-decoration: underline;
 }
@@ -284,10 +285,6 @@ header,footer {
   border-bottom: 1px solid #eee;
 }
 
-#department_name .container {
-  display: flex;
-}
-
 #header_btm_content {
    max-width: 1000px;
    margin: 0 auto;
@@ -312,8 +309,11 @@ header,footer {
   display: block;
   color: #000;
   text-align: center;
-  padding: 0 20px 0 0;
   text-decoration: none;
+}
+
+#header_btm_content li:not(:last-child) a {
+  padding: 0 20px 0 0;
 }
 
 #header_btm_content li a:hover {
@@ -334,9 +334,7 @@ header,footer {
 #header_sitedescription {
   color: #333;
   align-self: center;
-  padding-left: 20px;
 }
- 
 
 /* main */
 #main_content {
@@ -412,13 +410,17 @@ header,footer {
    max-width: 1000px;
    margin: 0 auto;
    color: #fff;
-   padding-top: 1.5em;
+   padding: 1.5em 0;
    font-size: .85em;
    line-height: 1.8;
 }
 
 #footer_btm_content a {
    color: #fff;
+}
+
+#footer_btm_content a:hover, #footer_btm_content a:focus {
+  color: #ddd;
 }
 
 /* columns */
@@ -449,6 +451,21 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 }
 #content {
   margin: 0 280px 0 0px;
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 #primary,
 #secondary {
@@ -859,12 +876,6 @@ h6 {
 .blog .post, .archive .post {
   padding-top: 32px;
   margin-bottom: 32px;
-}
-.blog .post.has-post-thumbnail .entry-thumbnail, .archive .post.has-post-thumbnail .entry-thumbnail {
-  position: absolute;
-}
-.blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
-  margin-left: 180px;
 }
 .blog #content .post h2.entry-title, .archive #content .post h2.entry-title {
   font-size: 1.2em;
@@ -1766,7 +1777,6 @@ code {
     border-bottom: 1px solid #eee;
   }
   #content { margin: 0; }
-
   #primary,
   #secondary {
     padding-top: 10px;
@@ -1774,8 +1784,21 @@ code {
     width: 100%;
   }
 }
-
-@media only screen and (max-width: 999px) {
+@media only screen and (min-width: 761px) {
+  #department_name .container {
+    display: flex;
+  }
+  #header_sitedescription {
+    padding-left: 20px;
+  }
+  .blog .post.has-post-thumbnail .entry-thumbnail, .archive .post.has-post-thumbnail .entry-thumbnail {
+    position: absolute;
+  }
+  .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
+    margin-left: 180px;
+  }
+}
+@media only screen and (min-width: 761px) and (max-width: 999px) {
   #header_top_content, #footer_mid, .container, #container.one-column, #header_btm_content, .page-template-default #main_content, .blog #main_content, .single-post #main_content {
     margin: 0 auto;
     max-width: 90%;
@@ -1805,8 +1828,8 @@ code {
      text-align: center;
      padding-top: 10px;
   }
-  #header_btm, #main_content, #footer_top_content, #footer_mid, #footer_btm {
-     padding: 0 0 5px;
+  #header_sitedescription {
+    padding-top: 6px;
   }
   .uh_col {  margin: 1% 0; float: none; }
   .c1_4, .c2_4, .c3_4, .c4_4 { width: 100%; }
