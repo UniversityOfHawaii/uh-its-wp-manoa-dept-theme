@@ -1834,3 +1834,33 @@ code {
   .uh_col {  margin: 1% 0; float: none; }
   .c1_4, .c2_4, .c3_4, .c4_4 { width: 100%; }
 }
+
+/* ALTERNATE HEADER - OTHER PAGE TEMPLATE */
+header.other #header_top {
+  min-height: 0;
+}
+header.other #header_top_content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+header.other #header_top_content #header_mid_logo {
+  height: 36px;
+  margin: 0;
+  padding: 0;
+}
+header.other #header_sitename {
+  line-height: 1.5;
+}
+header.other #header_sitedescription {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  padding: 0 0 10px;
+}
+header.other #header_btm_content {
+  padding: 20px 0 8px;
+}
+main.other #main_content #content .page {
+  padding-top: 30px;
+}
