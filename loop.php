@@ -50,7 +50,7 @@ while ( have_posts() ) :
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php // featured image
     		if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-        		<div class="entry-thumbnail"><?php the_post_thumbnail('thumbnail', ['alt' => 'featured image for post '.get_the_title()]); ?></div>
+        		<div class="entry-thumbnail"><?php the_post_thumbnail('thumbnail'); ?></div>
             <?php endif; ?>
             <div class="post-content">
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
