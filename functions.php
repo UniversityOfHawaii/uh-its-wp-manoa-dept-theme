@@ -257,31 +257,18 @@ function manoa2018_widgets_init() {
         )
     );
 
-    // Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
+    // Area 3, located in the footer. Empty by default.
     register_sidebar(
-        array(
-            'name'          => __( 'Secondary Widget Area', 'manoa2018' ),
-            'id'            => 'secondary-widget-area',
-            'description'   => __( 'An optional secondary widget area, displays below the primary widget area in your sidebar.', 'manoa2018' ),
-            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-            'after_widget'  => '</li>',
-            'before_title'  => '<h3 class="widget-title">',
-            'after_title'   => '</h3>',
-        )
+            array(
+                    'name'          => __( 'Footer Widget Area', 'manoa2018' ),
+                    'id'            => 'footer-widget-area',
+                    'description'   => __( 'An optional widget area for your site footer.', 'manoa2018' ),
+                    'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+                    'after_widget'  => '</li>',
+                    'before_title'  => '<h3 class="widget-title">',
+                    'after_title'   => '</h3>',
+            )
     );
-
-        // Area 3, located in the footer. Empty by default.
-        register_sidebar(
-                array(
-                        'name'          => __( 'Footer Widget Area', 'manoa2018' ),
-                        'id'            => 'footer-widget-area',
-                        'description'   => __( 'An optional widget area for your site footer.', 'manoa2018' ),
-                        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-                        'after_widget'  => '</li>',
-                        'before_title'  => '<h3 class="widget-title">',
-                        'after_title'   => '</h3>',
-                )
-        );
 
 }
 /** Register sidebars by running manoa2018_widgets_init() on the widgets_init hook. */
