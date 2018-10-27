@@ -36,8 +36,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/regular.css" integrity="sha384-ZlNfXjxAqKFWCwMwQFGhmMh3i89dWDnaFU2/VZg9CvsMGA7hXHQsPIqS+JIAmgEq" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css" integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
+<script src="https://use.fontawesome.com/bfcbe1540c.js"></script>
 <?php
 	/*
 	 * We add some JavaScript to pages with the comment form
@@ -77,6 +76,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 <div id="department_name">
 	<div class="container">
 		<h1 id="header_sitename"><?php the_title(); ?></h1>
+		<?php manoa2018_get_breadcrumbs(); ?>
 	</div>
 </div>
 </header>

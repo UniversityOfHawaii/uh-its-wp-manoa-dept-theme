@@ -6,6 +6,18 @@
 ?>
 
 		<div id="primary" class="widget-area" role="complementary">
+			<?php global $post; // Setup the global variable $post
+if ( is_page() && $post->post_parent ) {
+	// Make sure we are on a page and that the page is a parent.
+	$kiddies = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );	
+} else {
+	$kiddies = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
+}
+if ( $kiddies ) {
+	echo '<ul class="secondary">';
+		echo $kiddies;
+	echo '</ul>';
+} ?>
 			<ul class="xoxo">
 
 <?php
@@ -41,16 +53,3 @@ if ( ! dynamic_sidebar( 'primary-widget-area' ) ) :
 		<?php endif; // end primary widget area ?>
 			</ul>
 		</div><!-- #primary .widget-area -->
-
-<?php
-	// A second sidebar for widgets, just because.
-if ( is_active_sidebar( 'secondary-widget-area' ) ) :
-	?>
-
-		<div id="secondary" class="widget-area" role="complementary">
-			<ul class="xoxo">
-				<?php dynamic_sidebar( 'secondary-widget-area' ); ?>
-			</ul>
-		</div><!-- #secondary .widget-area -->
-
-<?php endif; ?>
