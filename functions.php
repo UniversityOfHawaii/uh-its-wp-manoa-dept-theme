@@ -81,6 +81,8 @@ if ( ! function_exists( 'manoa2018_setup' ) ) :
         register_nav_menus(
             array(
                 'primary' => __( 'Primary Navigation', 'manoa2018' ),
+                'top-header' => __( 'Top Header Menu', 'manoa2018' ),
+                'footer-menu' => __( 'Footer Menu', 'manoa2018' ),
             )
         );
     }
@@ -401,10 +403,8 @@ add_filter( 'widget_tag_cloud_args', 'manoa2018_widget_tag_cloud_args' );
  * Add default pages to theme
  *
  */
-add_action('wpmu_new_blog', 'wpb_create_my_pages', 10, 2);
-
 // On theme activation, create some default content if it doesn't exist
-function course_theme_activate_create_default_content($old_name, $old_theme = false) {
+function manoa2018_activate_create_default_content($old_name, $old_theme = false) {
     // List of default pages to create
     $default_pages = array(
         array(
@@ -456,7 +456,7 @@ function course_theme_activate_create_default_content($old_name, $old_theme = fa
         }
     }
 }
-add_action("after_switch_theme", "course_theme_activate_create_default_content", 10, 2);
+add_action("after_switch_theme", "manoa2018_activate_create_default_content", 10, 2);
 
 
 /**
@@ -464,227 +464,182 @@ add_action("after_switch_theme", "course_theme_activate_create_default_content",
  */
 if ( ! function_exists( 'manoa2018_get_breadcrumbs') ) :
 function manoa2018_get_breadcrumbs() {
-       
+
     // Settings
     $separator          = '<span class="fa fa-angle-right" aria-hidden="true" title="breadcrumb-separator"></span>';
     $breadcrums_id      = 'breadcrumbs';
     $breadcrums_class   = 'breadcrumbs';
     $home_title         = 'Home';
-       
+
     // Get the query & post information
     global $post,$wp_query;
-       
+
     // Do not display on the homepage
     if ( !is_front_page() ) {
-       
+
         // Build the breadcrums
-        echo '<ul id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
-           
+        echo '<nav aria-label="Breadcrumb" id="' . $breadcrums_id . '">';
+        echo '<ol class="' . $breadcrums_class . '">';
+
         // Home page
         echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
         echo '<li class="separator separator-home"> ' . $separator . ' </li>';
-           
-        if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
-              
-            echo '<li class="item-current item-archive"><span class="bread-current bread-archive">' . post_type_archive_title() . '</span></li>';
-              
-        } else if ( is_archive() && is_tax() && !is_category() && !is_tag() ) {
-              
-            // If post is a custom post type
-            $post_type = get_post_type();
-              
-            // If it is a custom post type display name and link
-            if($post_type != 'post') {
-                  
-                $post_type_object = get_post_type_object($post_type);
-                $post_type_archive = get_post_type_archive_link($post_type);
-              
-                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
-                echo '<li class="separator"> ' . $separator . ' </li>';
-              
-            }
-              
-            $custom_tax_name = get_queried_object()->name;
-            echo '<li class="item-current item-archive"><span class="bread-current bread-archive">' . $custom_tax_name . '</span></li>';
-              
+
+        if ( is_home() ) {
+
+            echo '<li class="item-current item-posts" aria-current="page"><span class="bread-current bread-posts">' . single_post_title() . '</span></li>';
+
+        } elseif ( is_archive() ) {
+
+            echo '<li class="item-current item-archive" aria-current="page"><span class="bread-current bread-archive">' . get_the_archive_title() . '</span></li>';
+
         } else if ( is_single() ) {
-              
-            // If post is a custom post type
-            $post_type = get_post_type();
-              
-            // If it is a custom post type display name and link
-            if($post_type != 'post') {
-                  
-                $post_type_object = get_post_type_object($post_type);
-                $post_type_archive = get_post_type_archive_link($post_type);
-              
-                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
-                echo '<li class="separator"> ' . $separator . ' </li>';
-              
-            }
-              
-            // Get post category info
-            $category = get_the_category();
-             
-            if(!empty($category)) {
-              
-                // Get last category post is in
-                $last_category = end(array_values($category));
-                  
-                // Get parent any categories and create array
-                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
-                $cat_parents = explode(',',$get_cat_parents);
-                  
-                // Loop through parent categories and store in variable $cat_display
-                $cat_display = '';
-                foreach($cat_parents as $parents) {
-                    $cat_display .= '<li class="item-cat">'.$parents.'</li>';
-                    $cat_display .= '<li class="separator"> ' . $separator . ' </li>';
-                }
-             
-            }
-              
-            // If it's a custom post type within a custom taxonomy
-            $taxonomy_exists = taxonomy_exists($custom_taxonomy);
-            if(empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
-                   
-                $taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
-                $cat_id         = $taxonomy_terms[0]->term_id;
-                $cat_nicename   = $taxonomy_terms[0]->slug;
-                $cat_link       = get_term_link($taxonomy_terms[0]->term_id, $custom_taxonomy);
-                $cat_name       = $taxonomy_terms[0]->name;
-               
-            }
-              
-            // Check if the post is in a category
-            if(!empty($last_category)) {
-                echo $cat_display;
-                echo '<li class="item-current item-' . $post->ID . '"><span class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</span></li>';
-                  
-            // Else if post is in a custom taxonomy
-            } else if(!empty($cat_id)) {
-                  
-                echo '<li class="item-cat item-cat-' . $cat_id . ' item-cat-' . $cat_nicename . '"><a class="bread-cat bread-cat-' . $cat_id . ' bread-cat-' . $cat_nicename . '" href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a></li>';
-                echo '<li class="separator"> ' . $separator . ' </li>';
-                echo '<li class="item-current item-' . $post->ID . '"><span class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</span></li>';
-              
-            } else {
-                  
-                echo '<li class="item-current item-' . $post->ID . '"><span class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</span></li>';
-                  
-            }
-              
-        } else if ( is_category() ) {
-               
-            // Category page
-            echo '<li class="item-current item-cat"><span class="bread-current bread-cat">' . single_cat_title('', false) . '</span></li>';
-               
+
+            $posts_page = get_option( 'page_for_posts', true );
+            $our_title = get_the_title( $posts_page );
+            $posts_url = get_permalink( $posts_page );
+
+            echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
+            echo '<li class="separator"> ' . $separator . ' </li>';
+            echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
+
         } else if ( is_page() ) {
-               
+
             // Standard page
             if( $post->post_parent ){
-                   
-                // If child page, get parents 
+
+                // If child page, get parents
                 $anc = get_post_ancestors( $post->ID );
-                   
+
                 // Get parents in the right order
                 $anc = array_reverse($anc);
-                   
+
                 // Parent page loop
                 foreach ( $anc as $ancestor ) {
-                    $parents .= '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
-                    $parents .= '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
+                    echo '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+                    echo '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
                 }
-                   
-                // Display parent pages
-                echo $parents;
-                   
+
                 // Current page
-                echo '<li class="item-current item-' . $post->ID . '"><span title="' . get_the_title() . '"> ' . get_the_title() . '</span></li>';
-                   
+                echo '<li class="item-current item-page" aria-current="page"><span class="bread-current bread-page"> ' . get_the_title() . '</span></li>';
+
             } else {
-                   
+
                 // Just display current page if not parents
-                echo '<li class="item-current item-' . $post->ID . '"><span class="bread-current bread-' . $post->ID . '"> ' . get_the_title() . '</span></li>';
-                   
+                echo '<li class="item-current item-page" aria-current="page"><span class="bread-current bread-page"> ' . get_the_title() . '</span></li>';
+
             }
-               
-        } else if ( is_tag() ) {
-               
-            // Tag page
-               
-            // Get tag information
-            $term_id        = get_query_var('tag_id');
-            $taxonomy       = 'post_tag';
-            $args           = 'include=' . $term_id;
-            $terms          = get_terms( $taxonomy, $args );
-            $get_term_id    = $terms[0]->term_id;
-            $get_term_slug  = $terms[0]->slug;
-            $get_term_name  = $terms[0]->name;
-               
-            // Display the tag name
-            echo '<li class="item-current item-tag-' . $get_term_id . ' item-tag-' . $get_term_slug . '"><span class="bread-current bread-tag-' . $get_term_id . ' bread-tag-' . $get_term_slug . '">' . $get_term_name . '</span></li>';
-           
-        } elseif ( is_day() ) {
-               
-            // Day archive
-               
-            // Year link
-            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
-            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
-               
-            // Month link
-            echo '<li class="item-month item-month-' . get_the_time('m') . '"><a class="bread-month bread-month-' . get_the_time('m') . '" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
-            echo '<li class="separator separator-' . get_the_time('m') . '"> ' . $separator . ' </li>';
-               
-            // Day display
-            echo '<li class="item-current item-' . get_the_time('j') . '"><span class="bread-current bread-' . get_the_time('j') . '"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</span></li>';
-               
-        } else if ( is_month() ) {
-               
-            // Month Archive
-               
-            // Year link
-            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
-            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
-               
-            // Month display
-            echo '<li class="item-month item-month-' . get_the_time('m') . '"><span class="bread-month bread-month-' . get_the_time('m') . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</span></li>';
-               
-        } else if ( is_year() ) {
-               
-            // Display year archive
-            echo '<li class="item-current item-current-' . get_the_time('Y') . '"><span class="bread-current bread-current-' . get_the_time('Y') . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</span></li>';
-               
-        } else if ( is_author() ) {
-               
-            // Auhor archive
-               
-            // Get the author information
-            global $author;
-            $userdata = get_userdata( $author );
-               
-            // Display author name
-            echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><span class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</span></li>';
-           
+
         } else if ( get_query_var('paged') ) {
-               
+
             // Paginated archives
-            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><span class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</span></li>';
-               
+            echo '<li class="item-current item-current-' . get_query_var('paged') . '" aria-current="page"><span class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</span></li>';
+
         } else if ( is_search() ) {
-           
+
             // Search results page
-            echo '<li class="item-current item-current-' . get_search_query() . '"><span class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</span></li>';
-           
+            echo '<li class="item-current item-current-' . get_search_query() . '" aria-current="page"><span class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</span></li>';
+
         } elseif ( is_404() ) {
-               
+
             // 404 page
-            echo '<li>' . 'Error 404' . '</li>';
+            echo '<li aria-current="page">' . 'Error 404' . '</li>';
         }
-       
-        echo '</ul>';
-           
+
+        echo '</ol>';
+        echo '</nav>';
+
     }
 }
 endif;
+
+/**
+ * Hide menu items from non-superadmins
+ */
+function my_remove_menu_pages() {
+
+    global $user_ID;
+
+    if ( !is_super_admin() ) {
+        remove_menu_page( 'plugins.php' );
+        remove_submenu_page( 'themes.php', 'themes.php' );
+        remove_submenu_page( 'themes.php', 'nav-menus.php' );
+        remove_submenu_page( 'themes.php', 'themes.php' );
+        remove_submenu_page( 'tools.php', 'ms-delete-site.php');
+    }
+}
+add_action( 'admin_init', 'my_remove_menu_pages' );
+
+
+/**
+ * Edit Customize panel
+ */
+function manoa2018_customize_register( $wp_customize ) {
+    // hide custom css
+    $wp_customize->remove_section( 'custom_css' );
+
+    // Add Header Option Section
+    /*$wp_customize->add_section( 'header-options' , array(
+        'title' => __( 'Header Options', 'manoa2018' ),
+        'description' => __( '', 'manoa2018' )
+    ) );*/
+     // Add Contact Info Section
+    $wp_customize->add_section( 'contact-info' , array(
+        'title' => __( 'Contact Information', 'manoa2018' ),
+        'description' => __( '', 'manoa2018' )
+    ) );
+
+    // Add header options
+    /*$wp_customize->add_setting( 'header-option' , array( 'default' => 'header1' ));
+    $wp_customize->add_control(
+        'header-options',
+        array(
+            'label'    => __( 'Header Option', 'manoa2018' ),
+            'section'  => 'header-options',
+            'type'     => 'radio',
+            'choices'  => array(
+                'header1'  => 'Option 1',
+                'header2' => 'Option 2',
+            ),
+            'settings' => 'header-option',
+        )
+    );*/
+
+    // Add Global Fields to Customizer.
+    // Add Address Line 1
+    $wp_customize->add_setting( 'address' , array( 'default' => 'XXX Campus Road, Building Rm #' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'address', array(
+        'label' => __( 'Address Line 1', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'address',
+    ) ) );
+    // Add Address Line 2
+    $wp_customize->add_setting( 'city' , array( 'default' => 'Honolulu, Hawai‘i 96822' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'city', array(
+        'label' => __( 'Address Line 2', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'city',
+    ) ) );
+    // Telephone
+    $wp_customize->add_setting( 'telephone' , array( 'default' => '(808) 956-XXXX' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'telephone', array(
+        'label' => __( 'Telephone', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'telephone',
+    ) ) );
+     // Fax
+    $wp_customize->add_setting( 'fax' , array( 'default' => '(808) 956-0000' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'fax', array(
+        'label' => __( 'Fax', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'fax',
+    ) ) );
+    // Email
+    $wp_customize->add_setting( 'email' , array( 'default' => 'email@hawaii.edu' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'email', array(
+        'label' => __( 'Email', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'email',
+    ) ) );
+}
+add_action( 'customize_register', 'manoa2018_customize_register' );
