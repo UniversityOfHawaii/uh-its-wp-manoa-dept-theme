@@ -11,8 +11,6 @@ Tags: blog, two-columns, threaded-comments, sticky-post, translation-ready, micr
 Text Domain: manoa2018
 */
 
-@import 'other.css';
-
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -156,6 +154,7 @@ textarea {
 [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
+  border-radius: 3px;
 }
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -176,7 +175,26 @@ template {
 [hidden] {
   display: none;
 }
-
+form.search-form {
+  align-self: center;
+  display: flex;
+  background: #f9f9f9;
+  border: 1px solid rgba(2, 71, 49, 0.4);
+  border-radius: 3px;
+  flex: 0 12em;
+  height: 2.4em;
+}
+form.search-form input[type="search"] {
+  border: none;
+  background: transparent;
+  width: calc(100% - 2.5em);
+  float: left;
+}
+form.search-form button[type="submit"] {
+  background: transparent;
+  color: #024731;
+  padding: 8px 10px 10px;
+}
 
 
 
@@ -211,18 +229,23 @@ header,footer {
    font-size: 10pt;
 }
 #header_top {
-   min-height: 63px;
    background-color: #024731;
    overflow-x: auto;
    overflow-y: hidden;
 }
 
 #header_top_content {
-   max-width: 1000px;
-   margin: 0 auto;
-   color: #fff;
-   padding: 23px 0;
-   font-size: 11pt;
+  color: #fff;
+  font-size: 14px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 0 6px;
+}
+
+#header_top_content > ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
 }
 
 #header_top_content ul {
@@ -231,8 +254,8 @@ header,footer {
    padding: 0;
 }
 
-#header_top_content li {
-   float: left;
+#header_top_content > ul li {
+   padding-bottom: 1em;
 }
 
 #header_top_content li a {
@@ -242,7 +265,7 @@ header,footer {
    text-decoration: none;
 }
 #header_top_content li:not(:last-child) a {
-   padding: 0 20px 0 0;
+   margin: 0 20px 0 0;
 }
 #header_top_content li a:hover,
 #header_top_content li a:focus,
@@ -251,11 +274,18 @@ header,footer {
 }
 
 #header_smrow {
-   float: right;
+  flex: 0 9em;
+  align-self: center;
+  padding-bottom: .8em;
 }
-
+#header_smrow a {
+  text-decoration: none;
+}
+#header_smrow a:hover, #header_smrow a:focus, #header_smrow a:active {
+  opacity: .8;
+}
 .header_smicon, .search_icon {
-   height: 18px !important;
+   height: 18px;
 }
 
 #header_mid {
@@ -293,13 +323,14 @@ header,footer {
    max-width: 1000px;
    margin: 0 auto;
    color: #000;
-   text-align: center;
-   padding: 20px 0;
+   /*text-align: center;*/
+   padding: 1em 0;
    line-height: 2;
 }
 
 #header_btm_content ul {
   display: inline-block;
+  flex: 1;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -317,7 +348,7 @@ header,footer {
 }
 
 #header_btm_content li:not(:last-child) a {
-  padding: 0 20px 0 0;
+  margin: 0 20px 0 0;
 }
 
 #header_btm_content li a:hover,
@@ -412,7 +443,6 @@ header,footer {
 }
 
 #footer_btm {
-   min-height: 90px;
    background-color: #024731;
 }
 
@@ -429,8 +459,8 @@ header,footer {
    color: #fff;
 }
 
-#footer_btm_content a:hover, 
-#footer_btm_content a:focus, 
+#footer_btm_content a:hover,
+#footer_btm_content a:focus,
 #footer_btm_content a:active {
   color: #ddd;
 }
@@ -464,14 +494,13 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 #content {
   margin: 0 280px 0 0px;
 }
-#primary,
-#secondary {
+.error404 #content {
+  margin: 0 0 3em;
+}
+#primary {
   float: right;
   overflow: hidden;
   width: 220px;
-}
-#secondary {
-  clear: right;
 }
 footer {
   background-color: #333; /* #363636 */
@@ -509,7 +538,6 @@ DESCRIPTION: Full width content with no sidebar; used for attachment pages
 
 /* The main theme structure */
 #access .menu-header,
-div.menu,
 #colophon,
 #branding,
 #main,
@@ -643,6 +671,7 @@ input[type="password"],
 input[type="email"],
 input[type="url"],
 input[type="number"],
+input[type="search"],
 textarea {
   background: #f9f9f9;
   border: 1px solid rgba(2, 71, 49, 0.4);
@@ -682,11 +711,8 @@ a:focus {
   margin: 0 auto;
   /*width: 940px;*/
 }
-#access .menu-header,
-div.menu {
-  /*font-size: 13px;*/
+#access .menu-header {
   margin-left: 12px;
-  /*width: 928px;*/
 }
 #access .menu-header ul,
 div.menu ul {
@@ -859,7 +885,8 @@ thead th {
   background: #f7f7f7;
   font-weight: bold;
   line-height: 18px;
-  padding: 9px 24px;
+  padding: 9px 0;
+  text-align: center;
 }
 tr th + th,
 thead th + th {
@@ -867,7 +894,7 @@ thead th + th {
 }
 tr td {
   border-top: 1px solid #e7e7e7;
-  padding: 6px 24px;
+  padding: 6px 0;
 }
 tr td + td {
   border-left: 1px solid #e7e7e7;
@@ -888,8 +915,14 @@ tr.odd td {
 .home main > img {
   width: 100%;
 }
-.archive #content .page-title {
-  font-size: 1.4em;
+.error404 .error404 {
+  text-align: center;
+}
+.error404 h1 {
+  font-size: 2.6em;
+}
+.archive #content .page-title, .blog #content .page-title, .search .page-title {
+  font-size: 2em;
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 0;
@@ -906,7 +939,7 @@ tr.odd td {
   font-size: 1.2em;
   margin-top: 0;
 }
-.blog .post-content .entry-content, .archive .post-content .entry-content {
+.blog .post-content .entry-content, .archive .post-content .entry-content, .search .post-content .entry-content {
   padding-top: 0;
 }
 .single .hentry {
@@ -1210,7 +1243,7 @@ img.aligncenter {
 .widget-container .wp-caption {
   max-width: 100% !important;
 }
-#primary .widget-container .wp-caption-text, #secondary .widget-container .wp-caption-text {
+#primary .widget-container .wp-caption-text {
   display: none;
 }
 .wp-caption img {
@@ -1559,11 +1592,13 @@ ul.xoxo .post-date {
 ul.xoxo select {
   max-width: 100%;
 }
-.widget_search #s {/* This keeps the search inputs in line */
+#basic-site-search {/* This keeps the search inputs in line */
   box-sizing: border-box;
   font-family: 'Open Sans', Tahoma, sans-serif;
-  width: 100%;
   padding: 6px 10px 8px;
+}
+.widget_search #basic-site-search {/* This keeps the search inputs in line */
+  width: 100%;
 }
 .widget_search label {
   display: none;
@@ -1624,33 +1659,47 @@ ul.xoxo select {
 }
 #wp-calendar {
   width: 100%;
+  border: none;
 }
 #wp-calendar caption {
-  color: #222;
-  font-size: 14px;
+  background: #024731;
+  color: #fff;
   font-weight: bold;
-  padding-bottom: 4px;
-  text-align: left;
+  padding: .8em 1em .9em;
+  text-align: center;
 }
 #wp-calendar thead {
   font-size: 11px;
 }
 #wp-calendar thead th {
+  color: #024731;
 }
 #wp-calendar tbody {
   color: #aaa;
 }
 #wp-calendar tbody td {
-  background: #f5f5f5;
-  border: 1px solid #fff;
+  background: #fff;
+  border-bottom: 1px solid #e7e7e7;
+  color: #777;
   padding: 3px 0 2px;
   text-align: center;
 }
 #wp-calendar tbody .pad {
   background: none;
 }
+#wp-calendar tbody, #wp-calendar thead {
+  border-left: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
+}
+#wp-calendar tfoot td {
+  border: none;
+}
 #wp-calendar tfoot #next {
   text-align: right;
+}
+#wp-calendar a {
+  color: #217eab;
+  font-weight: 600;
 }
 .widget_rss a.rsswidget {
   color: #000;
@@ -1687,6 +1736,19 @@ ul.xoxo select {
 }
 .tagcloud ul li {
   display: inline-block;
+  padding: 0 .15em 0 0;
+}
+.tagcloud ul li a {
+  border: 1px solid #eee;
+  display: inline-block;
+  font-size: .85em !important;
+  margin-bottom: .5em;
+  padding: .4em .8em .45em;
+}
+.tagcloud ul li a:hover, .tagcloud ul li a:focus, .tagcloud ul li a:active {
+  background: #024731;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Helps galleries in widget areas look presentable in most cases. */
@@ -1713,9 +1775,52 @@ ul.xoxo select {
   margin-left: 1.3em;
   padding: 0;
 }
-#primary {
+#primary .secondary {
+  border: 1px solid #eee;
+  border-radius: 3px;
+  line-height: 1.4;
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
 }
-#secondary {
+#primary .secondary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#primary .secondary li.current_page_item > a {
+  background: #217eab;
+  color: #fff;
+}
+#primary .secondary ul.children li a span {
+  display: none;
+}
+#primary .secondary > li > a {
+  text-indent: -10px;
+}
+#primary .secondary > li:not(:first-child) {
+  border-top: 1px solid #eee;
+}
+#primary .secondary > li:first-child > a {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+#primary .secondary > li:last-child > a {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+#primary .secondary a span {
+  padding-right: 10px;
+}
+#primary .secondary a {
+  color: #707070;
+  display: block;
+  padding: .538em .769em .538em 30px;
+  text-decoration: none;
+}
+#primary .secondary a:hover, #primary .secondary a:focus, #primary .secondary a:active {
+  background: #217eab;
+  color: #fff;
 }
 
 /* Footer widget areas */
@@ -1818,25 +1923,38 @@ code {
   #content {
     margin: 0;
   }
-  #primary,
-  #secondary {
+  #primary {
     padding-top: 10px;
     float: none;
     width: 100%;
+  }
+  #header_top_content > ul {
+    justify-content: center;
+  }
+  #header_top_content li {
+    padding: 0 .75em;
+  }
+  #header_top_content li:not(:last-child) a {
+    margin-right: 0;
   }
 }
 @media only screen and (min-width: 761px) {
   #department_name .container {
     display: flex;
+    justify-content: space-between;
   }
   #header_sitedescription {
-    padding-left: 20px;
+    padding-top: .5em;
   }
   .blog .post.has-post-thumbnail .entry-thumbnail, .archive .post.has-post-thumbnail .entry-thumbnail {
     position: absolute;
   }
   .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
     margin-left: 180px;
+  }
+  #header_btm_content {
+    display: flex;
+    justify-content: space-between;
   }
 }
 @media only screen and (max-width: 999px) {
@@ -1865,9 +1983,9 @@ code {
   }
 }
 @media only screen and (max-width: 760px) {
-  #header_top_content, #footer_mid, #footer_top_content, .container, #container, #container.one-column, #header_btm_content, #primary, #secondary {
+  #header_top_content, #footer_mid, #footer_top_content, .container, #container, #container.one-column, #header_btm_content, #primary {
     margin: 0 auto;
-    max-width: 95%;
+    max-width: 86%;
   }
   #container {
     padding-bottom: 40px;
@@ -1877,10 +1995,17 @@ code {
   }
   #header_mid {
      height: auto;
+     margin: 1em auto;
+     max-width: 86%;
   }
   #header_mid_logo {
-     max-width: 95%;
-     height: auto;
+     background: url('images/uhm-seal-name-stacked@2x.png') no-repeat;
+     background-size: 100%;
+     box-sizing: border-box;
+     display: block;
+     width: 198px;
+     height: 70px;
+     padding-left: 198px;
   }
   #header_smrow {
      clear: both;
@@ -1893,9 +2018,22 @@ code {
   }
   .uh_col {  margin: 1% 0; float: none; }
   .c1_4, .c2_4, .c3_4, .c4_4 { width: 100%; }
+  #breadcrumbs {
+    margin-top: 1em;
+  }
+  #department_name {
+  }
+}
+@media only screen and (min-width: 761px) {
+  #header_top_content {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+#breadcrumbs {
+  align-self: center;
 }
 .breadcrumbs {
-  align-self: center;
   font-size: 14px;
   padding: 0;
   margin: 0 0 0 auto;
