@@ -9,6 +9,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php
     /*
      * Print the <title> tag based on what is being viewed.
@@ -61,6 +62,18 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 <header>
    <div id="header_top">
       <div id="header_top_content">
+         <?php if ( has_nav_menu( 'top-header' ) ) :
+
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'top-header',
+                    'menu_id' => 'header_mainmenu',
+                    'container' => 'false'
+                )
+            );
+
+        else : ?>
+
          <ul id="header_mainmenu">
             <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
             <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
@@ -71,7 +84,23 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             <li><a href="https://uhalumni.org/manoa/">Alumni</a></li>
             <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
          </ul>
-      </div>
+        <div id="header_smrow">
+            <a href="https://twitter.com/UHManoa">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="twitter" class="header_smicon" />
+            </a> &nbsp;
+            <a href="https://www.facebook.com/uhmanoa">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="facebook" class="header_smicon" />
+            </a> &nbsp;
+            <a href="https://instagram.com/uhmanoanews">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-instagram.png" alt="instagram" class="header_smicon" />
+            </a> &nbsp;
+            <a href="http://www.flickr.com/photos/uhmanoa">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" />
+            </a> &nbsp; <a href="http://www.youtube.com/user/UniversityofHawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a>
+        </div>
+
+        <?php endif; ?>
+    </div>
    </div>
    <div id="header_mid">
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" ><img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" /></a>
@@ -84,38 +113,41 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
                 array(
                     'theme_location' => 'primary',
                     'menu_id' => 'header_sitemenu',
-                    'container' => 'false'
+                    'container' => 'false',
+                    'depth'        => 1
                 )
             );
 
         else : ?>
 
-            <ul>
-                <?php $menu = array(
-                    'depth'        => 1,
-                    'show_date'    => '',
-                    'exclude'      => '',
-                    'title_li'     => __( '' ),
-                    'echo'         => 1,
-                    'authors'      => '',
-                    'sort_column'  => 'menu_order',
-                    'link_before'  => '',
-                    'link_after'   => '',
-                    'walker'       => '',
-                );
+            <?php $menu = array(
+                'depth'        => 1,
+                'show_date'    => '',
+                'exclude'      => '',
+                'title_li'     => __( '' ),
+                'echo'         => 1,
+                'authors'      => '',
+                'sort_column'  => 'menu_order',
+                'link_before'  => '',
+                'link_after'   => '',
+                'walker'       => '',
+            );
 
-                wp_page_menu( $menu ); ?>
-            </ul>
+            wp_page_menu( $menu ); ?>
 
         <?php endif; ?>
+
+        <?php get_search_form(); ?>
       </div>
    </div>
-<div id="department_name">
-    <div class="container">
-        <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-        <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
-        <?php manoa2018_get_breadcrumbs(); ?>
+    <div id="department_name">
+        <div class="container">
+            <div class="site-name-description">
+                <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
+            </div>
+            <?php manoa2018_get_breadcrumbs(); ?>
+        </div>
     </div>
-</div>
 </header>
 
