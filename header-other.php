@@ -9,6 +9,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -61,23 +62,52 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
    <div id="header_top">
       <div id="header_top_content">
          <a href="https://manoa.hawaii.edu/" title="UH Manoa website home" ><img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-white.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-white.png 1x, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-white-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" /></a>
-<div id="header_smrow"><a href="https://twitter.com/UHManoa"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="twitter" class="header_smicon" /></a> &nbsp; <a href="https://www.facebook.com/uhmanoa"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="facebook" class="header_smicon" /></a> &nbsp; <a href="https://instagram.com/uhmanoanews"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-instagram.png" alt="instagram" class="header_smicon" /></a> &nbsp; <a href="http://www.flickr.com/photos/uhmanoa"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" /></a> &nbsp; <a href="http://www.youtube.com/user/UniversityofHawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a></div>
-</div>
+
+         <?php if ( has_nav_menu( 'top-header' ) ) :
+
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'top-header',
+                    'menu_id' => 'header_mainmenu',
+                    'container' => 'false'
+                )
+            );
+
+        endif; ?>
    </div>
-<?php if ( has_nav_menu( 'primary' ) ) : ?>
-   <div id="header_btm">
-      <div id="header_btm_content">
-      	<h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-		<div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
-<?php wp_nav_menu( array('container' => false, 'menu_id' => 'header_sitemenu', 'theme_location'  => 'primary', 'fallback_cb' => false)); ?>
-      </div>
-   </div>
-<?php endif; ?>
-<div id="department_name">
-	<div class="container">
-		<h1 id="header_sitename"><?php the_title(); ?></h1>
-		<?php manoa2018_get_breadcrumbs(); ?>
+   <?php if ( has_nav_menu( 'primary' ) ) :
+
+       wp_nav_menu(
+           array(
+               'theme_location' => 'primary',
+               'menu_id' => 'header_sitemenu',
+               'container' => 'false'
+           )
+       );
+
+   else : ?>
+
+		<?php $menu = array(
+		   'depth'        => 1,
+		   'show_date'    => '',
+		   'exclude'      => '',
+		   'title_li'     => __( '' ),
+		   'echo'         => 1,
+		   'authors'      => '',
+		   'sort_column'  => 'menu_order, post_title',
+		   'link_before'  => '',
+		   'link_after'   => '',
+		   'walker'       => '',
+		);
+
+		wp_page_menu( $menu ); ?>
+
+    <?php endif; ?>
+	<div id="department_name">
+		<div class="container">
+			<h1 id="header_sitename"><?php the_title(); ?></h1>
+			<?php manoa2018_get_breadcrumbs(); ?>
+		</div>
 	</div>
-</div>
 </header>
 
