@@ -7,17 +7,19 @@
 
 		<div id="primary" class="widget-area" role="complementary">
 			<?php global $post; // Setup the global variable $post
-if ( is_page() && $post->post_parent ) {
-	// Make sure we are on a page and that the page is a parent.
-	$kiddies = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );	
-} else {
-	$kiddies = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
-}
-if ( $kiddies ) {
-	echo '<ul class="secondary">';
-		echo $kiddies;
-	echo '</ul>';
-} ?>
+
+			if ( is_page() && $post->post_parent ) {
+				// Make sure we are on a page and that the page is a parent.
+				$kiddies = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&link_before=<span class="fa fa-chevron-left" aria-hidden="true"></span>' );	
+			} else {
+				$kiddies = wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0&link_before=<span class="fa fa-chevron-left" aria-hidden="true"></span>' );
+			}
+			if ( $kiddies ) {
+				echo '<ul class="secondary">';
+					echo $kiddies;
+				echo '</ul>';
+			} ?>
+
 			<ul class="xoxo">
 
 <?php
@@ -29,26 +31,6 @@ if ( $kiddies ) {
 	 */
 if ( ! dynamic_sidebar( 'primary-widget-area' ) ) :
 	?>
-
-			<li id="search" class="widget-container widget_search">
-				<?php get_search_form(); ?>
-			</li>
-
-			<li id="archives" class="widget-container">
-				<h3 class="widget-title"><?php _e( 'Archives', 'manoa2018' ); ?></h3>
-				<ul>
-					<?php wp_get_archives( 'type=monthly' ); ?>
-				</ul>
-			</li>
-
-			<li id="meta" class="widget-container">
-				<h3 class="widget-title"><?php _e( 'Meta', 'manoa2018' ); ?></h3>
-				<ul>
-					<?php wp_register(); ?>
-					<li><?php wp_loginout(); ?></li>
-					<?php wp_meta(); ?>
-				</ul>
-			</li>
 
 		<?php endif; // end primary widget area ?>
 			</ul>
