@@ -7,8 +7,13 @@
  *
  */
 
-get_header(); ?>
-	
+if ( get_theme_mod( 'header-option' ) == 'header2') :
+	get_header('other');
+else:
+	get_header();
+endif;
+?>
+
 	<main>
 		<div id="main_content">
 			<div id="container">
@@ -28,21 +33,23 @@ get_header(); ?>
 					?>
 
 					<h1 class="page-title">
-						<?php if ( is_day() ) : ?>
+						<?php if ( is_home() ) : ?>
+							<?php single_post_title(); ?>
+						<?php elseif ( is_day() ) : ?>
 							<?php printf( __( 'Daily Archives: <span>%s</span>', 'manoa2018' ), get_the_date() ); ?>
 						<?php elseif ( is_month() ) : ?>
 							<?php printf( __( 'Monthly Archives: <span>%s</span>', 'manoa2018' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'manoa2018' ) ) ); ?>
 						<?php elseif ( is_year() ) : ?>
 							<?php printf( __( 'Yearly Archives: <span>%s</span>', 'manoa2018' ), get_the_date( _x( 'Y', 'yearly archives date format', 'manoa2018' ) ) ); ?>
 						<?php elseif ( is_author() ) : ?>
-							<?php printf( __( 'Author Archives: %s', 'manoa2018' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?>
+							<?php printf( __( 'Author: %s', 'manoa2018' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?>
 						<?php elseif ( is_tag() ) : ?>
 							<?php
-								printf( __( 'Tag Archives: %s', 'manoa2018' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+								printf( __( 'Tag: %s', 'manoa2018' ), '<span>' . single_tag_title( '', false ) . '</span>' );
 							?>
 						<?php elseif ( is_category() ) : ?>
 							<?php
-								printf( __( 'Category Archives: %s', 'manoa2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+								printf( __( 'Category: %s', 'manoa2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 							?>
 						<?php else : ?>
 							<?php _e( 'Post Archives', 'manoa2018' ); ?>
