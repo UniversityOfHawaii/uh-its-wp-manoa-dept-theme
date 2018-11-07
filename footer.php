@@ -23,6 +23,8 @@
       <div id="footer_mid_content">
          <div class="uh_col c1_4">
             <img src="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png" srcset="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png 1x, <?php echo get_template_directory_uri(); ?>/images/footer-logo-2x.png 2x" alt="uh manoa logo" />
+            <!--<span class="fax"><?php //echo get_theme_mod( 'fax' ); ?></span>
+            <span class="email"><?php //echo get_theme_mod( 'email' ); ?></span>-->
          </div>
          <div class="uh_col c1_4">
             <ul>
@@ -32,7 +34,7 @@
                <li><a href="https://manoa.hawaii.edu/campusmap/">Campus Maps</a></li>
                <li><a href="https://manoa.hawaii.edu/commuter/">Parking &#038; Transportation</a></li>
                <li><a href="https://manoa.hawaii.edu/about/visit/">Visiting the Campus</a></li>
-            </ul>            
+            </ul>
          </div>
          <div class="uh_col c1_4">
             <ul>
@@ -61,8 +63,20 @@
    <div id="footer_btm">
       <div id="footer_btm_content">
          <div class="container">
-            The University of Hawai&#699;i is an <a href="https://www.hawaii.edu/offices/eeo/policies/?policy=antidisc">equal opportunity/affirmative action institution</a><br />
-            &copy;<?php echo date("Y"); ?> University of Hawai&#699;i at M&#257;noa &bull; 2500 Campus Road &bull; Honolulu, HI 96822 &bull; (808) 956-8111
+            The University of Hawai&#699;i is an <a href="https://www.hawaii.edu/offices/eeo/policies/?policy=antidisc">equal opportunity/affirmative action institution</a> <br />
+            &copy;<?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>, University of Hawai&#699;i at M&#257;noa
+            <?php if(get_theme_mod('address')) : ?>
+               &bull;
+               <?php echo get_theme_mod('address');
+            endif; ?>
+            <?php if(get_theme_mod('city')) : ?>
+               &bull;
+               <?php echo get_theme_mod('city');
+            endif; ?>
+            <?php if(get_theme_mod('telephone')) : ?>
+               &bull;
+               <?php echo get_theme_mod('telephone');
+            endif; ?>
          </div>
       </div>
    </div>
