@@ -4,13 +4,20 @@
  *
  */
 
-get_header(); ?>
+if ( get_theme_mod( 'header-option' ) == 'header2') :
+	get_header('other');
+else:
+	get_header();
+endif;
+?>
 
-		<div id="container">
+	<main>
+		<div id="main_content">
+			<div id="container">
 			<div id="content" role="main">
 
-<?php if ( have_posts() ) : ?>
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<?php if ( have_posts() ) : ?>
+				<h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				<?php
 				/*
 				 * Run the loop for the search to output the results.
@@ -19,7 +26,7 @@ get_header(); ?>
 				 */
 				get_template_part( 'loop', 'search' );
 				?>
-<?php else : ?>
+			<?php else : ?>
 				<div id="post-0" class="post no-results not-found">
 					<h2 class="entry-title"><?php _e( 'Nothing Found', 'manoa2018' ); ?></h2>
 					<div class="entry-content">
@@ -27,7 +34,8 @@ get_header(); ?>
 						<?php get_search_form(); ?>
 					</div><!-- .entry-content -->
 				</div><!-- #post-0 -->
-<?php endif; ?>
+			<?php endif; ?>
+
 			</div><!-- #content -->
 		</div><!-- #container -->
 

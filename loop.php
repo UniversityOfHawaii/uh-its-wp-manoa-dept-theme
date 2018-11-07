@@ -24,7 +24,6 @@
 	</div><!-- #post-0 -->
 <?php endif; ?>
 
-
 <?php
 	/*
 	 * Start the Loop.
@@ -75,7 +74,6 @@ while ( have_posts() ) :
 		</div><!-- #post-## -->
 
 		<?php comments_template( '', true ); ?>
-
 
 <?php endwhile; // End the loop. Whew. ?>
 

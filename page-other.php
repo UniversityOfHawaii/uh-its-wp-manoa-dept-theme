@@ -9,7 +9,12 @@
  *
  */
 
-get_header('other'); ?>
+if ( get_theme_mod( 'header-option' ) == 'header2') :
+	get_header('other'); 
+else:
+	get_header();
+endif;
+?>
 	
 	<main class="other">
 		<div id="main_content">

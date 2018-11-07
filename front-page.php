@@ -9,7 +9,12 @@
  *
  */
 
-get_header(); ?>
+if ( get_theme_mod( 'header-option' ) == 'header2') :
+	get_header('other'); 
+else:
+	get_header();
+endif;
+?>
 
 	<main>
 		<?php the_post_thumbnail( 'full' ); ?>

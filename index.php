@@ -10,13 +10,21 @@
  *
  */
 
-get_header(); ?>
+if ( get_theme_mod( 'header-option' ) == 'header2') :
+	get_header('other'); 
+else:
+	get_header();
+endif;
+?>
 	
 	<main>
 		<div id="main_content">
 			<div id="container">
 				<div id="content" role="main">
-
+				<h1 class="page-title">
+					<?php $our_title = get_the_title( get_option('page_for_posts', true) ); ?>
+					<?php echo $our_title; ?>
+				</h1>
 				<?php
 				/*
 				 * Run the loop to output the posts.
