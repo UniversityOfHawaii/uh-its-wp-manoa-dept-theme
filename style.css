@@ -11,6 +11,8 @@ Tags: blog, two-columns, threaded-comments, sticky-post, translation-ready, micr
 Text Domain: manoa2018
 */
 
+@import 'other.css';
+
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -1998,7 +2000,7 @@ code {
      margin: 1em auto;
      max-width: 86%;
   }
-  #header_mid_logo {
+  header:not(.other) #header_mid_logo {
      background: url('images/uhm-seal-name-stacked@2x.png') no-repeat;
      background-size: 100%;
      box-sizing: border-box;

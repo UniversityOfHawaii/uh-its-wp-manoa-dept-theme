@@ -7,6 +7,14 @@ header.other #header_top_content {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
+  align-items: center;
+}
+header.other #header_top_content ul.menu {
+  text-align: right;
+}
+header.other #header_top_content ul.menu li {
+  padding: 0;
+  margin-left: 1em;
 }
 header.other #header_top_content #header_mid_logo {
   height: 36px;
@@ -16,13 +24,22 @@ header.other #header_top_content #header_mid_logo {
 header.other #header_sitename {
   line-height: 1.5;
 }
+header.other .header_sitetitle {
+  font-size: 1.5em;
+  padding-right: 1em;
+}
 header.other #header_sitedescription {
   border-bottom: 1px solid #eee;
   margin-bottom: 10px;
   padding: 0 0 10px;
 }
+header.other #header_btm {
+  background: #fff;
+}
 header.other #header_btm_content {
-  padding: 20px 0 8px;
+  padding: 18px 0 20px;
+  display: flex;
+  align-items: center;
 }
 main.other #main_content #content .page {
   padding-top: 30px;
