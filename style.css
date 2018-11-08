@@ -1979,7 +1979,7 @@ code {
   }
 }
 @media only screen and (min-width: 761px) and (max-width: 999px) {
-  #header_top_content, #footer_top_content, #footer_mid, .container, #container.one-column, #header_btm_content, .page-template-default #main_content, .blog #main_content, .archive #main_content, .single-post #main_content {
+  #header_top_content, #footer_top_content, #footer_mid, .container, #container.one-column, #header_btm_content, .page-template-default #main_content, .blog #main_content, .archive #main_content, .single-post #main_content, .search #main_content {
     margin: 0 auto;
     max-width: 90%;
   }
