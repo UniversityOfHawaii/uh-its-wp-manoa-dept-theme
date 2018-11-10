@@ -9,13 +9,9 @@
  *
  */
 
-if ( get_theme_mod( 'header-option' ) == 'header2') :
-	get_header('other'); 
-else:
-	get_header();
-endif;
+get_header();
 ?>
-	
+
 	<main>
 		<div id="main_content">
 			<div id="container">

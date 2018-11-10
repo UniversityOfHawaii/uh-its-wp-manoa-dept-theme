@@ -9,34 +9,37 @@
  *
  */
 
-if ( get_theme_mod( 'header-option' ) == 'header2') :
-	get_header('other'); 
-else:
-	get_header();
-endif;
+get_header();
 ?>
 
-	<main>
-		<?php the_post_thumbnail( 'full' ); ?>
-		<div id="main_content">
-		
-		<div id="container">
-			<div id="content" role="main">
+  <main>
+    <div class="featured-image">
+        <?php the_post_thumbnail( 'full' ); ?>
+        <div class="featured-caption">
+          <?php if (get_post(get_post_thumbnail_id())->post_excerpt) { // search for if the image has caption added on it ?>
+            <div class="container">
+            <?php echo wp_kses_post(get_post(get_post_thumbnail_id())->post_excerpt); // displays the image caption ?>
+            </div>
+          <?php } ?>
+        </div>
+    </div>
+    <div id="main_content">
 
-				<?php
-				if ( have_posts() ) {
-					while ( have_posts() ) :
-						the_post();
-					?>
+    <div id="container">
+      <div id="content" role="main">
 
-					<h1 class="entry-title"><?php the_title(); ?></h1>
-					<?php the_content(); ?>
+        <?php if ( have_posts() ) {
+          while ( have_posts() ) :
+            the_post();
+          ?>
 
-				<?php endwhile;
-				}; // end of the loop. ?>
+          <?php the_content(); ?>
 
-			</div><!-- #content -->
-		</div><!-- #container -->
+        <?php endwhile;
+        }; // end of the loop. ?>
+
+      </div><!-- #content -->
+    </div><!-- #container -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
