@@ -1048,7 +1048,7 @@ p.page-title a:hover, p.page-title a:active {
   padding: 0 24px;
 }
 .entry-content input {
-  margin: 0 0 24px 0;
+  margin: 0;
 }
 .entry-content input.file,
 .entry-content input.button {
