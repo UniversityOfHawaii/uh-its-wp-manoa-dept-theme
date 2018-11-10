@@ -81,7 +81,6 @@ if ( ! function_exists( 'manoa2018_setup' ) ) :
         register_nav_menus(
             array(
                 'primary' => __( 'Primary Navigation', 'manoa2018' ),
-                'top-header' => __( 'Top Header Menu', 'manoa2018' ),
                 'footer-menu' => __( 'Footer Menu', 'manoa2018' ),
             )
         );
@@ -416,17 +415,6 @@ function manoa2018_activate_create_default_content($old_name, $old_theme = false
             'content' => "<p>Insert content about your department here. <a href='http://hawaii.edu/access/' title='accessibility at UH'>Accessibility notes</a></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>",
         ),
         array(
-            'name' => "Contact",
-            'content' => "<p>You can insert your contact information here.</p>
-                <p>Visit us at:</p>
-                <address>
-                Office Name<br />
-                Address Line 1<br />
-                Address Line 2
-                </address><br />
-                Email <a href='mailto:example@hawaii.edu'>example@hawaii.edu</a>",
-        ),
-        array(
             'name' => "News",
             'content' => "<p>This can be your blog or news page. You can set this as your posts page in WP Dashboard > Settings > Reading. You can also rename the page.</p>",
         ),
@@ -557,9 +545,7 @@ endif;
  * Hide menu items from non-superadmins
  */
 function my_remove_menu_pages() {
-
     global $user_ID;
-
     if ( !is_super_admin() ) {
         remove_menu_page( 'plugins.php' );
         remove_submenu_page( 'themes.php', 'themes.php' );
@@ -577,33 +563,13 @@ add_action( 'admin_init', 'my_remove_menu_pages' );
 function manoa2018_customize_register( $wp_customize ) {
     // hide custom css
     $wp_customize->remove_section( 'custom_css' );
+    // remove site icon
+    $wp_customize->remove_control('site_icon');
 
-    // Add Header Option Section
-    /*$wp_customize->add_section( 'header-options' , array(
-        'title' => __( 'Header Options', 'manoa2018' ),
-        'description' => __( '', 'manoa2018' )
-    ) );*/
-     // Add Contact Info Section
     $wp_customize->add_section( 'contact-info' , array(
         'title' => __( 'Contact Information', 'manoa2018' ),
-        'description' => __( '', 'manoa2018' )
+        'description' => __( 'Input your unit contact and social media information. Save/Publish to make sure your information displays. If you do not have a social media account or do not want to display it, leave the field blank.', 'manoa2018' )
     ) );
-
-    // Add header options
-    /*$wp_customize->add_setting( 'header-option' , array( 'default' => 'header1' ));
-    $wp_customize->add_control(
-        'header-options',
-        array(
-            'label'    => __( 'Header Option', 'manoa2018' ),
-            'section'  => 'header-options',
-            'type'     => 'radio',
-            'choices'  => array(
-                'header1'  => 'Option 1',
-                'header2' => 'Option 2',
-            ),
-            'settings' => 'header-option',
-        )
-    );*/
 
     // Add Global Fields to Customizer.
     // Add Address Line 1
@@ -640,6 +606,46 @@ function manoa2018_customize_register( $wp_customize ) {
         'label' => __( 'Email', 'manoa2018' ),
         'section' => 'contact-info',
         'settings' => 'email',
+    ) ) );
+    // Flickr
+    $wp_customize->add_setting( 'flickr' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'flickr', array(
+        'label' => __( 'Flickr', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'flickr',
+        'description' => 'Your flickr username.'
+    ) ) );
+    // Instagram
+    $wp_customize->add_setting( 'instagram' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'instagram', array(
+        'label' => __( 'Instagram', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'instagram',
+        'description' => 'Your Instagram username.'
+    ) ) );
+    // Twitter
+    $wp_customize->add_setting( 'twitter' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twitter', array(
+        'label' => __( 'Twitter', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'twitter',
+        'description' => 'Your Twitter handle.'
+    ) ) );
+    // Facebook
+    $wp_customize->add_setting( 'facebook' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'facebook', array(
+        'label' => __( 'Facebook', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'facebook',
+        'description' => 'Your Facebook handle.'
+    ) ) );
+    // YouTube
+    $wp_customize->add_setting( 'youtube' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'youtube', array(
+        'label' => __( 'YouTube', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'youtube',
+        'description' => 'Your YouTube username.'
     ) ) );
 }
 add_action( 'customize_register', 'manoa2018_customize_register' );
