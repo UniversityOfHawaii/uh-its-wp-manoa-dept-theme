@@ -298,7 +298,6 @@ header,footer {
   height: auto;
   margin: 0 auto;
   max-width: 100%;
-  max-height: 50px;
   padding: 25px 0;
 }
 
@@ -2005,6 +2004,9 @@ code {
     display: flex;
     justify-content: space-between;
   }
+  #header_mid_logo {
+    max-height: 50px;
+  }
   #footer_top_content {
     display: flex;
     justify-content: space-between;
@@ -2075,7 +2077,11 @@ code {
     display: block;
     width: 198px;
     height: 70px;
+    margin: 20px auto;
     padding-left: 198px;
+  }
+  header #header_mid form.search-form {
+    margin-bottom: 20px;
   }
   #header_smrow {
     clear: both;
