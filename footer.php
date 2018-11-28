@@ -44,7 +44,7 @@
          <div class="footer-top-right-column social-media-links">
             <?php if( get_theme_mod('flickr') || get_theme_mod('instagram') || get_theme_mod('twitter') || get_theme_mod('facebook') || get_theme_mod('youtube')) : ?>
                 <div class="sm-header">Find Us On</div>
-             <?php endif; ?>
+            <?php endif; ?>
             <?php if(get_theme_mod('flickr')) : ?>
                <a class="flickr" href="//www.flickr.com/photos/<?php echo get_theme_mod('flickr'); ?>"><i class="fa fa-flickr" aria-hidden="true"></i><span class="screen-reader-text">Flickr</span></a>
             <?php endif; ?>

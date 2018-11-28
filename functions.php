@@ -551,6 +551,7 @@ function my_remove_menu_pages() {
         remove_submenu_page( 'themes.php', 'themes.php' );
         remove_submenu_page( 'themes.php', 'nav-menus.php' );
         remove_submenu_page( 'themes.php', 'themes.php' );
+        remove_submenu_page( 'themes.php', 'widgets.php' );
         remove_submenu_page( 'tools.php', 'ms-delete-site.php');
     }
 }
