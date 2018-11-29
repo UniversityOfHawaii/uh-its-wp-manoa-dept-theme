@@ -80,8 +80,7 @@ if ( ! function_exists( 'manoa2018_setup' ) ) :
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(
             array(
-                'primary' => __( 'Primary Navigation', 'manoa2018' ),
-                'footer-menu' => __( 'Footer Menu', 'manoa2018' ),
+                'primary' => __( 'Primary Navigation', 'manoa2018' )
             )
         );
     }
