@@ -1,20 +1,15 @@
 <?php
 /**
- * Template for displaying all pages
+ * Template Name: Left Sidebar
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
+ * A custom page template for pages with the sidebar on the left.
  *
  */
 
-get_header();
-?>
+get_header(); ?>
 
 	<main>
 		<div id="main_content">
-
 
 				<?php
 				/*

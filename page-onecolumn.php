@@ -11,10 +11,8 @@
 
 get_header(); ?>
 
-	<main>
+	<main class="one-column">
 		<div id="main_content">
-			<div id="container" class="one-column">
-				<div id="content" role="main">
 
 				<?php
 				/*
@@ -24,8 +22,5 @@ get_header(); ?>
 				 */
 				get_template_part( 'loop', 'page' );
 				?>
-
-				</div><!-- #content -->
-			</div><!-- #container -->
 
 <?php get_footer(); ?>
