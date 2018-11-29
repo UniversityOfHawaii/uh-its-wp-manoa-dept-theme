@@ -62,18 +62,6 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 <header>
    <div id="header_top">
       <div id="header_top_content">
-         <?php if ( has_nav_menu( 'top-header' ) ) :
-
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'top-header',
-                    'menu_id' => 'header_mainmenu',
-                    'container' => 'false'
-                )
-            );
-
-        else : ?>
-
          <ul id="header_mainmenu">
             <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
             <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
@@ -98,8 +86,6 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
                 <img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" />
             </a> &nbsp; <a href="http://www.youtube.com/user/UniversityofHawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a>
         </div>
-
-        <?php endif; ?>
     </div>
    </div>
    <div id="header_mid">
@@ -117,35 +103,40 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             <?php manoa2018_get_breadcrumbs(); ?>
         </div>
     </div>
-    <div id="header_btm">
+   <nav id="header_btm">
+      <a class="menu-toggle" aria-controls="primary-menu" aria-expanded="true">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
+      <?php if ( has_nav_menu( 'primary' ) ) : ?>
         <div id="header_btm_content">
-            <?php if ( has_nav_menu( 'primary' ) ) :
-                wp_nav_menu(
-                    array(
-                        'theme_location'  => 'primary',
-                        'menu_id'         => 'header_sitemenu',
-                        'container'       => 'false',
-                        'depth'           => 1
-                    )
-                );
-            else :
-                $menu = array(
-                    'depth'        => 1,
-                    'show_date'    => '',
-                    'exclude'      => '',
-                    'title_li'     => __( '' ),
-                    'echo'         => 1,
-                    'authors'      => '',
-                    'sort_column'  => 'menu_order',
-                    'link_before'  => '',
-                    'link_after'   => '',
-                    'walker'       => '',
-                );
-
-                wp_page_menu( $menu ); ?>
-
-            <?php endif; ?>
+            <?php wp_nav_menu(
+                array(
+                    'theme_location' => 'primary',
+                    'menu_id' => 'header_sitemenu',
+                    'container' => 'false',
+                    'depth'        => 3
+                )
+            ); ?>
         </div>
-    </div>
+
+      <?php else : ?>
+
+            <?php $menu = array(
+                'depth'        => 3,
+                'menu_class'   => 'menu',
+                'show_date'    => '',
+                'exclude'      => '',
+                'title_li'     => __( '' ),
+                'echo'         => 1,
+                'authors'      => '',
+                'sort_column'  => 'menu_order',
+                'link_before'  => '',
+                'link_after'   => '',
+                'walker'       => '',
+                'menu_id' => 'header_btm_content',
+            );
+
+            wp_page_menu( $menu ); ?>
+
+      <?php endif; ?>
+    </nav>
 </header>
 
