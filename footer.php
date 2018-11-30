@@ -14,9 +14,9 @@
       <div id="footer_top_content">
          <div class="footer-top-left-column contact-info">
             <address>
-               <strong><?php bloginfo( 'name' ); ?></strong>
+               <h2><?php bloginfo( 'name' ); ?></h2>
                <?php if(get_theme_mod('address')) : ?>
-                  <br /><?php echo get_theme_mod('address');
+                  <?php echo get_theme_mod('address');
                endif; ?>
                <?php if(get_theme_mod('city')) : ?>
                   <br /><?php echo get_theme_mod('city');

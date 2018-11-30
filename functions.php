@@ -649,3 +649,5 @@ function manoa2018_customize_register( $wp_customize ) {
     ) ) );
 }
 add_action( 'customize_register', 'manoa2018_customize_register' );
+
+?>
