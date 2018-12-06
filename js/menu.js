@@ -2,7 +2,7 @@
  * This file contains general scripts for front end behavior.
  */
 $(document).ready(function () {
-  $(".sub-menu li a").attr('tabindex','0');
+  // display sub-menu on keystroke tab focus
   $("a[href^='#']").on("focus",function(e) {
     e.preventDefault();
     $(this).next(".sub-menu").show();
@@ -35,5 +35,15 @@ $(document).ready(function () {
   $(".menu-toggle.on").on("touchstart",function(e) {
     e.preventDefault();
       $("#header_btm_content > ul").toggle();
+  });
+
+    // display FAQ answer
+  $(".category-faq .post-content > a").on("click",function(e) {
+    e.preventDefault();
+    $(this).next(".entry-content").toggleClass('open');
+  });
+  $(".category-faq .post-content > a").on("touchstart",function(e) {
+    e.preventDefault();
+    $(this).next(".entry-content").toggleClass('open');
   });
 });

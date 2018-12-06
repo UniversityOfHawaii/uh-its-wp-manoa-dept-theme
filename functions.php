@@ -297,8 +297,8 @@ if ( ! function_exists( 'manoa2018_posted_on' ) ) :
      */
     function manoa2018_posted_on() {
         printf(
-            __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'manoa2018' ),
-            'meta-prep meta-prep-author',
+            __( '<span class="%1$s">Posted on</span> %2$s', 'manoa2018' ),
+            'meta-prep',
             sprintf(
                 '<span class="entry-date">%3$s</span>',
                 get_permalink(),
@@ -306,7 +306,7 @@ if ( ! function_exists( 'manoa2018_posted_on' ) ) :
                 get_the_date()
             ),
             sprintf(
-                '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+                '<span class="author vcard"></span>',
                 get_author_posts_url( get_the_author_meta( 'ID' ) ),
                 esc_attr( sprintf( __( 'View all posts by %s', 'manoa2018' ), get_the_author() ) ),
                 get_the_author()
@@ -442,6 +442,10 @@ function manoa2018_activate_create_default_content($old_name, $old_theme = false
             ));
         }
     }
+        // Use a static front page
+    $home = get_page_by_title( 'Home' );
+    update_option( 'page_on_front', $home->ID );
+    update_option( 'show_on_front', 'page' );
 }
 add_action("after_switch_theme", "manoa2018_activate_create_default_content", 10, 2);
 
@@ -649,5 +653,24 @@ function manoa2018_customize_register( $wp_customize ) {
     ) ) );
 }
 add_action( 'customize_register', 'manoa2018_customize_register' );
+
+// Add menu order to posts to organize archive pages
+add_action( 'admin_init', 'add_posts_order' );
+function add_posts_order()
+{
+    add_post_type_support( 'post', 'page-attributes' );
+}
+
+// order posts on archive pages by menu order
+add_action( 'pre_get_posts', 'my_change_sort_order');
+function my_change_sort_order($query){
+    if(is_archive()):
+     //If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
+       //Set the order ASC or DESC
+       $query->set( 'order', 'ASC' );
+       //Set the orderby
+       $query->set( 'orderby', 'menu_order' );
+    endif;
+}
 
 ?>
