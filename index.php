@@ -11,16 +11,18 @@
  */
 
 if ( get_theme_mod( 'header-option' ) == 'header2') :
-	get_header('other'); 
+	get_header('other');
 else:
 	get_header();
 endif;
 ?>
-	
-	<main>
+
+	<main id="main_area">
 		<div id="main_content">
 			<div id="container">
 				<div id="content" role="main">
+
+				<?php manoa2018_get_breadcrumbs(); ?>
 				<h1 class="page-title">
 					<?php $our_title = get_the_title( get_option('page_for_posts', true) ); ?>
 					<?php echo $our_title; ?>

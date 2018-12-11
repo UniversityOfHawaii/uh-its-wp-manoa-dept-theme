@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main>
+	<main id="main_area">
 		<div id="main_content">
 			<div id="container">
 				<div id="content" role="main">
@@ -27,6 +27,7 @@ get_header();
 						the_post();
 					}
 					?>
+					<?php manoa2018_get_breadcrumbs(); ?>
 
 					<h1 class="page-title">
 						<?php if ( is_home() ) : ?>

@@ -5,11 +5,13 @@
  */
 
 get_header(); ?>
-    <main>
+    <main id="main_area">
         <div id="main_content">
 
             <div id="container">
                 <div id="content" role="main">
+
+                <?php manoa2018_get_breadcrumbs(); ?>
 
                 <?php
                 /*

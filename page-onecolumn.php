@@ -11,7 +11,7 @@
 
 get_header(); ?>
 
-	<main class="one-column">
+	<main id="main_area" class="one-column">
 		<div id="main_content">
 
 				<?php

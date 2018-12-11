@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-	<main>
+	<main id="main_area">
 		<div id="main_content">
 
 				<?php

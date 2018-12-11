@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<main class="one-column">
+	<main id="main_area" class="full-width">
 		<div id="main_content">
 
 			<?php
@@ -26,6 +26,8 @@ get_header(); ?>
 			?>
 				<div id="container">
 				<div id="content" role="main">
+
+					<?php manoa2018_get_breadcrumbs(); ?>
 
 					<h1 class="page-title">
 						<?php
