@@ -25,6 +25,7 @@ if ( have_posts() ) {
 				<div id="container">
 					<div id="content" role="main">
 
+						<?php manoa2018_get_breadcrumbs(); ?>
 
 						<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<?php if ( is_front_page() ) { ?>
@@ -47,7 +48,7 @@ if ( have_posts() ) {
 							</div><!-- .entry-content -->
 						</div><!-- #post-## -->
 
-						<?php comments_template( '', true ); ?>
+						<?php //comments_template( '', true ); ?>
 					</div>
 				</div>
 

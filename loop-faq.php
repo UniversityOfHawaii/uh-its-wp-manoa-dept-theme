@@ -28,7 +28,7 @@
 	/*
 	 * Start the Loop.
 	 *
-	 * In System 2018 we use the same loop in multiple contexts.
+	 * In Manoa 2018 we use the same loop in multiple contexts.
 	 * It is broken into three main parts: when we're displaying
 	 * posts that are in the gallery category, when we're displaying
 	 * posts in the asides category, and finally all other posts.
@@ -47,18 +47,10 @@ while ( have_posts() ) :
 ?>
 
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<div class="entry-thumbnail">
-				<?php // featured image
-				if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-					<?php the_post_thumbnail('full'); ?>
-				<?php else : ?>
-					<img src="https://via.placeholder.com/600x800.jpg" alt="placeholder image" >
-				<?php endif; ?>
-			</div>
-			<div class="post-content">
-				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<div class="post-content faq-item">
+				<h2 class="entry-title" aria-expanded="false"><a href="#<?php echo $post->post_name; ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
-				<div class="entry-content">
+				<div class="entry-content" aria-expanded="false">
 					<?php the_excerpt(); ?>
 					<?php
 					wp_link_pages(
@@ -68,12 +60,15 @@ while ( have_posts() ) :
 						)
 					);
 					?>
+					<?php if(! has_excerpt()): ?>
+						<a href="<?php the_permalink(); ?>" rel="bookmark">Read full answer for <?php the_title(); ?></a>
+					<?php endif; ?>
 				</div><!-- .entry-content -->
 			</div>
 
 		</div><!-- #post-## -->
 
-		<?php comments_template( '', true ); ?>
+		<?php //comments_template( '', true ); ?>
 
 <?php endwhile; // End the loop. Whew. ?>
 

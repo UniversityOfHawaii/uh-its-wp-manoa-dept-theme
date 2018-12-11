@@ -157,7 +157,7 @@ if ( have_posts() ) {
 					</div><!-- .entry-utility -->
 				</div><!-- #post-## -->
 
-<?php comments_template(); ?>
+<?php //comments_template(); ?>
 
 <?php endwhile;
 }; // end of the loop. ?>
