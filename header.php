@@ -63,8 +63,8 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 ?>
 </head>
 
-<body <?php body_class(); ?>><a href="#main_content" id="skip2main">Skip to Main Content</a>
-<header>
+<body <?php body_class(); ?>><a href="#main_area" id="skip2main">Skip to Main Content</a>
+<header id="top">
    <div id="header_top">
       <div id="header_top_content">
          <ul id="header_mainmenu">
@@ -103,13 +103,15 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
         <div class="container">
             <div class="site-name-description">
                 <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
+                <?php if(bloginfo('description')): ?>
+                  <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
+                <?php endif; ?>
             </div>
             <?php manoa2018_get_breadcrumbs(); ?>
         </div>
     </div>
    <nav id="header_btm">
-      <button class="menu-toggle" aria-expanded="true">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
+      <button class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
       <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
         <div id="header_btm_content">
@@ -141,6 +143,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             wp_page_menu( $menu ); ?>
 
       <?php endif; ?>
+      <?php get_search_form(); ?>
     </nav>
 </header>
 
