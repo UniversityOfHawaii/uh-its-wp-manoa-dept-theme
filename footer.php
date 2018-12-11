@@ -18,21 +18,27 @@
                <?php if(get_theme_mod('address')) : ?>
                   <?php echo get_theme_mod('address');
                endif; ?>
+               <?php if(get_theme_mod('office')) : ?>
+                  <br /><?php echo get_theme_mod('office');
+               endif; ?>
                <?php if(get_theme_mod('city')) : ?>
                   <br /><?php echo get_theme_mod('city');
                endif; ?>
             </address>
-            <div class="contact">
-               <?php if(get_theme_mod('telephone')) : ?>
-                  <div class="telephone">Telephone: <?php echo get_theme_mod('telephone'); ?></div>
-               <?php endif; ?>
-               <?php if(get_theme_mod('fax')) : ?>
-                  <div class="fax">Fax: <?php echo get_theme_mod('fax'); ?></div>
-               <?php endif; ?>
-               <?php if(get_theme_mod('email')) : ?>
-                  <div class="fax">Email: <?php echo get_theme_mod('email'); ?></div>
-               <?php endif; ?>
-            </div>
+            <?php if( get_theme_mod('telephone') || get_theme_mod('fax') || get_theme_mod('email')) : ?>
+               <div class="contact">
+                  <strong>Contact Us</strong>
+                  <?php if(get_theme_mod('telephone')) : ?>
+                     <div class="telephone">Telephone: <?php echo get_theme_mod('telephone'); ?></div>
+                  <?php endif; ?>
+                  <?php if(get_theme_mod('fax')) : ?>
+                     <div class="fax">Fax: <?php echo get_theme_mod('fax'); ?></div>
+                  <?php endif; ?>
+                  <?php if(get_theme_mod('email')) : ?>
+                     <div class="fax">Email: <?php echo get_theme_mod('email'); ?></div>
+                  <?php endif; ?>
+               </div>
+            <?php endif; ?>
          </div>
          <div class="footer-top-middle-column">
             <?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
@@ -109,7 +115,11 @@
             &copy;<?php echo date("Y"); ?> University of Hawai&#699;i at M&#257;noa &bull; 2500 Campus Road &bull; Honolulu, HI 96822 &bull; (808) 956-8111
          </div>
       </div>
-   </div>
+    </div>
+    <a href="#top" class="go-top">
+        <span class="fa fa-chevron-up" aria-hidden="true"></span>
+    </a>
+
 </footer>
 
 <?php
