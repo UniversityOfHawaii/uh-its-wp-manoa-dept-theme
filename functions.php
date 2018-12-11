@@ -297,7 +297,7 @@ if ( ! function_exists( 'manoa2018_posted_on' ) ) :
      */
     function manoa2018_posted_on() {
         printf(
-            __( '<span class="%1$s">Posted on</span> %2$s', 'manoa2018' ),
+            __( '<span class="posted-on"><span class="%1$s"><span class="fa fa-clock-o" aria-hidden="true"></span></span> %2$s</span>','manoa2018' ),
             'meta-prep',
             sprintf(
                 '<span class="entry-date">%3$s</span>',
@@ -315,6 +315,27 @@ if ( ! function_exists( 'manoa2018_posted_on' ) ) :
     }
 endif;
 
+if ( ! function_exists( 'manoa2018_categories' ) ) :
+    /**
+     * Print HTML with meta information for the current categories.
+     *
+     */
+    function manoa2018_categories() {
+        if ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
+            $posted_in = __( '<span class="categories"><span class="fa fa-tags" aria-hidden="true"></span> %1$s</span>', 'manoa2018' );
+        } else {
+            $posted_in = __( '', 'manoa2018' );
+        }
+        // Prints the string, replacing the placeholders.
+        printf(
+            $posted_in,
+            get_the_category_list( ', ' ),
+            get_permalink(),
+            the_title_attribute( 'echo=0' )
+        );
+    }
+endif;
+
 if ( ! function_exists( 'manoa2018_posted_in' ) ) :
     /**
      * Print HTML with meta information for the current post (category, tags and permalink).
@@ -322,18 +343,18 @@ if ( ! function_exists( 'manoa2018_posted_in' ) ) :
      */
     function manoa2018_posted_in() {
         // Retrieves tag list of current post, separated by commas.
-        $tag_list = get_the_tag_list( '', ', ' );
+        $tag_list = get_the_tag_list( '', '' );
         if ( $tag_list && ! is_wp_error( $tag_list ) ) {
-            $posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'manoa2018' );
-        } elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-            $posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'manoa2018' );
+            $posted_in = __( '%2$s', 'manoa2018' );
+        /*} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
+            $posted_in = __( 'Categories: %1$s.', 'manoa2018' );*/
         } else {
-            $posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'manoa2018' );
+            $posted_in = __( '', 'manoa2018' );
         }
         // Prints the string, replacing the placeholders.
         printf(
             $posted_in,
-            get_the_category_list( ', ' ),
+            get_the_category_list( ' ' ),
             $tag_list,
             get_permalink(),
             the_title_attribute( 'echo=0' )
@@ -560,6 +581,12 @@ function my_remove_menu_pages() {
 }
 add_action( 'admin_init', 'my_remove_menu_pages' );
 
+// Close comments on the front-end
+function df_disable_comments_status() {
+return false;
+}
+add_filter('comments_open', 'df_disable_comments_status', 20, 2);
+add_filter('pings_open', 'df_disable_comments_status', 20, 2);
 
 /**
  * Edit Customize panel
@@ -577,16 +604,23 @@ function manoa2018_customize_register( $wp_customize ) {
 
     // Add Global Fields to Customizer.
     // Add Address Line 1
-    $wp_customize->add_setting( 'address' , array( 'default' => 'XXX Campus Road, Building Rm #' ));
+    $wp_customize->add_setting( 'address' , array( 'default' => 'XXX Campus Road' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'address', array(
         'label' => __( 'Address Line 1', 'manoa2018' ),
         'section' => 'contact-info',
         'settings' => 'address',
     ) ) );
     // Add Address Line 2
+    $wp_customize->add_setting( 'office' , array( 'default' => 'Building, Room #' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'office', array(
+        'label' => __( 'Address Line 2', 'manoa2018' ),
+        'section' => 'contact-info',
+        'settings' => 'office',
+    ) ) );
+    // Add Address Line 3
     $wp_customize->add_setting( 'city' , array( 'default' => 'Honolulu, Hawai‘i 96822' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'city', array(
-        'label' => __( 'Address Line 2', 'manoa2018' ),
+        'label' => __( 'Address Line 3', 'manoa2018' ),
         'section' => 'contact-info',
         'settings' => 'city',
     ) ) );
