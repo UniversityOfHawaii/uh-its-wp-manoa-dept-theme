@@ -44,105 +44,96 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 <script src="<?php echo get_template_directory_uri(); ?>/js/menu.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
 <script src="https://use.fontawesome.com/bfcbe1540c.js"></script>
-<?php
-    /*
-     * We add some JavaScript to pages with the comment form
-     * to support sites with threaded comments (when in use).
-     */
-if ( is_singular() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
-}
-
-    /*
-     * Always have wp_head() just before the closing </head>
-     * tag of your theme, or you will break many plugins, which
-     * generally use this hook to add elements to <head> such
-     * as styles, scripts, and meta tags.
-     */
-    wp_head();
-?>
+<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>><a href="#main_area" id="skip2main">Skip to Main Content</a>
 <header id="top">
-   <div id="header_top">
-      <div id="header_top_content">
-         <ul id="header_mainmenu">
-            <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
-            <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
-            <li><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
-            <li><a href="https://manoa.hawaii.edu/students/">Students</a></li>
-            <li><a href="https://manoa.hawaii.edu/faculty-staff/">Faculty and Staff</a></li>
-            <li><a href="https://manoa.hawaii.edu/admissions/parents.html">Parents</a></li>
-            <li><a href="https://uhalumni.org/manoa/">Alumni</a></li>
-            <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
-         </ul>
-        <div id="header_smrow">
-            <a href="https://twitter.com/UHManoa">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="twitter" class="header_smicon" />
-            </a> &nbsp;
-            <a href="https://www.facebook.com/uhmanoa">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="facebook" class="header_smicon" />
-            </a> &nbsp;
-            <a href="https://instagram.com/uhmanoanews">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-instagram.png" alt="instagram" class="header_smicon" />
-            </a> &nbsp;
-            <a href="http://www.flickr.com/photos/uhmanoa">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" />
-            </a> &nbsp; <a href="http://www.youtube.com/user/UniversityofHawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a>
-        </div>
-    </div>
-   </div>
-   <div id="header_mid">
-      <div class="container">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" ><img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" /></a>
-        <?php get_search_form(); ?>
+  <div id="header_top">
+    <div id="header_top_content">
+      <ul id="header_mainmenu">
+        <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
+        <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
+        <li><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
+        <li><a href="https://manoa.hawaii.edu/students/">Students</a></li>
+        <li><a href="https://manoa.hawaii.edu/faculty-staff/">Faculty and Staff</a></li>
+        <li><a href="https://manoa.hawaii.edu/admissions/parents.html">Parents</a></li>
+        <li><a href="https://uhalumni.org/manoa/">Alumni</a></li>
+        <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
+      </ul>
+      <div id="header_smrow">
+        <a href="https://twitter.com/UHManoa">
+          <img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="twitter" class="header_smicon" />
+        </a> &nbsp;
+        <a href="https://www.facebook.com/uhmanoa">
+          <img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="facebook" class="header_smicon" />
+        </a> &nbsp;
+        <a href="https://instagram.com/uhmanoanews">
+          <img src="<?php echo get_template_directory_uri(); ?>/images/icon-instagram.png" alt="instagram" class="header_smicon" />
+        </a> &nbsp;
+        <a href="http://www.flickr.com/photos/uhmanoa">
+          <img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" />
+        </a> &nbsp;
+        <a href="http://www.youtube.com/user/UniversityofHawaii">
+          <img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a>
       </div>
-   </div>
-   <div id="department_name">
-        <div class="container">
-            <div class="site-name-description">
-                <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <?php if(bloginfo('description')): ?>
-                  <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
-                <?php endif; ?>
-            </div>
-            <?php manoa2018_get_breadcrumbs(); ?>
-        </div>
     </div>
-   <nav id="header_btm">
-      <button class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
-      <?php if ( has_nav_menu( 'primary' ) ) : ?>
+  </div>
+  <div id="header_mid">
+    <div class="container">
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" >
+        <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" />
+      </a>
+      <?php get_search_form(); ?>
+    </div>
+  </div>
+  <div id="department_name">
+    <div class="container">
+      <div class="site-name-description">
+        <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+        <?php if( $site_description): ?>
+          <div id="header_sitedescription">
+            <?php echo $site_description; ?>
+          </div>
+        <?php endif; ?>
+      </div>
+      <?php manoa2018_get_breadcrumbs(); ?>
+    </div>
+  </div>
+  <nav id="header_btm">
+    <button class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
+    <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
-        <div id="header_btm_content">
-            <?php wp_nav_menu(
-                array(
-                    'theme_location'  => 'primary',
-                    'menu_id'         => 'header_sitemenu',
-                    'container'       => false,
-                    'container_id'    => false,
-                    'depth'           => 2
-                )
-            ); ?>
-        </div>
+      <div id="header_btm_content">
+        <?php wp_nav_menu(
+          array(
+            'theme_location'  => 'primary',
+            'menu_id'         => 'header_sitemenu',
+            'container'       => false,
+            'container_id'    => false,
+            'depth'           => 2
+          )
+        ); ?>
+      </div>
 
       <?php else : ?>
 
-            <?php $menu = array(
-                'depth'        => 1,
-                'sort_column'  => 'menu_order, post_title',
-                'menu_class'   => 'menu page-menu',
-                'menu_id'      => 'header_btm_content',
-                'echo'         => 1,
-                'authors'      => '',
-                'sort_column'  => 'menu_order',
-                'link_before'  => '',
-                'link_after'   => '',
-            );
+        <?php $menu = array(
+          'depth'        => 1,
+          'sort_column'  => 'menu_order, post_title',
+          'menu_class'   => 'menu page-menu',
+          'menu_id'      => 'header_btm_content',
+          'echo'         => 1,
+          'authors'      => '',
+          'sort_column'  => 'menu_order',
+          'link_before'  => '',
+          'link_after'   => '',
+        );
 
-            wp_page_menu( $menu ); ?>
+        wp_page_menu( $menu ); ?>
 
       <?php endif; ?>
+
       <?php get_search_form(); ?>
     </nav>
 </header>

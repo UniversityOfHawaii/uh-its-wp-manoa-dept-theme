@@ -115,21 +115,13 @@
             &copy;<?php echo date("Y"); ?> University of Hawai&#699;i at M&#257;noa &bull; 2500 Campus Road &bull; Honolulu, HI 96822 &bull; (808) 956-8111
          </div>
       </div>
-    </div>
-    <a href="#top" class="go-top">
-        <span class="fa fa-chevron-up" aria-hidden="true"></span>
-    </a>
+   </div>
+   <a href="#top" class="go-top">
+      <span class="fa fa-chevron-up" aria-hidden="true"></span>
+   </a>
 
 </footer>
 
-<?php
-  /*
-   * Always have wp_footer() just before the closing </body>
-   * tag of your theme, or you will break many plugins, which
-   * generally use this hook to reference JavaScript files.
-   */
-
-  wp_footer();
-?>
+<?php wp_footer(); ?>
 </body>
 </html>

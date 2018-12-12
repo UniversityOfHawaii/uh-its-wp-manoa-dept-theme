@@ -1,16 +1,9 @@
 <?php
 /**
- * Template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
+ * Template for displaying the home page
  */
 
-get_header();
-?>
+get_header(); ?>
 
   <main id="main_area">
     <?php if(has_post_thumbnail()): ?>
@@ -28,20 +21,20 @@ get_header();
     <?php endif; ?>
     <div id="main_content">
 
-    <div id="container">
-      <div id="content" role="main">
+      <div id="container">
+        <div id="content" role="main">
 
-        <?php if ( have_posts() ) {
-          while ( have_posts() ) :
-            the_post();
-          ?>
+          <?php if ( have_posts() ) {
+            while ( have_posts() ) :
+              the_post();
+            ?>
 
-          <?php the_content(); ?>
+            <?php the_content(); ?>
 
-        <?php endwhile;
-        }; // end of the loop. ?>
+          <?php endwhile;
+          }; // end of the loop. ?>
 
-      </div><!-- #content -->
-    </div><!-- #container -->
+        </div><!-- #content -->
+      </div><!-- #container -->
 
 <?php get_footer(); ?>
