@@ -32,7 +32,7 @@ while ( have_posts() ) :
     <div class="entry-thumbnail">
       <?php // featured image
       if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-        <?php the_post_thumbnail('full'); ?>
+        <?php the_post_thumbnail('medium'); ?>
       <?php else : ?>
         <img src="https://via.placeholder.com/600x800.jpg" alt="placeholder image" >
       <?php endif; ?>

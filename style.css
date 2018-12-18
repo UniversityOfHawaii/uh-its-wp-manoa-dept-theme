@@ -728,6 +728,9 @@ footer {
 /*
 LAYOUTS
 */
+main.one-column #main_content {
+    max-width: none;
+}
 
 main.one-column #content, main.full-width #content {
   width: 100%;
@@ -1166,14 +1169,16 @@ table.people-list p + p {
     margin-right: -20px;
     padding: 18px 20px;
 }
+
+.home #main_content {
+    padding: 40px 0 30px;
+}
+
 .home main > img {
     width: 100%;
 }
 .home #content {
     margin: 0 0 40px;
-}
-.home #content > p:first-child {
-    margin-top: 18px;
 }
 .error404 .error404 {
     text-align: center;
@@ -1601,18 +1606,18 @@ img.aligncenter {
 .wp-caption {
   line-height: 1.4;
   margin-bottom: 20px;
-  max-width: 632px !important; /* prevent too-wide images from breaking layout */
+  max-width: 100%; /* prevent too-wide images from breaking layout */
   text-align: center;
 }
 .widget-container .wp-caption {
-  max-width: 100% !important;
+  max-width: 100%;
 }
 #primary .widget-container .wp-caption-text {
   display: none;
 }
 .wp-caption img {
   margin: 0;
-  max-width: 622px; /* caption width - 10px */
+  max-width: 100%; /* caption width - 10px */
 }
 .wp-caption p.wp-caption-text {
   color: #555;
@@ -1719,6 +1724,13 @@ img.aligncenter {
 }
 .single-post #nav-below {
   border-top: 1px solid #dddddd;
+}
+
+.single-post .category-directory .entry-content > img {
+    width: 140px;
+    float: right;
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 /* =Comments
@@ -2438,6 +2450,14 @@ main #breadcrumbs {
         padding: 0;
         background: transparent;
         border-radius: 0;
+    }
+}
+@media only screen and (max-width: 395px) {
+    #header_top {
+        top: -9.2em;
+    }
+    .logged-in #header_top {
+        top: -6.4em;
     }
 }
 @media only screen and (min-width: 761px) {
