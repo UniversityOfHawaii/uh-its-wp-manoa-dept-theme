@@ -511,7 +511,8 @@ function manoa2018_get_breadcrumbs() {
             $our_title = get_the_title( $posts_page );
             $posts_url = get_permalink( $posts_page );
 
-            echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
+            //echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
+            echo '<li class="item-posts">Posts</li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
 

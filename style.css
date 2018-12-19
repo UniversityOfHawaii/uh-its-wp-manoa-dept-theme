@@ -1,6 +1,6 @@
 /*
 Theme Name: Manoa 2018
-Theme URI: https://www.hawaii.edu/its/template
+Theme URI: https://www.hawaii.edu/its
 Description: Manoa 2018 theme for wordpress
 Author: UH ITS
 Author URI: https://www.hawaii.edu/its/
@@ -20,8 +20,12 @@ body {
     margin: 0;
 }
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin: 0.67em 0;
+}
+h1.entry-title,
+h1.page-title {
+    font-size: 2em;
 }
 hr {
     box-sizing: content-box;
@@ -1095,6 +1099,7 @@ h6 {
 #content h5,
 #content h6 {
     color: #024731;
+    font-weight: 600;
     line-height: 1.5;
     margin: 00;
 }
@@ -1105,6 +1110,36 @@ h6 {
 #content h5 a,
 #content h6 a {
     color: inherit;
+}
+#content h1 + p,
+#content h2 + p,
+#content h3 + p,
+#content h4 + p,
+#content h5 + p,
+#content h6 + p {
+    margin-top: 6px;
+}
+#content h1 + ul,
+#content h2 + ul,
+#content h3 + ul,
+#content h4 + ul,
+#content h5 + ul,
+#content h6 + ul,
+#content h1 + ol,
+#content h2 + ol,
+#content h3 + ol,
+#content h4 + ol,
+#content h5 + ol,
+#content h6 + ol {
+    margin-top: 12px;
+}
+
+#content li + li {
+    margin-top: 8px;
+}
+#content li > ul,
+#content li > ol {
+    margin-top: 15px;
 }
 img, iframe {
     max-width: 100%;
