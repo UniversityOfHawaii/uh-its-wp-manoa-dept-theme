@@ -854,6 +854,12 @@ blockquote em,
 blockquote i {
   font-style: normal;
 }
+.anchor-container:before {
+    content: "";
+    display: block;
+    min-width: 1px;
+    padding-top: 36px;
+}
 pre {
   background: #f7f7f7;
   color: #222;
