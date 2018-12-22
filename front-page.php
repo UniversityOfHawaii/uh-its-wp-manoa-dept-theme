@@ -35,6 +35,15 @@ get_header(); ?>
           }; // end of the loop. ?>
 
         </div><!-- #content -->
+
+        <?php //if ( is_active_sidebar( 'homepage-widget-area' ) ) : ?>
+
+           <!--<ul class="xoxo homepage-widgets">
+           <?php //dynamic_sidebar( 'homepage-widget-area' ); ?>
+           </ul>-->
+
+        <?php //endif; // end primary widget area ?>
+
       </div><!-- #container -->
 
 <?php get_footer(); ?>

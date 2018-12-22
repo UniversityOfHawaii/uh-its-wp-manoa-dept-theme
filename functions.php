@@ -257,7 +257,7 @@ function manoa2018_widgets_init() {
         )
     );
 
-    // Area 3, located in the footer. Empty by default.
+    // Area 2, located in the footer. Empty by default.
     register_sidebar(
         array(
             'name'          => __( 'Footer Widget Area', 'manoa2018' ),
@@ -270,6 +270,18 @@ function manoa2018_widgets_init() {
         )
     );
 
+        // Area 3, located on the homepage. Empty by default.
+    /*register_sidebar(
+        array(
+            'name'          => __( 'Homepage Widget Area', 'manoa2018' ),
+            'id'            => 'homepage-widget-area',
+            'description'   => __( 'An optional widget area for your site homepage.', 'manoa2018' ),
+            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+            'after_widget'  => '</li>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        )
+    );*/
 }
 /** Register sidebars by running manoa2018_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'manoa2018_widgets_init' );

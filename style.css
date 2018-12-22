@@ -1763,11 +1763,11 @@ img.aligncenter {
   color: #555555;
   font-family: 'Open Sans', Tahoma, sans-serif;
 }
-.single-post #nav-below {
+.single #nav-below {
   border-top: 1px solid #dddddd;
 }
 
-.single-post .category-directory .entry-content > img {
+.single .category-directory .entry-content > img {
     width: 140px;
     float: right;
     margin-bottom: 20px;
@@ -2027,7 +2027,7 @@ ul.xoxo select {
     margin-top: 1.5em;
 }
 .widget-container h3 {
-    margin-bottom: 0;
+    margin: 0 0 .5rem;
 }
 .widget-container .wp-caption img {
     margin: auto;
@@ -2210,6 +2210,20 @@ margin-left: -0.4em;
 #primary .secondary ul.children li a span {
     display: none;
 }
+/*#primary .secondary > li.page_item_has_children > a span {
+    transform: rotate(-90deg);
+}
+#primary .secondary > li.page_item_has_children > a + ul.children {
+    display: none;
+}*/
+#primary .secondary > li > a + ul.children > li > a {
+    text-indent: -15px;
+    padding-left: 45px;
+}
+.page-template-page-leftsidebar #primary .secondary > li > a + ul.children > li > a {
+    text-indent: -15px;
+    padding-left: 24px;
+}
 body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
     text-indent: -10px;
 }
@@ -2261,8 +2275,18 @@ body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
     float: right;
 }
 
-/* Footer widget areas */
-#footer-widget-area {
+/* homepage widget areas */
+@media only screen and (min-width: 761px) {
+  ul.homepage-widgets {
+    display: flex;
+    margin-top: 2rem;
+  }
+  .homepage-widgets li {
+    flex-basis: 31%;
+  }
+  .homepage-widgets .widget-container + .widget-container {
+    margin-top: 0;
+  }
 }
 
 /* =Mobile Safari ( iPad, iPhone and iPod Touch )
@@ -2430,6 +2454,9 @@ main #breadcrumbs {
     #footer_top_content .footer-top-middle-column {
         flex-basis: 40%;
     }
+    #footer_top_content .footer-top-middle-column .widget-container h3 {
+        margin-top: .4rem;
+    }
 }
 @media only screen and (max-width: 760px) {
     #header_top {
@@ -2595,7 +2622,7 @@ main #breadcrumbs {
   .page-template-default #main_content,
   .blog #main_content,
   .archive #main_content,
-  .single-post #main_content,
+  .single #main_content,
   .search #main_content,
   .page-template-page-leftsidebar-php #main_content {
     margin: 0 auto;
