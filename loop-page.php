@@ -18,13 +18,14 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div class="featured-image">
-      <?php the_post_thumbnail( 'full' ); ?>
-    </div>
     <div id="container">
       <div id="content" role="main">
 
         <?php manoa2018_get_breadcrumbs(); ?>
+
+        <div class="featured-image">
+            <?php the_post_thumbnail( 'full' ); ?>
+        </div>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <?php if ( is_front_page() ) { ?>
@@ -34,7 +35,16 @@ if ( have_posts() ) {
           <?php } ?>
 
           <div class="entry-content">
+            <?php if(is_page_template('page-onecolumn.php')) : ?>
+              <div class="container">
+            <?php endif; ?>
+
             <?php the_content(); ?>
+
+            <?php if(is_page_template('page-onecolumn.php')) : ?>
+              </div>
+            <?php endif; ?>
+
             <?php
             wp_link_pages(
               array(

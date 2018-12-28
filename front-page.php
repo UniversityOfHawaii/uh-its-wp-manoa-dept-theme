@@ -19,7 +19,7 @@ get_header(); ?>
             <?php } ?>
         </div>
     <?php endif; ?>
-    <div id="main_content">
+    <div id="main_content" class="bootstrap">
 
       <div id="container">
         <div id="content" role="main">
@@ -36,13 +36,13 @@ get_header(); ?>
 
         </div><!-- #content -->
 
-        <?php //if ( is_active_sidebar( 'homepage-widget-area' ) ) : ?>
+        <?php if ( is_active_sidebar( 'homepage-widget-area' ) ) : ?>
 
-           <!--<ul class="xoxo homepage-widgets">
-           <?php //dynamic_sidebar( 'homepage-widget-area' ); ?>
-           </ul>-->
+           <ul class="xoxo homepage-widgets">
+           <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
+           </ul>
 
-        <?php //endif; // end primary widget area ?>
+        <?php endif; // end primary widget area ?>
 
       </div><!-- #container -->
 

@@ -9,6 +9,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
+<!-- for mobile display -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php
     /*
@@ -36,14 +37,20 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<!-- get favicon -->
 <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/icon.png" />
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/menu.js"></script>
+<!-- load google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
+<!-- load font awesome icons -->
 <script src="https://use.fontawesome.com/bfcbe1540c.js"></script>
+<?php if( is_page_template('page-onecolumn.php') || is_front_page() ) : ?>
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css" />
+<?php endif; ?>
 <?php wp_head(); ?>
 </head>
 

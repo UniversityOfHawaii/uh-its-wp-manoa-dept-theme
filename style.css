@@ -736,7 +736,8 @@ main.one-column #main_content {
     max-width: none;
 }
 
-main.one-column #content, main.full-width #content {
+main.one-column #content,
+main.full-width #content {
   width: 100%;
 }
 main.one-column #container {
@@ -1040,19 +1041,25 @@ h6 {
 }
 #content p + p, #content p + ul,
 #content p + ol, #content p + dd,
-#content p + pre,
+#content p + pre, #content p + table,
 #content ul + ul, #content ul + p,
 #content ul + ol, #content ul + dd,
-#content ul + pre,
+#content ul + pre, #content ul + table,
 #content ol + ol, #content ol + p,
 #content ol + ul, #content ol + dd,
-#content ol + pre,
+#content ol + pre, #content ol + table,
 #content dd + dd, #content dd + p,
 #content dd + ul, #content dd + ol,
-#content dd + pre,
+#content dd + pre, #content dd + table,
 #content pre + pre, #content pre + p,
 #content pre + ul, #content pre + ol,
-#content pre + dd
+#content pre + dd, #content pre + table,
+#content table + p, #content table + ul,
+#content table + ol, #content table + dd,
+#content table + pre, #content table + table,
+#content blockquote + p, #content blockquote + ul,
+#content blockquote + ol, #content blockquote + dd,
+#content blockquote + pre, #content blockquote + table
 {
   margin-top: 24px;
 }
@@ -1061,10 +1068,16 @@ h6 {
 #content p + h5, #content p + h6,
 #content ul + h1, #content ul + h2,
 #content ul + h3, #content ul + h4,
-#content ul + h5, #content ul + h6
+#content ul + h5, #content ul + h6,
 #content ol + h1, #content ol + h2,
 #content ol + h3, #content ol + h4,
-#content ol + h5, #content ol + h6 {
+#content ol + h5, #content ol + h6,
+#content table + h1, #content table + h2,
+#content table + h3, #content table + h4,
+#content table + h5, #content table + h6,
+#content blockquote + h1, #content blockquote + h2,
+#content blockquote + h3, #content blockquote + h4,
+#content blockquote + h5, #content blockquote + h6 {
     margin-top: 48px;
 }
 #content h1 + h1, #content h1 + h2,
@@ -1281,7 +1294,6 @@ p.page-title a:focus {
     text-decoration: underline;
 }
 #content .entry-title {
-    /*font-size: 1.4em;*/
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: 0;
@@ -2009,6 +2021,9 @@ ul.xoxo .post-date {
 ul.xoxo select {
     max-width: 100%;
 }
+ul.xoxo p {
+  line-height: 1.55;
+}
 #basic-site-search, #s {/* This keeps the search inputs in line */
     box-sizing: border-box;
     font-family: 'Open Sans', Tahoma, sans-serif;
@@ -2220,11 +2235,11 @@ margin-left: -0.4em;
     text-indent: -15px;
     padding-left: 45px;
 }
-.page-template-page-leftsidebar #primary .secondary > li > a + ul.children > li > a {
+.left-sidebar #primary .secondary > li > a + ul.children > li > a {
     text-indent: -15px;
     padding-left: 24px;
 }
-body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
+#main_area:not(.left-sidebar) #primary .secondary > li > a {
     text-indent: -10px;
 }
 #primary .secondary > li:not(:first-child) {
@@ -2261,7 +2276,7 @@ body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
 #primary .secondary > li > ul.children > li > ul > li > a:before {
     content: '\2014 \2002';
 }
-.page-template-page-leftsidebar #primary .secondary a {
+.left-sidebar #primary .secondary a {
     padding-left: .538em;
 }
 #primary .secondary a:hover,
@@ -2270,7 +2285,7 @@ body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
   background: #217eab;
   color: #fff;
 }
-.page-template-page-leftsidebar #primary .secondary a span {
+.left-sidebar #primary .secondary a span {
     transform: rotate(180deg);
     float: right;
 }
@@ -2279,10 +2294,14 @@ body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
 @media only screen and (min-width: 761px) {
   ul.homepage-widgets {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 2rem;
   }
   .homepage-widgets li {
-    flex-basis: 31%;
+    flex-basis: 30%;
+  }
+  .homepage-widgets li:not(:nth-child(3n)) {
+    margin-right: 5%;
   }
   .homepage-widgets .widget-container + .widget-container {
     margin-top: 0;
@@ -2333,6 +2352,7 @@ main #breadcrumbs {
     .container,
     #container,
     main.one-column #container,
+    main.left-sidebar #container,
     #header_btm, #primary {
         margin: 0 auto;
         max-width: 86%;
@@ -2419,7 +2439,7 @@ main #breadcrumbs {
         float: left;
         position: relative;
     }
-    #department_name .container {
+    body:not(.home) #department_name .container {
         display: flex;
         justify-content: space-between;
     }
@@ -2529,14 +2549,14 @@ main #breadcrumbs {
     }
 }
 @media only screen and (min-width: 761px) {
-    .page-template-page-leftsidebar #container {
+    .left-sidebar #container {
         float: right;
         margin: 0 0 0 -240px;
     }
-    .page-template-page-leftsidebar #content {
+    .left-sidebar #content {
         margin: 0 0 0 280px;
     }
-    .page-template-page-leftsidebar #primary {
+    .left-sidebar #primary {
         float: left;
     }
     #header_top {
@@ -2624,7 +2644,7 @@ main #breadcrumbs {
   .archive #main_content,
   .single #main_content,
   .search #main_content,
-  .page-template-page-leftsidebar-php #main_content {
+  .left-sidebar #main_content {
     margin: 0 auto;
     max-width: 90%;
   }
@@ -2767,7 +2787,10 @@ html.fa-events-icons-loading button.menu-toggle:after
     font-size: 16px;
     line-height: .8;
 }
-.go-top.show { bottom: 20px; }
+.go-top.show {
+  bottom: 20px;
+  display: flex !important;
+}
 
 .go-top:hover, .go-top:focus, .go-top:active {
   background: #063;
@@ -2798,11 +2821,7 @@ html.fa-events-icons-loading button.menu-toggle:after
     border-top: 2pt solid #000;
   }
   .entry-content {
-    font-size: 14pt;
     line-height: 1.6em;
-  }
-  .entry-title {
-    font-size: 21pt;
   }
   #access,
   #branding img,
@@ -2824,9 +2843,6 @@ html.fa-events-icons-loading button.menu-toggle:after
   main.one-column #content {
     margin: 24pt 0 0;
     width: 100%;
-  }
-  .wp-caption p {
-    font-size: 11pt;
   }
   #colophon {
     width: auto;
