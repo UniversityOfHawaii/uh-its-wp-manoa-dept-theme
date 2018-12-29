@@ -21,11 +21,11 @@ if ( have_posts() ) {
     <div id="container">
       <div id="content" role="main">
 
-        <?php manoa2018_get_breadcrumbs(); ?>
-
         <div class="featured-image">
             <?php the_post_thumbnail( 'full' ); ?>
         </div>
+
+        <?php manoa2018_get_breadcrumbs(); ?>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <?php if ( is_front_page() ) { ?>

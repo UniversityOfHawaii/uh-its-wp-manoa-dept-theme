@@ -21,20 +21,20 @@ get_header(); ?>
             <?php if ( is_home() ) : ?>
               <?php single_post_title(); ?>
             <?php elseif ( is_day() ) : ?>
-              <?php printf( __( 'Daily Archives: <span>%s</span>', 'manoa2018' ), get_the_date() ); ?>
+              <?php printf( __( '%s', 'manoa2018' ), get_the_date() ); ?>
             <?php elseif ( is_month() ) : ?>
-              <?php printf( __( 'Monthly Archives: <span>%s</span>', 'manoa2018' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'manoa2018' ) ) ); ?>
+              <?php printf( __( '%s', 'manoa2018' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'manoa2018' ) ) ); ?>
             <?php elseif ( is_year() ) : ?>
-              <?php printf( __( 'Yearly Archives: <span>%s</span>', 'manoa2018' ), get_the_date( _x( 'Y', 'yearly archives date format', 'manoa2018' ) ) ); ?>
+              <?php printf( __( '%s', 'manoa2018' ), get_the_date( _x( 'Y', 'yearly archives date format', 'manoa2018' ) ) ); ?>
             <?php elseif ( is_author() ) : ?>
-              <?php printf( __( 'Author: %s', 'manoa2018' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?>
+              <?php printf( __( '%s', 'manoa2018' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?>
             <?php elseif ( is_tag() ) : ?>
               <?php
-                printf( __( 'Tag: %s', 'manoa2018' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+                printf( __( '%s', 'manoa2018' ), '<span>' . single_tag_title( '', false ) . '</span>' );
               ?>
             <?php elseif ( is_category() ) : ?>
               <?php
-                printf( __( 'Category: %s', 'manoa2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+                printf( __( '%s', 'manoa2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
               ?>
             <?php else : ?>
               <?php _e( 'Post Archives', 'manoa2018' ); ?>

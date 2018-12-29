@@ -104,7 +104,6 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
           </div>
         <?php endif; ?>
       </div>
-      <?php manoa2018_get_breadcrumbs(); ?>
     </div>
   </div>
   <nav id="header_btm">

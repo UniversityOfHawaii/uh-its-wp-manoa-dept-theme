@@ -2338,9 +2338,6 @@ code {
     content: "\f00d";
 }
 
-main #breadcrumbs {
-    display: none;
-}
 /* mobile breakpoint */
 /* 2-col mobile */
 @media only screen and (max-width: 760px) {
@@ -2439,15 +2436,12 @@ main #breadcrumbs {
         float: left;
         position: relative;
     }
+    main #breadcrumbs {
+      margin-top: 20px;
+    }
     body:not(.home) #department_name .container {
         display: flex;
         justify-content: space-between;
-    }
-    .site-name-description {
-        flex: 70% 0;
-    }
-    nav#breadcrumbs {
-        flex: 1;
     }
     #header_btm_content ul {
         /*display: inline-block;*/
@@ -2703,10 +2697,6 @@ main #breadcrumbs {
     display: block;
     padding: 20px 0 0;
   }
-  #department_name #breadcrumbs {
-    /*margin: .1em 0 .5em;*/
-    display: none;
-  }
   #department_name {
     background: #fff;
     border-bottom: 0;
@@ -2724,14 +2714,15 @@ main #breadcrumbs {
   align-self: center;
 }
 .breadcrumbs {
-  font-size: 14px;
+  font-size: .85em;
   padding: 0;
+  line-height: 1.2;
   margin: 0 0 0 auto;
   background-color: transparent;
   color: #333;
 }
 .breadcrumbs a {
-  color: #333;
+  color: inherit;
   text-decoration: none;
 }
 .breadcrumbs a:hover, .breadcrumbs a:focus, .breadcrumbs a:active {
@@ -2764,28 +2755,28 @@ html.fa-events-icons-loading button.menu-toggle:after
 }
 /* back to top */
 .go-top {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    position: fixed;
-    bottom: -40px;
-    right: 20px;
-    transition: all 1s ease;
-    text-decoration: none;
-    background: #e2e2e2;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    height: 32px;
-    padding-bottom: 3px;
-    width: 35px;
-    z-index: 90;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  position: fixed;
+  bottom: -40px;
+  right: 20px;
+  transition: all 1s ease;
+  text-decoration: none;
+  background: #e2e2e2;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  height: 32px;
+  padding-bottom: 3px;
+  width: 35px;
+  z-index: 90;
 }
 .go-top span {
-    align-self: center;
-    color: #444;
-    font-size: 16px;
-    line-height: .8;
+  align-self: center;
+  color: #444;
+  font-size: 16px;
+  line-height: .8;
 }
 .go-top.show {
   bottom: 20px;
