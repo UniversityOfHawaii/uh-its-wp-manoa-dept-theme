@@ -2420,14 +2420,26 @@ code {
     }
 }
 @media only screen and (min-width: 580px) {
-    .blog .post.has-post-thumbnail .entry-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail, .search-results .has-post-thumbnail .entry-thumbnail {
+    .blog .post.has-post-thumbnail .entry-thumbnail, .archive .post.has-post-thumbnail .entry-thumbnail {
         width: 150px;
     }
-    .blog .post.has-post-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail, .search-results .has-post-thumbnail {
+    .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
+        margin-left: 180px;
+    }
+    .blog .post.has-post-thumbnail, .archive .post.has-post-thumbnail {
         min-height: 150px;
     }
-    .blog .post.has-post-thumbnail .post-content, .archive:not(.category-directory) .post.has-post-thumbnail .post-content, .search-results .has-post-thumbnail .post-content {
-        margin-left: 180px;
+    .archive.category-faq .post.has-post-thumbnail .entry-thumbnail,
+    .archive.category-directory .post.has-post-thumbnail .entry-thumbnail {
+        width: auto;
+    }
+    .archive.category-faq .post.has-post-thumbnail .post-content,
+    .archive.category-directory .post.has-post-thumbnail .post-content {
+        margin-left: 0;
+    }
+    .archive.category-faq .post.has-post-thumbnail,
+    .archive.category-directory .post.has-post-thumbnail {
+        min-height: 0;
     }
 }
 @media only screen and (min-width: 761px) {
