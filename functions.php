@@ -355,7 +355,7 @@ if ( ! function_exists( 'manoa2018_posted_in' ) ) :
      */
     function manoa2018_posted_in() {
         // Retrieves tag list of current post, separated by commas.
-        $tag_list = get_the_tag_list( '', '' );
+        $tag_list = get_the_tag_list( '', ' ' );
         if ( $tag_list && ! is_wp_error( $tag_list ) ) {
             $posted_in = __( '%2$s', 'manoa2018' );
         /*} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
@@ -522,9 +522,10 @@ function manoa2018_get_breadcrumbs() {
             $posts_page = get_option( 'page_for_posts', true );
             $our_title = get_the_title( $posts_page );
             $posts_url = get_permalink( $posts_page );
+            $posts_type = get_post_type_object(get_post_type());
 
             //echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
-            echo '<li class="item-posts">Posts</li>';
+            echo '<li class="item-posts">' . esc_html($posts_type->label) . '</li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
 
