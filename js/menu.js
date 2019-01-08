@@ -46,6 +46,12 @@ $(document).ready(function () {
       $("#header_top:after").on("focus",function() {
         $(this).toggleClass("open");
       });
+      $('.search-form').attr('aria-hidden', function (i, attr) {
+        return attr == 'true' ? 'false' : 'true'
+      });
+      $('.search-form').attr('role', function (i, attr) {
+        return attr == 'search' ? '' : 'search'
+      });
     }
   }
 
