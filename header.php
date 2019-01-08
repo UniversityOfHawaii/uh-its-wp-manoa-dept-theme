@@ -54,8 +54,9 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>><a href="#main_area" id="skip2main">Skip to Main Content</a>
+<body <?php body_class(); ?>>
 <header id="top">
+  <a href="#main_area" id="skip2main">Skip to Main Content</a>
   <div id="header_top">
     <div id="header_top_content">
       <ul id="header_mainmenu">
