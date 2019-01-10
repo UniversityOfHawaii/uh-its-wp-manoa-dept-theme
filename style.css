@@ -4,7 +4,7 @@ Theme URI: https://www.hawaii.edu/its
 Description: Manoa 2018 theme for wordpress
 Author: UH ITS
 Author URI: https://www.hawaii.edu/its/
-Version: 2.5.0
+Version: 2.5.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, two-columns, threaded-comments, sticky-post, translation-ready, microformats, editor-style, custom-menu, featured-images, footer-widgets
@@ -474,6 +474,20 @@ header,footer {
 .container {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.search-results .hentry {
+  margin-bottom: 0;
+}
+.search-results h1.entry-title + .hentry {
+  margin-top: 20px;
+}
+.search-results #content .hentry .post-content h2.entry-title {
+  font-size: 1.2em;
+  margin: 10px 0 6px;
+}
+.search-results .hentry + .hentry {
+  margin-top: 0;
 }
 
 .blog .post.has-post-thumbnail .entry-thumbnail,
@@ -1228,6 +1242,14 @@ table.people-list p + p {
     padding: 40px 0 30px;
 }
 
+.home #main_content:after {
+  clear: both;
+  content: '';
+  display: block;
+  min-height: 1px;
+  width: 100%;
+}
+
 .home main > img {
     width: 100%;
 }
@@ -1302,13 +1324,13 @@ p.page-title a:focus {
 #content h1.entry-title + img {
   margin-top: 10px;
 }
-#content a[href*="//"]:not([href*="hawaii.edu"]):after {
+/*#content a[href*="//"]:not([href*="hawaii.edu"]):after {
     font-family: "FontAwesome";
     content: "\f08e";
     padding-left: 4px;
     white-space: nowrap;
     text-decoration: none;
-}
+}*/
 #content a.post-edit-link {
     border: 1px solid #e7e7e7;
     padding: 6px 20px;
@@ -2303,7 +2325,7 @@ ul.homepage-widgets li > div {
   ul.homepage-widgets {
     flex-wrap: wrap;
     flex-direction: row;
-    margin-top: 2rem;
+    margin: 0;
   }
   .homepage-widgets li {
     flex-basis: 30%;
@@ -2726,7 +2748,9 @@ code {
   #header_btm .menu-toggle {
     margin: 5px auto 10px;
   }
-  #header_btm, #main_content, #footer_top_content {
+  #header_btm,
+  #main_content,
+  #footer_top_content {
     padding: 0 0 5px;
   }
 }
