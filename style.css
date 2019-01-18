@@ -858,6 +858,42 @@ blockquote {
   margin: 20px 0;
   padding: 20px;
 }
+blockquote.note {
+    background: #f7f7f7;
+}
+blockquote.info {
+    background: transparent;
+    border: 1px solid #e7e7e7;
+    padding-left: 50px;
+    position: relative;
+}
+blockquote.info:before {
+    font-family: "FontAwesome";
+    color: #027431;
+    content: "\f05a";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+blockquote.alert {
+    background: #f8eef0;
+    padding-left: 50px;
+    position: relative;
+}
+blockquote.alert:before {
+    font-family: "FontAwesome";
+    color: #b24b66;
+    content: "\f06a";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+blockquote.quote {
+    background: transparent;
+    border-left: 4px solid #027431;
+    padding-bottom: 0;
+    padding-top: 0;
+}
 blockquote p {
     margin: 0;
 }
@@ -2046,7 +2082,7 @@ ul.xoxo select {
 ul.xoxo p {
   line-height: 1.55;
 }
-#basic-site-search, #basic-site-search-desktop, #s {/* This keeps the search inputs in line */
+form.search-form input[type="search"] {/* This keeps the search inputs in line */
     box-sizing: border-box;
     font-family: 'Open Sans', Tahoma, sans-serif;
     padding: 6px 10px 8px;
