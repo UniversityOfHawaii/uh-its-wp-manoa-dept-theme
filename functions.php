@@ -699,6 +699,21 @@ function manoa2018_customize_register( $wp_customize ) {
         'settings' => 'youtube',
         'description' => 'Your YouTube username.'
     ) ) );
+        $wp_customize->add_setting('display_home_widget', array(
+        'default'    => '1'
+    ));
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        'display_home_widget',
+        array(
+          'label'     => __('Display home widget as sidebar', 'manoa2018'),
+          'section'   => 'static_front_page',
+          'settings'  => 'display_home_widget',
+          'type'      => 'checkbox',
+        )
+      )
+    );
 }
 add_action( 'customize_register', 'manoa2018_customize_register' );
 
@@ -721,4 +736,41 @@ function my_change_sort_order($query){
     endif;
 }
 
+// REGISTER NEW TAXONOMIES
+// create two taxonomies, genres and writers for the post type "book"
+function create_group_taxonomies() {
+
+  // Add new gen ed taxonomy, NOT hierarchical (like tags)
+  $labels = array(
+    'name'                       => _x( 'FAQ Topics', 'taxonomy general name', 'textdomain' ),
+    'singular_name'              => _x( 'FAQ Topic', 'taxonomy singular name', 'textdomain' ),
+    'search_items'               => __( 'Search FAQ Topics', 'textdomain' ),
+    'popular_items'              => __( 'Popular FAQ Topics', 'textdomain' ),
+    'all_items'                  => __( 'All FAQ Topics', 'textdomain' ),
+    'parent_item'                => null,
+    'parent_item_colon'          => null,
+    'edit_item'                  => __( 'Edit FAQ Topic', 'textdomain' ),
+    'update_item'                => __( 'Update FAQ Topic', 'textdomain' ),
+    'add_new_item'               => __( 'Add New FAQ Topic', 'textdomain' ),
+    'new_item_name'              => __( 'New FAQ Topic', 'textdomain' ),
+    'separate_items_with_commas' => __( 'Separate FAQ Topics with commas', 'textdomain' ),
+    'add_or_remove_items'        => __( 'Add or remove FAQ Topics', 'textdomain' ),
+    'choose_from_most_used'      => __( 'Choose from the most used FAQ Topics', 'textdomain' ),
+    'not_found'                  => __( 'No FAQ Topics found.', 'textdomain' ),
+    'menu_name'                  => __( 'FAQ Topics', 'textdomain' ),
+  );
+
+  $args = array(
+    'hierarchical'          => true,
+    'labels'                => $labels,
+    'show_ui'               => true,
+    'show_admin_column'     => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var'             => true,
+    'rewrite'               => array( 'slug' => 'faq-topics' ),
+  );
+
+  register_taxonomy( 'faq-topics', array('post'), $args );
+}
+add_action( 'init', 'create_group_taxonomies', 0 );
 ?>
