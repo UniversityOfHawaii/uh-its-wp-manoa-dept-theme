@@ -546,31 +546,32 @@ header,footer {
     width: 100%;
     height: auto;
 }
-.category-faq .faq-container .post-content .entry-content {
+.faq-container .post-content .entry-content {
     display: none;
+    padding-right: 50px;
 }
-.category-faq .faq-container .post-content .entry-content.open {
+.faq-container .post-content .entry-content.open {
     display: block;
 }
-.category-faq .faq-container .post {
-    padding: 20px 0;
+.faq-container .post {
+    padding: 20px 0 0;
     margin: 0;
 }
-.category-faq .faq-container .post .post-content > a {
+.faq-container .post .post-content > a {
     display: block;
     padding-right: 30px;
     position: relative;
     text-decoration: none;
 }
-.archive.category-faq #content .faq-container .post .post-content .entry-title {
+.faq-container .post .post-content .entry-title {
     font-weight: 600;
     position: relative;
 }
-.archive.category-faq #content .faq-container .post .post-content .entry-title a {
+.faq-container .post .post-content .entry-title a {
     display: block;
     padding: 0 50px 0 0;
 }
-.category-faq .faq-container .post .post-content .entry-title a:after {
+.faq-container .post .post-content .entry-title a:after {
     font-family: "FontAwesome";
     font-size: 24px;
     content: "\f107";
@@ -581,7 +582,7 @@ header,footer {
     padding-left: 4px;
     white-space: nowrap;
 }
-.category-faq .faq-container .post .post-content .entry-title[aria-expanded="true"] a:after {
+.faq-container .post .post-content .entry-title[aria-expanded="true"] a:after {
     transform: rotate(180deg);
 }
 
@@ -2495,14 +2496,17 @@ code {
     .blog .post.has-post-thumbnail, .archive .post.has-post-thumbnail {
         min-height: 150px;
     }
+    .tax-faq-topics .post.has-post-thumbnail .entry-thumbnail,
     .archive.category-faq .post.has-post-thumbnail .entry-thumbnail,
     .archive.category-directory .post.has-post-thumbnail .entry-thumbnail {
         width: auto;
     }
+    .tax-faq-topics .post.has-post-thumbnail .post-content,
     .archive.category-faq .post.has-post-thumbnail .post-content,
     .archive.category-directory .post.has-post-thumbnail .post-content {
         margin-left: 0;
     }
+    .tax-faq-topics .post.has-post-thumbnail,
     .archive.category-faq .post.has-post-thumbnail,
     .archive.category-directory .post.has-post-thumbnail {
         min-height: 0;
@@ -2716,7 +2720,8 @@ code {
   .archive #main_content,
   .single #main_content,
   .search #main_content,
-  .left-sidebar #main_content {
+  .left-sidebar #main_content,
+  .home #main_content {
     margin: 0 auto;
     max-width: 90%;
   }

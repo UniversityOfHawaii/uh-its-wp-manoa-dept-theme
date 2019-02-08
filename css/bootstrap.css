@@ -24,7 +24,7 @@
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-.bootstrap .container {
+.bootstrap #main_content .container {
   margin-right: auto;
   margin-left: auto;
   /*padding-left: 15px;
