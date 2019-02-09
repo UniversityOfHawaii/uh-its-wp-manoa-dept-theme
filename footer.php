@@ -13,8 +13,8 @@
    <div id="footer_top">
       <div id="footer_top_content">
          <div class="footer-top-left-column contact-info">
+            <h2><?php bloginfo( 'name' ); ?></h2>
             <address>
-               <h2><?php bloginfo( 'name' ); ?></h2>
                <?php if(get_theme_mod('address')) : ?>
                   <?php echo get_theme_mod('address');
                endif; ?>
@@ -39,17 +39,8 @@
                   <?php endif; ?>
                </div>
             <?php endif; ?>
-         </div>
-         <div class="footer-top-middle-column">
-            <?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
-               <ul class="xoxo">
-               <?php dynamic_sidebar( 'footer-widget-area' ); ?>
-               </ul>
-            <?php endif; ?>
-         </div>
-         <div class="footer-top-right-column social-media-links">
             <?php if( get_theme_mod('flickr') || get_theme_mod('instagram') || get_theme_mod('twitter') || get_theme_mod('facebook') || get_theme_mod('youtube')) : ?>
-                <div class="sm-header">Find Us On</div>
+               <div class="sm-header">Find Us On</div>
             <?php endif; ?>
             <?php if(get_theme_mod('flickr')) : ?>
                <a class="flickr" href="//www.flickr.com/photos/<?php echo get_theme_mod('flickr'); ?>"><i class="fa fa-flickr" aria-hidden="true"></i><span class="screen-reader-text">Flickr</span></a>
@@ -65,6 +56,13 @@
             <?php endif; ?>
             <?php if(get_theme_mod('youtube')) : ?>
                <a class="youtube" href="//www.youtube.com/user/<?php echo get_theme_mod('youtube'); ?>"><i class="fa fa-youtube-play" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a>
+            <?php endif; ?>
+         </div>
+         <div class="footer-top-middle-column">
+            <?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
+               <ul class="xoxo">
+               <?php dynamic_sidebar( 'footer-widget-area' ); ?>
+               </ul>
             <?php endif; ?>
          </div>
       </div>
