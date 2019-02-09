@@ -168,73 +168,6 @@ function manoa2018_custom_excerpt_more( $output ) {
 }
 add_filter( 'get_the_excerpt', 'manoa2018_custom_excerpt_more' );
 
-if ( ! function_exists( 'manoa2018_comment' ) ) :
-    /**
-     * Template for comments and pingbacks.
-     *
-     * To override this walker in a child theme without modifying the comments template
-     * simply create your own manoa2018_comment(), and that function will be used instead.
-     *
-     * Used as a callback by wp_list_comments() for displaying the comments.
-     *
-     *
-     */
-    function manoa2018_comment( $comment, $args, $depth ) {
-        $GLOBALS['comment'] = $comment;
-        switch ( $comment->comment_type ) :
-            case '':
-        ?>
-        <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-        <div id="comment-<?php comment_ID(); ?>">
-            <div class="comment-author vcard">
-                <?php echo get_avatar( $comment, 40 ); ?>
-                <?php printf( __( '%s <span class="says">says:</span>', 'manoa2018' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-            </div><!-- .comment-author .vcard -->
-            <?php if ( $comment->comment_approved == '0' ) : ?>
-                <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'manoa2018' ); ?></em>
-                <br />
-            <?php endif; ?>
-
-            <div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-                <?php
-                    /* translators: 1: date, 2: time */
-                    printf( __( '%1$s at %2$s', 'manoa2018' ), get_comment_date(), get_comment_time() );
-                    ?>
-                    </a>
-                    <?php
-                    edit_comment_link( __( '(Edit)', 'manoa2018' ), ' ' );
-                ?>
-                </div><!-- .comment-meta .commentmetadata -->
-
-                <div class="comment-body"><?php comment_text(); ?></div>
-
-                <div class="reply">
-                <?php
-                comment_reply_link(
-                    array_merge(
-                        $args, array(
-                            'depth'     => $depth,
-                            'max_depth' => $args['max_depth'],
-                        )
-                    )
-                );
-?>
-                </div><!-- .reply -->
-            </div><!-- #comment-##  -->
-
-        <?php
-                break;
-            case 'pingback':
-            case 'trackback':
-        ?>
-        <li class="post pingback">
-        <p><?php _e( 'Pingback:', 'manoa2018' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(Edit)', 'manoa2018' ), ' ' ); ?></p>
-    <?php
-                break;
-        endswitch;
-    }
-endif;
-
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
  *
@@ -342,6 +275,29 @@ if ( ! function_exists( 'manoa2018_categories' ) ) :
         printf(
             $posted_in,
             get_the_category_list( ', ' ),
+            get_permalink(),
+            the_title_attribute( 'echo=0' )
+        );
+    }
+endif;
+
+if ( ! function_exists( 'system2018_faq_topics' ) ) :
+    /**
+     * Print HTML with meta information for the current categories.
+     *
+     */
+    function manoa2018_faq_topics() {
+
+        global $post;
+        if ( is_object_in_taxonomy( get_post_type(), 'faq-topics' ) ) {
+            $posted_in = __( '<span class="faq-topics"><span class="fa fa-question" aria-hidden="true"></span> %1$s</span>', 'manoa2018' );
+        } else {
+            $posted_in = __( '', 'manoa2018' );
+        }
+        // Prints the string, replacing the placeholders.
+        printf(
+            $posted_in,
+            get_the_term_list( $post->ID, 'faq-topics','',', ' ),
             get_permalink(),
             the_title_attribute( 'echo=0' )
         );
@@ -595,13 +551,46 @@ function my_remove_menu_pages() {
 }
 add_action( 'admin_init', 'my_remove_menu_pages' );
 
-// Close comments on the front-end
-function df_disable_comments_status() {
-return false;
-}
-add_filter('comments_open', 'df_disable_comments_status', 20, 2);
-add_filter('pings_open', 'df_disable_comments_status', 20, 2);
+// disable all comments
+add_action('admin_init', function () {
+    // Redirect any user trying to access comments page
+    global $pagenow;
 
+    if ($pagenow === 'edit-comments.php') {
+        wp_redirect(admin_url());
+        exit;
+    }
+
+    // Remove comments metabox from dashboard
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+
+    // Disable support for comments and trackbacks in post types
+    foreach (get_post_types() as $post_type) {
+        if (post_type_supports($post_type, 'comments')) {
+            remove_post_type_support($post_type, 'comments');
+            remove_post_type_support($post_type, 'trackbacks');
+        }
+    }
+});
+
+// Close comments on the front-end
+add_filter('comments_open', '__return_false', 20, 2);
+add_filter('pings_open', '__return_false', 20, 2);
+
+// Hide existing comments
+add_filter('comments_array', '__return_empty_array', 10, 2);
+
+// Remove comments page in menu
+add_action('admin_menu', function () {
+    remove_menu_page('edit-comments.php');
+});
+
+// Remove comments links from admin bar
+add_action('init', function () {
+    if (is_admin_bar_showing()) {
+        remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
+    }
+});
 /**
  * Edit Customize panel
  */
