@@ -44,8 +44,8 @@ while ( have_posts() ) :
           );
           ?>
           <?php if(! has_excerpt()): ?>
-            <a href="<?php the_permalink(); ?>" rel="bookmark">Read full answer for <?php the_title(); ?></a>
-          <?php endif; ?>
+          <a href="<?php the_permalink(); ?>" rel="bookmark">View More <span class="screen-reader-text sr-only">for <?php the_title(); ?></span></a>
+        <?php endif; ?>
         </div><!-- .entry-content -->
       </div>
 
