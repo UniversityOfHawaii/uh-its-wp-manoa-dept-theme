@@ -26,10 +26,18 @@ if ( have_posts() ) {
           <?php manoa2018_posted_on(); ?>
         <?php endif; ?>
         <?php manoa2018_categories(); ?>
+        <?php $terms = get_the_terms( $post->ID , 'faq-topics' );
+        if ($terms): ?>
+          <?php manoa2018_faq_topics(); ?>
+        <?php endif; ?>
       </div><!-- .entry-meta -->
 
       <div class="entry-content">
         <?php the_post_thumbnail('large'); ?>
+        <?php if( has_excerpt() ) { ?>
+          <em>Excerpt</em>
+          <?php the_excerpt(); ?>
+        <?php }; ?>
         <?php the_content(); ?>
         <?php
         wp_link_pages(
