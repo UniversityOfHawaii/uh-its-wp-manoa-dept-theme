@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-  <main id="main_area" class="full-width">
+  <main id="main_area" class="one-column">
     <div id="main_content">
 
       <?php

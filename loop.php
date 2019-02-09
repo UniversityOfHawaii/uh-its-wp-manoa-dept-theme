@@ -38,12 +38,10 @@ while ( have_posts() ) :
     <div class="post-content">
       <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
-      <?php if(is_singular()): ?>
-        <div class="entry-meta">
-          <?php manoa2018_posted_on(); ?>
-          <?php manoa2018_categories(); ?>
-        </div><!-- .entry-meta -->
-      <?php endif; ?>
+      <div class="entry-meta">
+        <?php manoa2018_posted_on(); ?>
+        <?php manoa2018_categories(); ?>
+      </div><!-- .entry-meta -->
 
       <div class="entry-content">
         <?php the_excerpt(); ?>

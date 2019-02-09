@@ -44,7 +44,7 @@ while ( have_posts() ) :
           );
           ?>
           <?php if(! has_excerpt()): ?>
-          <a href="<?php the_permalink(); ?>" rel="bookmark">View More <span class="screen-reader-text sr-only">for <?php the_title(); ?></span></a>
+          <a class="view-more" href="<?php the_permalink(); ?>" rel="bookmark">View More <span class="screen-reader-text sr-only">for <?php the_title(); ?></span></a>
         <?php endif; ?>
         </div><!-- .entry-content -->
       </div>
