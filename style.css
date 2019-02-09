@@ -608,9 +608,10 @@ address {
   font-style: normal;
 }
 
-address h2 {
+.contact-info > h2 {
     font-size: 1.15em;
-    margin: 0;
+    line-height: 1.4;
+    margin: 0 0 .4rem;
 }
 
 #footer_top .contact {
@@ -619,7 +620,7 @@ address h2 {
 
 #footer_top .sm-header {
   font-weight: bold;
-  margin: .75em 0;
+  margin: .75em 0 0;
 }
 
 #footer_top_content {
@@ -1407,8 +1408,8 @@ p.page-title a:focus {
 .entry-utility abbr {
   border: none;
 }
-.entry-meta .posted-on + .categories {
-    padding-left: 20px;
+.entry-title + .entry-meta > span + span {
+    margin-left: 20px;
 }
 .entry-meta span.fa {
     color: #024731;
@@ -2547,11 +2548,12 @@ code {
         display: flex;
         justify-content: space-between;
     }
-    #footer_top_content .footer-top-middle-column {
-        flex-basis: 40%;
+    #footer_top_content .footer-top-left-column {
+        flex-basis: 66%;
+        margin-right: 30px;
     }
-    #footer_top_content .footer-top-middle-column .widget-container h3 {
-        margin-top: .4rem;
+    #footer_top_content .footer-top-middle-column {
+        flex: 1;
     }
 }
 @media only screen and (max-width: 760px) {
