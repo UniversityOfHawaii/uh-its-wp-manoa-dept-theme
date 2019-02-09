@@ -35,15 +35,8 @@ if ( have_posts() ) {
           <?php } ?>
 
           <div class="entry-content">
-            <?php if(is_page_template('page-onecolumn.php')) : ?>
-              <div class="container">
-            <?php endif; ?>
 
             <?php the_content(); ?>
-
-            <?php if(is_page_template('page-onecolumn.php')) : ?>
-              </div>
-            <?php endif; ?>
 
             <?php
             wp_link_pages(
