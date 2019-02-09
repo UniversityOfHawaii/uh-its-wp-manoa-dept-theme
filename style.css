@@ -501,7 +501,7 @@ header,footer {
     margin-left: 100px;
 }
 .archive .faq-container .post.has-post-thumbnail .post-content {
-    margin-left: 0;
+    margin-left: 0 !important;
 }
 .blog .post.has-post-thumbnail .entry-thumbnail,
 .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail,
@@ -514,7 +514,7 @@ header,footer {
     min-height: 80px;
 }
 .archive .faq-container .post.has-post-thumbnail {
-    min-height: 0;
+    min-height: 0 !important;
 }
 .blog .post.has-post-thumbnail .entry-thumbnail img,
 .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail img,
