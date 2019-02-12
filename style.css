@@ -308,7 +308,6 @@ header,footer {
 #header_mid_logo {
     display: block;
     height: auto;
-    margin: 0 auto;
     max-width: 100%;
     padding: 32px 0 25px;
 }
@@ -702,8 +701,6 @@ address {
 
 #footer_btm_content a {
     color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 #footer_btm_content a:hover,
@@ -866,7 +863,7 @@ ins {
   text-decoration: none;
 }
 blockquote {
-  background: #ededed;
+  background: #f7f7f7;
   margin: 20px 0;
   padding: 20px;
 }
@@ -922,6 +919,23 @@ blockquote i {
     display: block;
     min-width: 1px;
     padding-top: 36px;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: .9em;
+    line-height: 1.2;
+}
+.code {
+    background: #232323;
+    border-left: 8px solid #8cc63e;
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.05em;
+    line-height: 1.2;
+    margin: 20px 0;
+    overflow-x: scroll;
+    padding: 16px 16px 22px 20px;
+    white-space: nowrap;
 }
 pre {
   background: #f7f7f7;
