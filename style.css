@@ -2116,6 +2116,9 @@ form.search-form input[type="search"] {/* This keeps the search inputs in line *
     font-family: 'Open Sans', Tahoma, sans-serif;
     padding: 6px 10px 8px;
 }
+form.search-form.show {
+  display: flex !important;
+}
 .widget_search #basic-site-search, .widget_search #s {/* This keeps the search inputs in line */
     width: 100%;
 }
@@ -2304,6 +2307,9 @@ margin-left: -0.4em;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+#primary .secondary ul.children {
+    display: none;
 }
 #primary .secondary li.current_page_item > a {
     background: #217eab;
