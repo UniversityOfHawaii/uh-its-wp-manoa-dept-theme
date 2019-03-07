@@ -2163,6 +2163,26 @@ margin-left: -0.4em;
     color: #222;
     font-weight: bold;
 }
+.homepage-widgets .widget-title {
+  text-align: center;
+}
+#content .homepage-widgets .widget_media_image h3.widget-title {
+  margin-bottom: 8px;
+}
+.xoxo li {
+  overflow: hidden;
+}
+.xoxo li img {
+  max-width: 100%;
+}
+.widget_media_image a > img {
+  transition: all .2s ease-in-out;
+}
+.widget_media_image a:hover > img,
+.widget_media_image a:active > img,
+.widget_media_image a:focus > img {
+  transform: scale(1.1);
+}
 .widget-container a:link, .widget-container a:visited {
     /*text-decoration-color: #efefef;*/
     text-decoration: none;
