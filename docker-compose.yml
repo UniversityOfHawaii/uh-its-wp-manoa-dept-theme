@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  gulp-shell:
+    image: gulp
+    build: ./
+    volumes:
+      - ./:/workspace
+    working_dir: /workspace
+    # Default to the node user. If your user id is different from 1000 or
+    # user-namespace is enabled, override this on the command line.
+    user: node
+    # If container user doesn't exist, they won't have a home directory.
+    # In that case npm will try to create a cache directory at the root
+    # which will faile. So we just need to tell NPM an alternate diorectory
+    # to use.
+    environment:
+      NPM_CONFIG_CACHE: /workspace/.npm-cache
