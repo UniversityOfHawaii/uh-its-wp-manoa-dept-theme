@@ -21,11 +21,10 @@
     } ?>
 
     <ul class="xoxo">
+      <?php
+      if ( ! dynamic_sidebar( 'primary-widget-area' ) ) :
+        ?>
 
-<?php
-if ( ! dynamic_sidebar( 'primary-widget-area' ) ) :
-  ?>
-
-  <?php endif; // end primary widget area ?>
+      <?php endif; // end primary widget area ?>
     </ul>
   </div><!-- #primary .widget-area -->

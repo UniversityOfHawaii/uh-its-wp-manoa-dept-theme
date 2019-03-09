@@ -302,14 +302,22 @@ header,footer {
     height: 18px;
 }
 #header_mid {
+    display: flex;
+    height: 110px;
     margin: 0;
     padding: 0;
+}
+#header_mid .container {
+    align-self: center;
+    width: 90%;
 }
 #header_mid_logo {
     display: block;
     height: auto;
+    margin: 0 auto;
+    max-height: 30px;
     max-width: 100%;
-    padding: 32px 0 25px;
+    padding-top: 4px;
 }
 #department_name {
     margin: 0 auto;
@@ -338,9 +346,6 @@ header,footer {
 #header_btm_content ul > li:focus a + ul,
 #header_btm_content ul > li:active a + ul {
     display: block;
-}
-#header_btm form#searchform {
-    display: none;
 }
 @media only screen and (min-width: 761px) {
     #header_btm {
@@ -431,6 +436,11 @@ header,footer {
 }
 
 @media only screen and (max-width: 760px) {
+    #header_mid {
+        height: auto;
+        margin: 24px auto 10px;
+        position: relative;
+    }
     #header_btm_content li a:hover,
     #header_btm_content li a:focus,
     #header_btm_content li a:active {
@@ -440,6 +450,31 @@ header,footer {
     }
     #header_btm_content .sub-menu > li:first-child {
         border-top: 1px solid #e7e7e7;
+    }
+    #header_btm .search-mobile {
+        align-items: center;
+        box-sizing: border-box;
+        color: #333;
+        display: inline-flex;
+        text-decoration: none;
+        font-size: .8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 0;
+        padding: 10px 20px;
+        text-transform: uppercase;
+    }
+    .search-mobile span.fa {
+        font-size: 16px;
+        padding-left: 6px;
+    }
+    .logged-in .search-mobile {
+        top: 46px;
+    }
+    .search-mobile:hover,
+    .search-mobile:focus,
+    .search-mobile:active {
+        opacity: .8;
     }
 }
 
@@ -2122,6 +2157,36 @@ form.search-form.show {
 .widget_search #basic-site-search, .widget_search #s {/* This keeps the search inputs in line */
     width: 100%;
 }
+.search-form-container {
+    display: none;
+}
+@media only screen and (min-width: 760px) {
+    .search-form-container {
+        display: flex;
+        height: 110px;
+        margin: 0 auto;
+        max-width: 1000px;
+        position: absolute;
+        text-align: right;
+        top: 0;
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 781px) {
+    .logged-in .search-form-container {
+        top: 46px;
+    }
+}
+@media only screen and (min-width: 782px) {
+    .logged-in .search-form-container {
+        top: 32px;
+    }
+}
+.search-form-container form {
+    margin-left: auto;
+    margin-top: 6px;
+    width: 180px;
+}
 .widget_search label {
     display: none;
 }
@@ -2447,8 +2512,21 @@ code {
 }
 
 #header_btm .menu-toggle {
+    background: none;
+    border-radius: 0;
+    color: #222;
     display: none;
-    margin: 20px 0;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+#header_btm .menu-toggle:hover,
+#header_btm .menu-toggle:focus,
+#header_btm .menu-toggle:active {
+    opacity: .5;
 }
 #header_btm .menu-toggle:after {
     font-family: "FontAwesome";
@@ -2500,14 +2578,17 @@ code {
         margin-right: 0;
     }
     #header_btm .menu-toggle {
-        display: block;
+        display: inline-flex;
     }
     #header_btm_content > ul.menu.show {
         display: block;
     }
-    #header_btm form#searchform.show {
+    #header_btm .search-form-container.show {
         display: flex;
         margin-bottom: 20px;
+    }
+    .search-form-container form {
+        width: 100%;
     }
     #header_btm_content > ul {
         display: none;
@@ -2575,9 +2656,8 @@ code {
     main #breadcrumbs {
       margin-top: 20px;
     }
-    body:not(.home) #department_name .container {
-        display: flex;
-        justify-content: space-between;
+    .search-mobile {
+        display: none;
     }
     #header_btm_content ul {
         /*display: inline-block;*/
@@ -2595,7 +2675,8 @@ code {
         display: flex;
     }
     #header_mid_logo {
-        max-height: 50px;
+      margin: 0;
+      max-height: 40px;
     }
     #footer_top_content {
         display: flex;
@@ -2607,6 +2688,11 @@ code {
     }
     #footer_top_content .footer-top-middle-column {
         flex: 1;
+    }
+}
+@media only screen and (min-width: 900px) {
+    #header_mid_logo {
+        max-height: 50px;
     }
 }
 @media only screen and (max-width: 760px) {
@@ -2670,6 +2756,8 @@ code {
         background: transparent;
         border-radius: 0;
     }
+    #footer_top_content .footer-top-middle-column {
+        margin-top: 30px; }
 }
 @media only screen and (max-width: 395px) {
     #header_top {
@@ -2801,19 +2889,23 @@ code {
   #header_mid .container {
      height: auto;
   }
-  header:not(.other) #header_mid_logo {
-    background: url('images/uhm-seal-name-stacked@2x.png') no-repeat;
+  #header_mid_logo {
+    /*background: url('images/uhm-seal-name-stacked@2x.png') no-repeat;
     background-size: 100%;
     box-sizing: border-box;
     display: block;
     width: 198px;
     height: 70px;
     margin: 34px auto 20px;
-    padding-left: 198px;
+    padding-left: 198px;*/
+    padding-bottom: 0;
   }
   header #header_mid form.search-form {
     display: none;
     margin-bottom: 20px;
+  }
+  .search-mobile.open + .search-form-container {
+      display: block;
   }
   #header_smrow {
     clear: both;
@@ -2837,14 +2929,14 @@ code {
   }
   #department_name {
     background: #fff;
-    border-bottom: 0;
-    padding: 10px 0 0;
+    border-top: 0;
+    padding: 10px 0;
     text-align: center;
   }
-  #header_btm .menu-toggle {
-    margin: 5px auto 10px;
+  #header_btm {
+      padding: 0;
+      text-align: center;
   }
-  #header_btm,
   #main_content,
   #footer_top_content {
     padding: 0 0 5px;
@@ -2990,4 +3082,13 @@ html.fa-events-icons-loading button.menu-toggle:after
   .home .sticky {
     border: none;
   }
+}
+
+@media only screen and (max-width: 500px) {
+    #department_name .site-name-description #header_sitename {
+        font-size: 1.2em;
+    }
+    #department_name .site-name-description #header_sitedescription {
+        font-size: .9em;
+    }
 }

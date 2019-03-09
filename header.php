@@ -90,7 +90,6 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
   <div id="header_mid">
     <div class="container">
       <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" />
-      <?php get_template_part('searchform', 'desktop'); ?>
     </div>
   </div>
   <div id="department_name">
@@ -106,7 +105,11 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
     </div>
   </div>
   <nav id="header_btm">
-    <button class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
+    <a class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
+    <a class="search-mobile" href="#" class="dropdown-toggle">Search <span class="fa fa-search" aria-hidden="true"></span></a>
+    <div class="search-form-container">
+      <?php get_search_form(); ?>
+    </div>
     <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
       <div id="header_btm_content">
@@ -139,7 +142,6 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 
       <?php endif; ?>
 
-      <?php get_search_form(); ?>
     </nav>
 </header>
 

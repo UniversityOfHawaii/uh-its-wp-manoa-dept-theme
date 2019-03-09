@@ -688,7 +688,7 @@ function manoa2018_customize_register( $wp_customize ) {
         'settings' => 'youtube',
         'description' => 'Your YouTube username.'
     ) ) );
-        $wp_customize->add_setting('display_home_widget', array(
+    $wp_customize->add_setting('display_home_widget', array(
         'default'    => '1'
     ));
     $wp_customize->add_control(

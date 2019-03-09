@@ -25,13 +25,38 @@ $(document).ready(function () {
       return attr == 'true' ? 'false' : 'true'
     });
   });
+  //toggle mobile search
+  $(".search-mobile").on("click",function(e) {
+    e.preventDefault();
+    $(this).toggleClass("open");
+    $(".search-form-container").toggleClass("show");
+    $("#searchform").attr('aria-expanded', function (i, attr) {
+      return attr == 'true' ? 'false' : 'true'
+    });
+  });
 
   // behavior for mobile - touch
+  $("a[href^='#']").on("touchstart",function(e) {
+    e.preventDefault();
+    $(this).addClass("open");
+  });
+  $("a.open[href^='#']").on("touchstart",function(e) {
+    e.preventDefault();
+    $(this).removeClass("open");
+    $(this).next(".sub-menu").hide();
+  });
   $(".menu-toggle").on("touchstart",function(e) {
     e.preventDefault();
-      $(this).toggleClass("open");
+      $(this).toggleClass("on");
       $("#header_btm_content > ul").toggleClass("show");
-      $("#header_btm form#searchform").toggleClass("show");
+  });
+  $(".search-mobile").on("touchstart",function(e) {
+    e.preventDefault();
+      $(this).toggleClass("open");
+      $(".search-form-container").toggleClass("show");
+      $("#searchform").attr('aria-expanded', function (i, attr) {
+        return attr == 'true' ? 'false' : 'true'
+      });
   });
 
   // run test on initial page load
