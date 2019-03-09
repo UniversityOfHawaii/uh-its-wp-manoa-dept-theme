@@ -33,7 +33,9 @@ if ( have_posts() ) {
       </div><!-- .entry-meta -->
 
       <div class="entry-content">
-        <?php the_post_thumbnail('large'); ?>
+        <?php if(has_post_thumbnail()) : ?>
+          <?php the_post_thumbnail('large'); ?>
+        <?php endif; ?>
         <?php if( has_excerpt() ) { ?>
           <em>Excerpt</em>
           <?php the_excerpt(); ?>

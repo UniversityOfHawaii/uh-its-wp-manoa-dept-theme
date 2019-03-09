@@ -317,7 +317,6 @@ header,footer {
     margin: 0 auto;
     max-height: 30px;
     max-width: 100%;
-    padding-top: 4px;
 }
 #department_name {
     margin: 0 auto;
@@ -1611,6 +1610,11 @@ p.page-title a:focus {
         color: #fff;
     }
 }
+@media only screen and (max-width: 760px) {
+  body:not(.home) .featured-image {
+    padding-top: 30px;
+  }
+}
 .page-link a:active,
 .page-link a:hover, .page-link a:focus {
   color: #217eab;
@@ -2492,6 +2496,9 @@ ul.homepage-widgets li > div {
   .homepage-widgets .widget-container + .widget-container {
     margin-top: 0;
   }
+  .has-feat-image + .widget-area {
+    padding-top: 0;
+  }
 }
 
 /* =Mobile Safari ( iPad, iPhone and iPod Touch )
@@ -2898,6 +2905,7 @@ code {
     height: 70px;
     margin: 34px auto 20px;
     padding-left: 198px;*/
+    padding-top: 16px;
     padding-bottom: 0;
   }
   header #header_mid form.search-form {

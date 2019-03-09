@@ -18,12 +18,14 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div id="container">
+    <div id="container" <?php if(has_post_thumbnail()) { echo 'class="has-feat-image"'; } ?>>
       <div id="content" role="main">
 
-        <div class="featured-image">
-            <?php the_post_thumbnail( 'full' ); ?>
-        </div>
+        <?php if(has_post_thumbnail()) : ?>
+          <div class="featured-image">
+              <?php the_post_thumbnail( 'full' ); ?>
+          </div>
+        <?php endif; ?>
 
         <?php manoa2018_get_breadcrumbs(); ?>
 
