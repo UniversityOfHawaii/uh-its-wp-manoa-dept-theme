@@ -2904,9 +2904,6 @@ code {
     display: none;
     margin-bottom: 20px;
   }
-  .search-mobile.open + .search-form-container {
-      display: block;
-  }
   #header_smrow {
     clear: both;
     float: none;
