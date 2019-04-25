@@ -6,9 +6,10 @@
 
 get_header(); ?>
   <main id="main_area">
-    <div id="main_content">
-      <div id="container">
-        <div id="content" role="main">
+    <div id="main_content" class="container">
+      <div id="content" role="main" class="row">
+
+        <div class="col-lg-9 col-md-8">
 
           <?php manoa2018_get_breadcrumbs(); ?>
 
@@ -20,9 +21,11 @@ get_header(); ?>
            */
           get_template_part( 'loop', 'single' );
           ?>
-
-        </div><!-- #content -->
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <?php get_sidebar(); ?>
+        </div>
       </div><!-- #container -->
+    </div>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

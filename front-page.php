@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-  <main id="main_area" class="bootstrap">
+  <main id="main_area">
     <?php if(has_post_thumbnail()): ?>
         <div class="featured-image">
             <?php the_post_thumbnail( 'full' ); ?>
@@ -19,40 +19,37 @@ get_header(); ?>
             <?php } ?>
         </div>
     <?php endif; ?>
-    <div id="main_content" class="bootstrap">
+    <div id="main_content">
 
-      <div id="container">
-        <div id="content" role="main">
+      <div class="container" id="content" role="main">
 
-          <?php if ( have_posts() ) {
-            while ( have_posts() ) :
-              the_post();
-            ?>
+        <?php if ( have_posts() ) {
+          while ( have_posts() ) :
+            the_post();
+          ?>
 
-            <?php if ( is_active_sidebar( 'homepage-widget-area' ) && ( get_theme_mod('display_home_widget') == 1 ) ) : ?>
+          <?php if ( is_active_sidebar( 'homepage-widget-area' ) && ( get_theme_mod('display_home_widget') == 1 ) ) : ?>
 
-               <div class="row">
-                <div class="col-md-8">
+             <div class="row">
+              <div class="col-lg-9 col-md-8">
 
-            <?php endif; // end primary widget area ?>
+          <?php endif; // end primary widget area ?>
 
-            <?php the_content(); ?>
+          <?php the_content(); ?>
 
-            <?php if ( is_active_sidebar( 'homepage-widget-area' ) && ( get_theme_mod('display_home_widget') == 1 ) ) : ?>
-                </div>
-                <div class="col-md-4">
-                   <ul class="xoxo homepage-widgets-sidebar">
-                   <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
-                   </ul>
-                </div>
+          <?php if ( is_active_sidebar( 'homepage-widget-area' ) && ( get_theme_mod('display_home_widget') == 1 ) ) : ?>
               </div>
+              <div class="col-lg-3 col-md-4">
+                 <ul class="xoxo homepage-widgets-sidebar">
+                 <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
+                 </ul>
+              </div>
+            </div>
 
-            <?php endif; // end primary widget area ?>
+          <?php endif; // end primary widget area ?>
 
-          <?php endwhile;
-          }; // end of the loop. ?>
-
-        </div><!-- #content -->
+        <?php endwhile;
+        }; // end of the loop. ?>
 
         <?php if ( is_active_sidebar( 'homepage-widget-area' ) && ( get_theme_mod('display_home_widget') == 0 ) ) : ?>
 

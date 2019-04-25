@@ -18,7 +18,7 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div id="container" <?php if(has_post_thumbnail()) { echo 'class="has-feat-image"'; } ?>>
+    <div <?php if(has_post_thumbnail()) { echo 'class="has-feat-image"'; } ?>>
       <div id="content" role="main">
 
         <?php if(has_post_thumbnail()) : ?>
