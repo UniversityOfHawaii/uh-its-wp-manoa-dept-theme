@@ -5,7 +5,7 @@
 
 get_header(); ?>
 
-  <main id="main_area">
+  <main id="main_area" role="main">
     <?php if(has_post_thumbnail()): ?>
         <div class="featured-image">
             <?php the_post_thumbnail( 'full' ); ?>
@@ -21,7 +21,7 @@ get_header(); ?>
     <?php endif; ?>
     <div id="main_content">
 
-      <div class="container" id="content" role="main">
+      <div class="container" id="content">
 
         <?php if ( have_posts() ) {
           while ( have_posts() ) :
@@ -39,11 +39,11 @@ get_header(); ?>
 
           <?php if ( is_active_sidebar( 'homepage-widget-area' ) && ( get_theme_mod('display_home_widget') == 1 ) ) : ?>
               </div>
-              <div class="col-lg-3 col-md-4">
+              <aside class="col-lg-3 col-md-4" role="complementary">
                  <ul class="xoxo homepage-widgets-sidebar">
                  <?php dynamic_sidebar( 'homepage-widget-area' ); ?>
                  </ul>
-              </div>
+              </aside>
             </div>
 
           <?php endif; // end primary widget area ?>

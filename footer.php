@@ -9,7 +9,7 @@
 ?>
 
 </div></main>
-<footer>
+<footer role="contentinfo">
    <div id="footer_top">
       <div class="container pt-5 pb-5" id="footer_top_content">
          <div class="row">

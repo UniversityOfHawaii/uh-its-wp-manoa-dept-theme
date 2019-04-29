@@ -5,9 +5,9 @@
  */
 
 get_header(); ?>
-  <main id="main_area">
+  <main id="main_area" role="main">
     <div id="main_content" class="container">
-      <div id="content" role="main" class="row">
+      <div id="content" class="row">
 
         <div class="col-lg-9 col-md-8">
 
@@ -22,9 +22,9 @@ get_header(); ?>
           get_template_part( 'loop', 'single' );
           ?>
         </div>
-        <div class="col-lg-3 col-md-4">
+        <aside class="col-lg-3 col-md-4" role="complementary">
           <?php get_sidebar(); ?>
-        </div>
+        </aside>
       </div><!-- #container -->
     </div>
 

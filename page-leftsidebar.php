@@ -8,12 +8,12 @@
 
 get_header(); ?>
 
-  <main id="main_area" class="left-sidebar">
+  <main id="main_area" class="left-sidebar" role="main">
     <div id="main_content" class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-4">
+        <aside class="col-lg-3 col-md-4" role="complementary">
           <?php get_sidebar(); ?>
-        </div>
+        </aside>
         <div class="col-lg-9 col-md-8">
 
         <?php

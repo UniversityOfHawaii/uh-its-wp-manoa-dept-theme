@@ -6,9 +6,9 @@
 get_header();
 ?>
 
-  <main id="main_area" class="full-width">
+  <main id="main_area" class="full-width" role="main">
     <div id="main_content">
-      <div class="container" id="content" role="main">
+      <div class="container" id="content">
 
         <?php if ( have_posts() ) : ?>
           <h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?></h1>

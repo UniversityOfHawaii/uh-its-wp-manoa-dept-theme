@@ -5,7 +5,7 @@
  */
 ?>
 
-  <div id="primary" class="widget-area" role="complementary">
+  <div id="primary" class="widget-area">
     <?php global $post; // Setup the global variable $post
 
     if ( is_page() && $post->post_parent ) {

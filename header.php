@@ -55,7 +55,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 </head>
 
 <body <?php body_class(); ?>>
-<header id="top">
+<header id="top" role="banner">
   <a href="#main_area" id="skip2main">Skip to Main Content</a>
   <div id="header_top">
     <div id="header_top_content">
@@ -104,7 +104,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
       </div>
     </div>
   </div>
-  <nav id="header_btm">
+  <nav id="header_btm" role="navigation" aria-label="main navigation">
     <div class="container">
       <a class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
       <a class="search-mobile" href="#" class="dropdown-toggle">Search <span class="fa fa-search" aria-hidden="true"></span></a>

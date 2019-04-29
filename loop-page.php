@@ -19,7 +19,7 @@ if ( have_posts() ) {
   ?>
 
     <div <?php if(has_post_thumbnail()) { echo 'class="has-feat-image"'; } ?>>
-      <div id="content" role="main">
+      <div id="content">
 
         <?php if(has_post_thumbnail()) : ?>
           <div class="featured-image">
