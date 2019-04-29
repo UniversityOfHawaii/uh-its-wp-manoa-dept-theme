@@ -8,8 +8,7 @@ get_header();
 
   <main id="main_area" class="full-width">
     <div id="main_content">
-      <div id="container">
-      <div id="content" role="main">
+      <div class="container" id="content" role="main">
 
         <?php if ( have_posts() ) : ?>
           <h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'manoa2018' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
@@ -23,7 +22,6 @@ get_header();
           </div><!-- #post-0 -->
         <?php endif; ?>
 
-        </div><!-- #content -->
-      </div><!-- #container -->
+      </div><!-- #content -->
 
 <?php get_footer(); ?>

@@ -22,7 +22,7 @@ if ( have_posts() ) {
       <h1 class="entry-title"><?php the_title(); ?></h1>
 
       <div class="entry-meta">
-        <?php if(!(in_category(array('directory', 'faq')))): ?>
+        <?php if(!(in_category(array('directory', 'faq','events')))): ?>
           <?php manoa2018_posted_on(); ?>
         <?php endif; ?>
         <?php manoa2018_categories(); ?>

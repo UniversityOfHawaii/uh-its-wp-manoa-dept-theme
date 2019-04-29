@@ -491,8 +491,8 @@ header,footer {
   font-size: 1.2em;
   margin: 10px 0 6px;
 }
-.search-results .hentry + .hentry {
-  margin-top: 0;
+.search-results .container .hentry + .hentry {
+  margin-top: 2.5rem;
 }
 
 .blog .post.has-post-thumbnail .entry-thumbnail,
