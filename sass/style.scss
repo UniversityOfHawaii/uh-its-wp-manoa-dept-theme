@@ -884,6 +884,10 @@ blockquote em,
 blockquote i {
   font-style: normal;
 }
+p + .table-wrap,
+.table-wrap + p {
+  margin-top: 2rem;
+}
 .anchor-container:before {
     content: "";
     display: block;
