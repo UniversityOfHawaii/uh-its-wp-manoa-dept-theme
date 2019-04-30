@@ -50,13 +50,13 @@
                   <a class="instagram" href="//www.instagram.com/<?php echo get_theme_mod('instagram'); ?>"><i class="fa fa-instagram" aria-hidden="true"></i><span class="screen-reader-text">Instagram</span></a>
                <?php endif; ?>
                <?php if(get_theme_mod('twitter')) : ?>
-                  <a class="twitter" href="//www.twitter.com/<?php echo get_theme_mod('twitter'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a>
+                  <a class="twitter" href="//www.twitter.com/<?php echo get_theme_mod('twitter'); ?>"><i class="fa fa-twitter-square" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a>
                <?php endif; ?>
                <?php if(get_theme_mod('facebook')) : ?>
                   <a class="facebook" href="//www.facebook.com/<?php echo get_theme_mod('facebook'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i><span class="screen-reader-text">Facebook</span></a>
                <?php endif; ?>
                <?php if(get_theme_mod('youtube')) : ?>
-                  <a class="youtube" href="//www.youtube.com/user/<?php echo get_theme_mod('youtube'); ?>"><i class="fa fa-youtube-play" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a>
+                  <a class="youtube" href="//www.youtube.com/user/<?php echo get_theme_mod('youtube'); ?>"><i class="fa fa-youtube-square" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a>
                <?php endif; ?>
             </div>
             <div class="footer-top-middle-column col-md-4">
