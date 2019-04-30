@@ -2728,10 +2728,12 @@ code {
     #footer_top_content .footer-top-middle-column {
         margin-top: 30px; }
 }
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 474px) {
     #header_top {
-        top: -9.2em;
+        top: -10em;
     }
+}
+@media only screen and (max-width: 370px) {
     .logged-in #header_top {
         top: -7.2em;
     }
