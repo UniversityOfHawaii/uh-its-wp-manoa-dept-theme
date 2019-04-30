@@ -60,14 +60,14 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
   <div id="header_top">
     <div id="header_top_content">
       <ul id="header_mainmenu">
-        <li><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
-        <li><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
-        <li><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
+        <li class="show-on-mobile"><a href="https://manoa.hawaii.edu/">UHM Home</a></li>
+        <li class="show-on-mobile"><a href="https://manoa.hawaii.edu/a-z/">A-Z Index</a></li>
+        <li class="show-on-mobile"><a href="https://manoa.hawaii.edu/directory/">Directory</a></li>
         <li><a href="https://manoa.hawaii.edu/students/">Students</a></li>
         <li><a href="https://manoa.hawaii.edu/faculty-staff/">Faculty and Staff</a></li>
         <li><a href="https://manoa.hawaii.edu/admissions/parents.html">Parents</a></li>
         <li><a href="https://uhalumni.org/manoa/">Alumni</a></li>
-        <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
+        <li class="show-on-mobile"><a href="https://myuh.hawaii.edu/">MyUH</a></li>
       </ul>
       <div id="header_smrow">
         <a href="https://twitter.com/UHManoa">

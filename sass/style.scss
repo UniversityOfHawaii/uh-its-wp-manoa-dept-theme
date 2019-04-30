@@ -446,7 +446,7 @@ footer {
 @media only screen and (max-width: 760px) {
     #header_mid {
         height: auto;
-        margin: 44px auto 10px;
+        margin: 20px auto 10px;
         position: relative;
     }
     #header_btm_content li a:hover,
@@ -2666,7 +2666,7 @@ code {
     }
 }
 @media only screen and (max-width: 760px) {
-    #header_top {
+    /*#header_top {
         position: absolute;
         top: -7.8em;
         left: 0;
@@ -2724,7 +2724,7 @@ code {
         padding: 0;
         background: transparent;
         border-radius: 0;
-    }
+    }*/
     #footer_top_content .footer-top-middle-column {
         margin-top: 30px; }
 }
@@ -2823,6 +2823,10 @@ code {
   }
   #header_mid .container {
      height: auto;
+  }
+  #header_mainmenu li:not(.show-on-mobile),
+  #header_smrow {
+    display: none;
   }
   #header_mid_logo {
     /*background: url('images/uhm-seal-name-stacked@2x.png') no-repeat;
