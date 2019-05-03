@@ -53,7 +53,7 @@
                   <a class="twitter" href="//www.twitter.com/<?php echo get_theme_mod('twitter'); ?>"><i class="fa fa-twitter-square" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a>
                <?php endif; ?>
                <?php if(get_theme_mod('facebook')) : ?>
-                  <a class="facebook" href="//www.facebook.com/<?php echo get_theme_mod('facebook'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i><span class="screen-reader-text">Facebook</span></a>
+                  <a class="facebook" href="//www.facebook.com/<?php echo get_theme_mod('facebook'); ?>"><i class="fa fa-facebook-square" aria-hidden="true"></i><span class="screen-reader-text">Facebook</span></a>
                <?php endif; ?>
                <?php if(get_theme_mod('youtube')) : ?>
                   <a class="youtube" href="//www.youtube.com/user/<?php echo get_theme_mod('youtube'); ?>"><i class="fa fa-youtube-square" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a>
