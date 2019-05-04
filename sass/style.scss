@@ -1123,6 +1123,7 @@ h6 {
 {
   margin-top: 24px;
 }
+
 #content p + h1, #content p + h2,
 #content p + h3, #content p + h4,
 #content p + h5, #content p + h6,
@@ -1140,6 +1141,7 @@ h6 {
 #content blockquote + h5, #content blockquote + h6 {
     margin-top: 48px;
 }
+
 #content h1 + h1, #content h1 + h2,
 #content h2 + h2, #content h2 + h3, #content h2 + h1,
 #content h3 + h3, #content h3 + h4, #content h3 + h2,
@@ -1148,15 +1150,18 @@ h6 {
 #content h6 + h6 {
     margin-top: 4px;
 }
+
 #content hr {
     margin: 24px 0;
 }
+
 #content ul ul,
 #content ol ol,
 #content ul ol,
 #content ol ul {
     margin-bottom: 0;
 }
+
 #content pre,
 #content kbd,
 #content tt,
@@ -1164,13 +1169,16 @@ h6 {
     font-size: 15px;
     line-height: 21px;
 }
+
 #content code {
     font-size: 13px;
 }
+
 #content dt,
 #content th {
     color: #000;
 }
+
 #content h1,
 #content h2,
 #content h3,
@@ -1182,6 +1190,7 @@ h6 {
     line-height: 1.5;
     margin: 0;
 }
+
 #content h1 a,
 #content h2 a,
 #content h3 a,
@@ -1190,6 +1199,7 @@ h6 {
 #content h6 a {
     color: inherit;
 }
+
 #content h1 + p,
 #content h2 + p,
 #content h3 + p,
@@ -1198,6 +1208,7 @@ h6 {
 #content h6 + p {
     margin-top: 6px;
 }
+
 #content h1 + ul,
 #content h2 + ul,
 #content h3 + ul,
@@ -1211,6 +1222,27 @@ h6 {
 #content h5 + ol,
 #content h6 + ol {
     margin-top: 12px;
+}
+
+#content h2 {
+  font-size: 1.7rem;
+}
+
+#content h3 {
+  font-size: 1.5rem;
+}
+
+#content h4 {
+  font-size: 1.3rem;
+}
+
+#content h5 {
+  font-size: 1.15rem;
+}
+
+#content h6 {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 #content li + li {
@@ -2874,7 +2906,7 @@ code {
 .breadcrumbs {
   font-size: .85em;
   padding: 0;
-  line-height: 1.2;
+  line-height: 1.5;
   margin: 0 0 0 auto;
   background-color: transparent;
   color: #333;
@@ -3006,10 +3038,10 @@ html.fa-events-icons-loading button.menu-toggle:after
 }
 
 @media only screen and (max-width: 500px) {
-    #department_name .site-name-description #header_sitename {
-        font-size: 1.2em;
-    }
-    #department_name .site-name-description #header_sitedescription {
-        font-size: .9em;
-    }
+  #department_name .site-name-description #header_sitename {
+      font-size: 1.2em;
+  }
+  #department_name .site-name-description #header_sitedescription {
+      font-size: .9em;
+  }
 }
