@@ -1351,7 +1351,9 @@ tr {
   }
 }
 
-.archive #content .page-title, .blog #content .page-title, .search .page-title {
+.archive #content .page-title,
+.blog #content .page-title,
+.search .page-title {
     font-size: 2em;
     font-weight: 700;
     line-height: 1.5;
@@ -2704,65 +2706,6 @@ code {
     }
 }
 @media only screen and (max-width: 760px) {
-    /*#header_top {
-        position: absolute;
-        top: -7.8em;
-        left: 0;
-        width: 100%;
-        transition: .2s;
-        z-index: 99;
-        overflow: visible;
-    }
-    #header_top:after {
-        font-family: "FontAwesome";
-        content: "\f078";
-        color: #fff;
-        background: #024731;
-        border-radius: 4px;
-        font-size: .6em;
-        position: absolute;
-        bottom: -1.5em;
-        padding: 6px;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        text-align: center;
-    }
-    .logged-in #header_top {
-        top: -5em;
-    }
-    #header_top {
-        z-index: 2;
-    }
-    #header_top.open,
-    #header_top:hover,
-    #header_top:focus,
-    #header_top:active {
-        position: relative;
-        top: 0;
-    }
-    #header_top a:focus {
-        position: absolute;
-        top: 8.1em;
-        padding: 10px;
-        background: #024731;
-        opacity: 1;
-        border-bottom-right-radius: 4px;
-        border-bottom-left-radius: 4px;
-        z-index: 60;
-    }
-    .logged-in #header_top a:focus {
-        top: 8.6em;
-    }
-    #header_top:active a:focus,
-    #header_top:hover a:focus,
-    #header_top:focus a:focus {
-        position: static;
-        padding: 0;
-        background: transparent;
-        border-radius: 0;
-    }*/
     #footer_top_content .footer-top-middle-column {
         margin-top: 30px; }
 }
@@ -2777,10 +2720,6 @@ code {
     }
 }
 @media only screen and (min-width: 761px) {
-    /*.left-sidebar #container {
-        float: right;
-        margin: 0 0 0 -240px;
-    }*/
     #header_top {
         position: fixed;
         left: 0;
