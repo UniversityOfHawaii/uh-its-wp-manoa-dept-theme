@@ -64,7 +64,7 @@ get_header(); ?>
           <aside class="col-lg-3 col-md-4" role="complementary">
             <?php get_sidebar(); ?>
           </aside>
-
+        </div>
     </div><!-- #container -->
 
 

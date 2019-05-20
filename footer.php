@@ -11,7 +11,7 @@
 </div></main>
 <footer role="contentinfo">
    <div id="footer_top">
-      <div class="container pt-5 pb-5" id="footer_top_content">
+      <div class="container pt-4 pb-5" id="footer_top_content">
          <div class="row">
             <div class="footer-top-left-column contact-info col-md-8">
                <h2><?php bloginfo( 'name' ); ?></h2>
@@ -72,7 +72,7 @@
    <div id="footer_mid" class="container pt-5 pb-5">
       <div id="footer_mid_content" class="row">
          <div class="uh_col col-md-3">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png" srcset="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png 1x, <?php echo get_template_directory_uri(); ?>/images/footer-logo-2x.png 2x" alt="uh manoa logo" />
+            <img class="pb-3" src="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png" srcset="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png 1x, <?php echo get_template_directory_uri(); ?>/images/footer-logo-2x.png 2x" alt="uh manoa logo" />
          </div>
          <div class="uh_col col-md-3">
             <ul>
@@ -109,7 +109,7 @@
       </div>
    </div>
    <div id="footer_btm">
-      <div id="footer_btm_content" class="container">
+      <div id="footer_btm_content" class="container pt-3 pb-3">
          The University of Hawai&#699;i is an <a href="https://www.hawaii.edu/offices/eeo/policies/?policy=antidisc">equal opportunity/affirmative action institution</a> <br />
          &copy;<?php echo date("Y"); ?> University of Hawai&#699;i at M&#257;noa &bull; 2500 Campus Road &bull; Honolulu, HI 96822 &bull; (808) 956-8111
       </div>
