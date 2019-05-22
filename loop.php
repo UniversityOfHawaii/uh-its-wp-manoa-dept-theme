@@ -43,6 +43,11 @@ while ( have_posts() ) :
           <?php manoa2018_posted_on(); ?>
           <?php manoa2018_categories(); ?>
         </div><!-- .entry-meta -->
+      <?php elseif(in_category(array('news','recent','events','announcements','announcement','event','new'))): ?>
+        <div class="entry-meta">
+          <?php manoa2018_posted_on(); ?>
+        </div>
+      <?php else: ?>
       <?php endif; ?>
 
       <div class="entry-content">
