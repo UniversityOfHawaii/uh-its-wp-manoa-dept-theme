@@ -38,12 +38,12 @@ while ( have_posts() ) :
     <div class="post-content">
       <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
-      <div class="entry-meta">
-        <?php if(!(in_category(array('directory', 'faq','events')))): ?>
+      <?php if(is_home()): ?>
+        <div class="entry-meta">
           <?php manoa2018_posted_on(); ?>
-        <?php endif; ?>
-        <?php manoa2018_categories(); ?>
-      </div><!-- .entry-meta -->
+          <?php manoa2018_categories(); ?>
+        </div><!-- .entry-meta -->
+      <?php endif; ?>
 
       <div class="entry-content">
         <?php the_excerpt(); ?>
