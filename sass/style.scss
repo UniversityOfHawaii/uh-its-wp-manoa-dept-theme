@@ -1361,6 +1361,9 @@ tr {
     margin-bottom: 0;
     margin-top: 1em;
 }
+.home.blog #content h1.page-title {
+    margin-top: 0;
+}
 .blog,
 .archive {
   .post {
@@ -1940,7 +1943,7 @@ img.aligncenter {
 h3#comments-title,
 h3#reply-title {
     color: #024731;
-    font-size: 20px;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0;
 }
@@ -2177,7 +2180,8 @@ form.search-form input[type="search"] {/* This keeps the search inputs in line *
 form.search-form.show {
   display: flex !important;
 }
-.widget_search #basic-site-search, .widget_search #s {/* This keeps the search inputs in line */
+.widget_search #basic-site-search,
+.widget_search #s {/* This keeps the search inputs in line */
     width: 100%;
 }
 .search-form-container {
@@ -2216,14 +2220,23 @@ form.search-form.show {
 #primary.widget-area .widget-container + .widget-container {
     margin-top: 2.5em;
 }
-#content .widget-container h3 {
+.widget-container h3 {
     color: #222;
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0 0 .5rem;
 }
-#content .widget-container h3 + ul {
+.widget-container h3 + ul {
   margin-top: 0;
+}
+.widget-title {
+    color: #024731;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.widget-title + div {
+  margin-top: 8px;
 }
 .widget-container .wp-caption img {
     margin: auto;
@@ -2602,6 +2615,7 @@ code {
     }
     #header_btm .menu-toggle {
         display: inline-flex;
+        margin: 0;
     }
     #header_btm_content > ul.menu.show {
         display: block;

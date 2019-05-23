@@ -5,7 +5,9 @@
 
 get_header(); ?>
 
-  <main id="main_area" role="main">
+<?php  if ( 'page' == get_option('show_on_front') ) { ?>
+
+  <main id="main_area" class="front-page" role="main">
     <?php if(has_post_thumbnail()): ?>
         <div class="featured-image">
             <?php the_post_thumbnail( 'full' ); ?>
@@ -60,5 +62,11 @@ get_header(); ?>
         <?php endif; // end primary widget area ?>
 
       </div><!-- #container -->
+
+<?php } else { ?>
+
+  <?php get_template_part('index'); ?>
+
+<?php } ?>
 
 <?php get_footer(); ?>
