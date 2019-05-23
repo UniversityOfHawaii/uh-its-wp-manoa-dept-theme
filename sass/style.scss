@@ -2587,11 +2587,15 @@ code {
         float: none;
         width: 100%;
     }
+    #header_top {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
     #header_top_content > ul {
         justify-content: center;
     }
     #header_top_content li {
-        padding: 0 .75em;
+        padding: 0 .4em;
     }
     #header_top_content li:not(:last-child) a {
         margin-right: 0;
