@@ -261,8 +261,10 @@ footer {
         padding-bottom: 0;
       }
 
-      &:not(:last-child) a {
-        margin: 0 20px 0 0;
+      @media only screen and (min-width: 761px) {
+        &:not(:last-child) a {
+          margin: 0 20px 0 0;
+        }
       }
 
       a {

@@ -40,7 +40,9 @@ while ( have_posts() ) :
 
       <?php if(is_home()): ?>
         <div class="entry-meta">
-          <?php manoa2018_posted_on(); ?>
+          <?php if(!in_category(array('events','faq','faqs'))): ?>
+            <?php manoa2018_posted_on(); ?>
+          <?php endif; ?>
           <?php manoa2018_categories(); ?>
         </div><!-- .entry-meta -->
       <?php elseif(in_category(array('news','recent','announcements','announcement','new'))): ?>
