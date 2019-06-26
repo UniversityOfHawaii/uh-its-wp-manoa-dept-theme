@@ -86,6 +86,16 @@ if ( ! function_exists( 'manoa2018_setup' ) ) :
     }
 endif;
 
+/*
+ * add anchor links
+ */
+function manoa2018_enqueue_scripts() {
+  if( is_page_template('page-anchor.php') ){
+    include( get_stylesheet_directory() . '/lib/anchor-links/anchor-links.php' );
+  }
+}
+add_action( 'wp_enqueue_scripts', 'manoa2018_enqueue_scripts' );
+
 if ( ! function_exists( 'manoa2018_admin_header_style' ) ) :
     /**
      * Style the header image displayed on the Appearance > Header admin panel.
