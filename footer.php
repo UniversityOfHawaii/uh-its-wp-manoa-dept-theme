@@ -87,7 +87,7 @@
          <div class="uh_col col-md-3">
             <ul>
                <li><a href="https://manoa.hawaii.edu/emergency/">Emergency Information</a></li>
-               <li><a href="https://www.manoa.hawaii.edu/dps/">Campus Safety</a></li>
+               <li><a href="https://manoa.hawaii.edu/dps/">Campus Safety</a></li>
                <li><a href="https://manoa.hawaii.edu/titleix/">Title IX</a></li>
                <li><a href="https://www.hawaii.edu/news/tag/uh-manoa/">UH News &#038; Media</a></li>
                <li><a href="https://manoa.hawaii.edu/news/">Press Releases</a></li>
