@@ -108,7 +108,7 @@ $(document).ready(function () {
         $(".go-top").removeClass("show");
       }
   });
-  $('a').click(function(){
+  $('a.go-top').click(function(){
     $('html, body').animate({
       scrollTop: $( $(this).attr('href') ).offset().top
     }, 1000);
