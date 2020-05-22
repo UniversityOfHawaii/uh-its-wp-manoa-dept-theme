@@ -195,6 +195,10 @@ header,
 footer {
   font-family: 'Open Sans', Arial, Tahoma, sans-serif; }
 
+a#skip2main {
+  color: #0054AD;
+  background: #fff; }
+
 #skip2main {
   position: absolute;
   left: 10px;
@@ -834,6 +838,10 @@ a:focus {
   position: absolute !important;
   height: 1px;
   width: 1px; }
+
+#searchsubmit .screen-reader-text {
+  color: #024731;
+  background-color: #fff; }
 
 /* =Menu
 -------------------------------------------------------------- */
