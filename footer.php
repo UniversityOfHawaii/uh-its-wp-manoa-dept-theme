@@ -116,6 +116,7 @@
    </div>
    <a href="#top" class="go-top">
       <span class="fa fa-chevron-up" aria-hidden="true"></span>
+      <span class="sr-only">Go to Top</span>
    </a>
 
 </footer>
