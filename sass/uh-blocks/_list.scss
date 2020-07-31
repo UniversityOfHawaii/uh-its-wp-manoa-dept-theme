@@ -1,0 +1,10 @@
+.is-style-uh-list {
+	list-style: none;
+	li:before {
+		color: #f9a429;
+		content: "\203A \0020";
+		font-size: 130%;
+		margin-bottom: -1.3em;
+		margin-left: -0.4em;
+	}
+}
