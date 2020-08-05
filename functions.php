@@ -753,7 +753,7 @@ function manoa2018_customize_register($wp_customize)
     )
   );
   $wp_customize->add_setting('display_footer_widget', array(
-    'default'    => 0
+    'default'    => 1
   ));
   $wp_customize->add_control(
     new WP_Customize_Control(

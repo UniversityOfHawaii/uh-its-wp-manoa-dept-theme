@@ -12,7 +12,7 @@
 </div>
 </main>
 <footer role="contentinfo">
-  <?php if (get_theme_mod('display_footer_widget') == 0) : ?>
+  <?php if (get_theme_mod('display_footer_widget') == 1) : ?>
     <div id="footer_top">
       <div class="container pt-4 pb-5" id="footer_top_content">
         <div class="row">
