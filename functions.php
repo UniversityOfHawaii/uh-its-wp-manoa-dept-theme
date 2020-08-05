@@ -868,12 +868,6 @@ add_action('init', function () {
       'style_handle' => 'uh-style',
     )
   );
-
-  unregister_block_style('core/quote', 'manoa-quote');
-  unregister_block_style('core/paragraph', 'manoa-paragraph');
-  unregister_block_style('core/paragraph', 'uh-paragraph');
-  unregister_block_style('core/paragraph', 'uh-notice');
-  unregister_block_style('core/list', 'manoa-list');
 });
 
 ?>
