@@ -2541,11 +2541,156 @@ html.fa-events-icons-loading button.menu-toggle:after {
 }
 
 /*GutenSlider*/
-#content > .wp-block-eedee-block-gutenslider {
+#content>.wp-block-eedee-block-gutenslider {
 	width: 100vw;
 	position: relative;
 	left: 50%;
 	right: 50%;
 	margin-left: -50vw;
 	margin-right: -50vw;
+}
+
+/* =Article Archive
+-------------------------------------------------------------- */
+#content .article-archive-title {
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 25px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+.article_date {
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.article_archive {
+
+	/* Search Results */
+	.has-post-thumbnail .entry-thumbnail {
+		width: unset;
+		position: unset;
+	}
+
+	.has-post-thumbnail .post-content {
+		margin-left: unset;
+	}
+
+	/* End Search Results */
+
+	img {
+		height: auto;
+		max-width: 100%;
+		width: auto;
+	}
+
+	/* Small Devices, Tablets */
+	@media only screen and (min-width: 768px) {
+		.article_search {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+	}
+
+	.entry-thumbnail {
+		margin-bottom: 20px;
+	}
+
+	.entry-content p {
+		margin-bottom: 20px;
+	}
+
+	/* Article Page Numbers */
+	.page-numbers {
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 0 2px 0 0;
+		line-height: 1;
+		text-decoration: none;
+		border-radius: 2px;
+	}
+
+	.page-numbers.current {
+		&:after {
+			position: relative;
+			content: ' ';
+			display: block;
+			top: 5px;
+			left: -2px;
+			width: calc(100% + 4px);
+			border-top: 4px solid $uh-primary-green;
+		}
+	}
+
+	.pagination_numbers {
+		margin: auto;
+	}
+
+	.prev {
+		@media (min-width: 768px) {
+			margin-right: 50px;
+		}
+
+		@media (min-width: 1200px) {
+			margin-right: 70px;
+		}
+	}
+
+	.next {
+		@media (min-width: 768px) {
+			margin-left: 50px;
+		}
+
+		@media (min-width: 1200px) {
+			margin-left: 70px;
+		}
+	}
+
+	/* End Article Page Numbers */
+
+	.archive_entry {
+		border-bottom: 1px solid #eee;
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+
+	.article {
+		margin: auto;
+		width: 100%;
+		padding: 25px 15px;
+
+		@media (min-width: 576px) {
+			max-width: 540px;
+		}
+
+		@media (min-width: 768px) {
+			max-width: 720px;
+		}
+
+		@media (min-width: 992px) {
+			max-width: 960px;
+		}
+
+		@media (min-width: 1200px) {
+			max-width: 1140px;
+			padding: 40px 15px;
+		}
+	}
+
+	a.article_tag {
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 0 2px 0 0;
+		line-height: 1;
+		text-decoration: none;
+		border: solid 1px #000;
+		border-radius: 10px;
+		margin-right: 15px;
+	}
 }

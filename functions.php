@@ -829,6 +829,80 @@ function create_group_taxonomies()
 }
 add_action('init', 'create_group_taxonomies', 0);
 
+/**
+ * Register Articles Post Type
+ */
+function manoa_articles_init() {
+  $labels = array(
+      'name'                  => _x( 'Articles', 'Post type general name', 'article' ),
+      'singular_name'         => _x( 'Article', 'Post type singular name', 'article' ),
+      'menu_name'             => _x( 'Articles', 'Admin Menu text', 'article' ),
+      'name_admin_bar'        => _x( 'Article', 'Add New on Toolbar', 'article' ),
+      'add_new'               => __( 'Add New', 'article' ),
+      'add_new_item'          => __( 'Add New Article', 'article' ),
+      'new_item'              => __( 'New Article', 'article' ),
+      'edit_item'             => __( 'Edit Article', 'article' ),
+      'view_item'             => __( 'View Article', 'article' ),
+      'all_items'             => __( 'All Articles', 'article' ),
+      'search_items'          => __( 'Search Articles', 'article' ),
+      'parent_item_colon'     => __( 'Parent Articles:', 'article' ),
+      'not_found'             => __( 'No articles found.', 'article' ),
+      'not_found_in_trash'    => __( 'No articles found in Trash.', 'article' ),
+      'featured_image'        => _x( 'Article Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'article' ),
+      'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'article' ),
+      'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'article' ),
+      'use_featured_image'    => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'article' ),
+      'archives'              => _x( 'Article archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'article' ),
+      'insert_into_item'      => _x( 'Insert into article', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'article' ),
+      'uploaded_to_this_item' => _x( 'Uploaded to this article', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'article' ),
+      'filter_items_list'     => _x( 'Filter articles list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'article' ),
+      'items_list_navigation' => _x( 'Articles list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'article' ),
+      'items_list'            => _x( 'Articles list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'article' ),
+  );     
+  $args = array(
+      'labels'             => $labels,
+      'description'        => 'Article custom post type.',
+      'public'             => true,
+      'publicly_queryable' => true,
+      'show_ui'            => true,
+      'show_in_menu'       => true,
+      'query_var'          => true,
+      'rewrite'            => array( 'slug' => 'article' ),
+      'capability_type'    => 'post',
+      'has_archive'        => true,
+      'hierarchical'       => false,
+      'menu_position'      => 20,
+      'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+      'taxonomies'         => array( 'category', 'post_tag' ),
+      'show_in_rest'       => true
+  );
+    
+  register_post_type( 'Article', $args );
+}
+add_action( 'init', 'manoa_articles_init' );
+
+/** Include Article in Tags and Categories */
+function article_custom_type_in_categories( $query ) {
+  if ( $query->is_main_query()
+  && ( $query->is_category() || $query->is_tag() ) ) {
+      $query->set( 'post_type', array( 'post', 'article' ) );
+  }
+}
+add_action( 'pre_get_posts', 'article_custom_type_in_categories' );
+
+/** Custom Search for Library */
+function search_article($template)   
+{    
+  global $wp_query;   
+  $post_type = get_query_var('post_type');   
+  if( $wp_query->is_search && $post_type == 'article' )   
+  {
+    return locate_template('search-article.php');  //  redirect to archive-search.php
+  }   
+  return $template;   
+}
+add_filter('template_include', 'search_article');
+
 
 /**Register Block Styles */
 wp_register_style('uh-style', get_template_directory_uri() . '/css/uh-blocks/blocks.css');

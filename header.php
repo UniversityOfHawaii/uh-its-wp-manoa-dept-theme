@@ -62,18 +62,6 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
       <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" />
     </div>
   </div>
-  <div id="department_name">
-    <div class="container">
-      <div class="site-name-description">
-        <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-        <?php if( $site_description): ?>
-          <div id="header_sitedescription">
-            <?php echo $site_description; ?>
-          </div>
-        <?php endif; ?>
-      </div>
-    </div>
-  </div>
   <nav id="header_btm" role="navigation" aria-label="main navigation">
     <div class="container">
       <a class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
