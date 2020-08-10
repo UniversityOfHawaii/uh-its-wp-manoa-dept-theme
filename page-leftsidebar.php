@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Left Sidebar
- *
+ * Template Post Type: post, page, article
  * A custom page template for pages with the sidebar on the left.
  *
  */
