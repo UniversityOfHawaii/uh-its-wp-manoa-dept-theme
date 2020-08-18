@@ -908,15 +908,6 @@ add_filter('template_include', 'search_article');
 wp_register_style('uh-style', get_template_directory_uri() . '/css/uh-blocks/blocks.css');
 add_action('init', function () {
   register_block_style(
-    'core/quote',
-    array(
-      'name'         => 'uh-quote',
-      'label'        => 'UH Quote',
-      'style_handle' => 'uh-style',
-    )
-  );
-
-  register_block_style(
     'core/paragraph',
     array(
       'name'         => 'uh-notice-general',
