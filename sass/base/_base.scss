@@ -2,70 +2,91 @@
 -------------------------------------------------------------- */
 /* Main global 'theme' and typographic styles */
 /* Text elements */
+body {
+	overflow-x: hidden;
+}
+
 p {
 	margin: 0;
 }
+
 ul {
 	margin: 0 0 0 0.5em;
 	padding-inline-start: 0px;
 }
+
 ol {
 	list-style: decimal;
 	margin: 0 0 0 0.5em;
 }
+
 ol ol {
 	list-style: upper-alpha;
 }
+
 ol ol ol {
 	list-style: lower-roman;
 }
+
 ol ol ol ol {
 	list-style: lower-alpha;
 }
+
 ul ul,
 ol ol,
 ul ol,
 ol ul {
 	margin-bottom: 0;
 }
+
 dl {
 	margin: 0 0 24px 0;
 }
+
 dt {
 	font-weight: bold;
 }
+
 dd {
 	margin-bottom: 18px;
 }
+
 strong {
 	font-weight: bold;
 }
+
 cite,
 em,
 i {
 	font-style: italic;
 }
+
 big {
 	font-size: 131.25%;
 }
+
 ins {
 	background: #ffc;
 	text-decoration: none;
 }
+
 blockquote {
 	background: #f7f7f7;
 	margin: 20px 0;
 	padding: 20px;
 }
+
 blockquote.note {
 	background: #f7f7f7;
 }
+
 blockquote.info {
 	background: transparent;
 	border: 1px solid #e7e7e7;
 	padding-left: 50px;
 	position: relative;
 }
+
 blockquote.info:before {
 	font-family: "FontAwesome";
 	color: #027431;
@@ -74,11 +95,13 @@ blockquote.info:before {
 	top: 20px;
 	left: 20px;
 }
+
 blockquote.alert {
 	background: #f8eef0;
 	padding-left: 50px;
 	position: relative;
 }
+
 blockquote.alert:before {
 	font-family: "FontAwesome";
 	color: #b24b66;
@@ -87,38 +110,46 @@ blockquote.alert:before {
 	top: 20px;
 	left: 20px;
 }
+
 blockquote.quote {
 	background: transparent;
 	border-left: 4px solid #027431;
 	padding-bottom: 0;
 	padding-top: 0;
 }
+
 blockquote p {
 	margin: 0;
 }
-blockquote p + p {
+
+blockquote p+p {
 	margin-top: 18px;
 }
+
 blockquote cite,
 blockquote em,
 blockquote i {
 	font-style: normal;
 }
-p + .table-wrap,
-.table-wrap + p {
+
+p+.table-wrap,
+.table-wrap+p {
 	margin-top: 2rem;
 }
+
 .anchor-container:before {
 	content: "";
 	display: block;
 	min-width: 1px;
 	padding-top: 36px;
 }
+
 code {
 	font-family: "Source Code Pro", monospace;
 	font-size: 0.9em;
 	line-height: 1.2;
 }
+
 .code {
 	background: #232323;
 	border-left: 8px solid #8cc63e;
@@ -131,6 +162,7 @@ code {
 	padding: 16px 16px 22px 20px;
 	white-space: nowrap;
 }
+
 pre {
 	background: #f7f7f7;
 	color: #222;
@@ -139,11 +171,13 @@ pre {
 	overflow: auto;
 	padding: 1.5em;
 }
+
 abbr,
 acronym {
 	border-bottom: 1px dotted #666;
 	cursor: help;
 }
+
 sup,
 sub {
 	height: 0;
@@ -151,15 +185,19 @@ sub {
 	position: relative;
 	vertical-align: baseline;
 }
+
 sup {
 	bottom: 1ex;
 }
+
 sub {
 	top: 0.5ex;
 }
+
 small {
 	font-size: smaller;
 }
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -172,12 +210,15 @@ textarea {
 	-webkit-appearance: none;
 	padding: 2px;
 }
+
 a:link {
 	color: #217eab;
 }
+
 a:visited {
 	color: #743399;
 }
+
 a:active,
 a:hover,
 a:focus {
@@ -204,7 +245,7 @@ a:focus {
 #content {
 	/* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/
 
-	& > [class^="wp-block"] {
+	&>[class^="wp-block"] {
 		margin-top: 20px;
 		margin-bottom: 20px;
 		padding-top: 10px;
@@ -228,15 +269,13 @@ a:focus {
 		}
 
 		/* Change order of text with media. Always keep media at the top.*/
-		.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right
-			.wp-block-media-text__media {
+		.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media {
 			grid-column: 1;
 			-ms-grid-row: 1;
 			grid-row: 1;
 		}
 
-		.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right
-			.wp-block-media-text__content {
+		.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content {
 			grid-column: 1;
 			-ms-grid-row: 1;
 			grid-row: 2;

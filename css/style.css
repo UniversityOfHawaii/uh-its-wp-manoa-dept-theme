@@ -169,6 +169,9 @@ template {
 -------------------------------------------------------------- */
 /* Main global 'theme' and typographic styles */
 /* Text elements */
+body {
+  overflow-x: hidden; }
+
 p {
   margin: 0; }
 
@@ -383,13 +386,11 @@ a:focus {
       /* Change order of text with media. Always keep media at the top.*/ }
       #content .wp-block-media-text__content {
         padding: unset; }
-      #content .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right
-      .wp-block-media-text__media {
+      #content .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media {
         grid-column: 1;
         -ms-grid-row: 1;
         grid-row: 1; }
-      #content .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right
-      .wp-block-media-text__content {
+      #content .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content {
         grid-column: 1;
         -ms-grid-row: 1;
         grid-row: 2; } }
@@ -849,12 +850,7 @@ a#skip2main {
 .category-directory .directory-container .post .post-content {
   padding: 10px 16px; }
 
-.category-directory
-.directory-container
-.post
-.post-content
-.entry-content
-p:first-child {
+.category-directory .directory-container .post .post-content .entry-content p:first-child {
   margin-top: 4px; }
 
 .category-directory .directory-container img {
@@ -2315,13 +2311,7 @@ form.search-form.show {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-#primary
-.secondary
-> li.page_item_has_children
-> a
-+ ul.children
-> li:last-child
-> a {
+#primary .secondary > li.page_item_has_children > a + ul.children > li:last-child > a {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
 
@@ -2867,14 +2857,13 @@ html.fa-events-icons-loading button.menu-toggle:after {
     border-bottom: 1px solid #eee;
     width: 100vw;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw; }
+    left: calc(-50vw + 50%); }
+    .article_archive .archive_entry .row {
+      margin: 0; }
   .article_archive .article {
     margin: auto;
     width: 100%;
-    padding: 25px 15px; }
+    padding: 25px 5px; }
     @media (min-width: 576px) {
       .article_archive .article {
         max-width: 540px; } }
@@ -2887,7 +2876,7 @@ html.fa-events-icons-loading button.menu-toggle:after {
     @media (min-width: 1200px) {
       .article_archive .article {
         max-width: 1140px;
-        padding: 40px 15px; } }
+        padding: 40px 0px; } }
   .article_archive a.article_tag {
     display: inline-block;
     padding: 5px 10px;
