@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: One column with anchor links
- *
+ * Template Post Type: post, page, article
  * A custom page template without sidebar.
  *
  */
