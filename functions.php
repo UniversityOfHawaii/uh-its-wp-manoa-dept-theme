@@ -82,7 +82,8 @@ if (!function_exists('manoa2018_setup')) :
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus(
       array(
-        'primary' => __('Primary Navigation', 'manoa2018')
+        'main' => __('Top Navigation', 'manoa2018'),
+        'primary' => __('Primary Navigation', 'manoa2018'),
       )
     );
   }
@@ -934,5 +935,14 @@ add_action('init', function () {
     )
   );
 });
+
+/** For uhm-header-dropdown */
+function add_additional_class_on_li($classes, $item, $args) {
+  if(isset($args->add_li_class)) {
+      $classes[] = $args->add_li_class;
+  }
+  return $classes;
+}
+add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
 ?>
