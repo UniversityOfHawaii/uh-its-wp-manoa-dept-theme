@@ -264,7 +264,7 @@ ul#header_btm_content_dropdown > li a,
 	}
 }
 
-@media only screen and (min-width: $xlarge-device-breakpoint) {
+@media only screen and (min-width: 1201px) {
 	#header_dropdown_container {
 		position: unset;
 		display: block;

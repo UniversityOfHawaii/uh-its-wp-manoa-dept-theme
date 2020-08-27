@@ -630,7 +630,7 @@ body.logged-in #header_dropdown_container {
 
   .header-dropdown-menu a:hover {
     text-decoration: none; } }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
   #header_dropdown_container {
     position: unset;
     display: block;
@@ -654,15 +654,15 @@ body.logged-in #header_dropdown_container {
     ul#menu-main-menu li,
     #header_mainmenu_dropdown:not(.show) li {
       padding-bottom: 1em; } }
-    @media only screen and (min-width: 1200px) and (max-width: 768px) {
+    @media only screen and (min-width: 1201px) and (max-width: 768px) {
       ul#menu-main-menu li,
       #header_mainmenu_dropdown:not(.show) li {
         padding-bottom: 0; } }
-    @media only screen and (min-width: 1200px) and (min-width: 769px) {
+    @media only screen and (min-width: 1201px) and (min-width: 769px) {
       ul#menu-main-menu li:not(:last-child) a,
       #header_mainmenu_dropdown:not(.show) li:not(:last-child) a {
         margin: 0 20px 0 0; } }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1201px) {
       ul#menu-main-menu li a,
       #header_mainmenu_dropdown:not(.show) li a {
         display: block;
@@ -900,7 +900,7 @@ a#skip2main {
   #header_btm_content > ul > li > a + ul a {
     padding-top: 8px;
     padding-bottom: 10px; } }
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   #header_btm {
     border-top: 0.5px solid #dadada;
     border-bottom: 0.5px solid #dadada; } }
