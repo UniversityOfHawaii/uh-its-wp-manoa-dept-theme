@@ -16,7 +16,7 @@
               <?php wp_nav_menu(
                 array(
                   'theme_location'  => 'main',
-                  'menu_id'         => '',
+                  'menu_id'         => 'menu-main-menu',
                   'container'       => false,
                   'container_id'    => '',
                   'depth'           => 1,
