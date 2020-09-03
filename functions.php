@@ -873,7 +873,7 @@ function manoa_articles_init() {
       'has_archive'        => true,
       'hierarchical'       => false,
       'menu_position'      => 20,
-      'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+      'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields' ),
       'taxonomies'         => array( 'category', 'post_tag' ),
       'show_in_rest'       => true
   );
@@ -944,5 +944,13 @@ function add_additional_class_on_li($classes, $item, $args) {
   return $classes;
 }
 add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
+
+
+
+/**
+ * Featured Posts
+ */
+ 
+include 'uh-featured-posts/featured_posts.php';
 
 ?>

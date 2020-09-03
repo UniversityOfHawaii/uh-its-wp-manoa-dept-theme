@@ -1,0 +1,77 @@
+@media (min-width: $medium-device-breakpoint) {
+  #primary.widget-area.primary-sidebar-new-blocks .widget-container + .widget-container{
+    margin-top: 0;
+  }
+}
+
+@media (min-width: $large-device-breakpoint) {
+  #primary.widget-area.primary-sidebar-new-blocks .widget-container + .widget-container{
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: $large-device-breakpoint) {
+  #primary.widget-area.primary-sidebar-new-blocks{
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+#sidebar-new-blocks{
+  > li {
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    margin-top: 30px;
+    
+    h3.widget-title {
+      font-weight: 500;
+      background-color: $uh-primary-green;
+      color: $link-color-light;
+      padding: 20px 20px 15px 20px;
+    }
+
+    .textwidget{
+      padding: 20px;
+    }
+  }
+
+  @media (min-width: $medium-device-breakpoint) and (max-width: $large-device-breakpoint){
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+      width: calc(50% - 20px);
+      align-self: flex-start;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    > li:nth-child(odd){
+      margin-right: 20px;
+    }
+
+    > li:nth-child(even){
+      margin-left: 20px;
+    }
+
+    
+  }
+
+  @media (min-width: $large-device-breakpoint){
+    display: block;
+
+    > li {
+      width: 100%;
+      align-self: flex-start;
+      margin-top: 30px;
+    }
+
+    
+  }
+
+  /*h3.widget-title {
+
+  }*/
+
+}
+

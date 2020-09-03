@@ -282,3 +282,11 @@ a:focus {
 		}
 	}
 }
+
+@media (max-width: 991px){
+	.left-sidebar-new-blocks {
+		> .container > .row {
+			flex-direction: column-reverse;
+		}
+	}
+}
