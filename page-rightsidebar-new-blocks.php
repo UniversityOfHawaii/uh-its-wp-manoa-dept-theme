@@ -11,7 +11,7 @@ get_header();
   <main id="main_area" role="main">
     <div id="main_content" class="container">
       <div class="row">
-        <div class="col-lg-9 col-md-8">
+        <div class="col-lg-9 col-md-12">
 
           <?php
           /*
@@ -23,7 +23,7 @@ get_header();
           ?>
         </div>
 
-        <aside class="col-lg-3 col-md-4" role="complementary">
+        <aside class="col-lg-3 col-md-12" role="complementary">
           <?php get_sidebar('new-blocks'); ?>
         </aside>
       </div>

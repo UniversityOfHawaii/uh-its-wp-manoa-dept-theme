@@ -13,12 +13,17 @@
 
   if (is_page() && $post->post_parent) {
     // Make sure we are on a page and that the page is a parent.
-    $kiddies = wp_list_pages('sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&link_before=<span class="fa fa-chevron-left" aria-hidden="true"></span>');
+    $kiddies = wp_list_pages('sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0&link_before=');
   } else {
-    $kiddies = wp_list_pages('sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0&link_before=<span class="fa fa-chevron-left" aria-hidden="true"></span>');
+    $kiddies = wp_list_pages('sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0&link_before=');
   }
   if ($kiddies) {
-    echo '<ul class="secondary">';
+    echo '<ul class="secondary secondary-new-blocks">';
+    if ($post->post_parent){
+      echo '<li class="page_item parent-page-block-menu-title"><a href="'. get_post_permalink($post->post_parent) .'">'. get_the_title($post->post_parent) .'</a></li>';
+    } else {
+      echo '<li class="page_item parent-page-block-menu-title"><a href="'. get_post_permalink($post->ID) .'">'. get_the_title($post->ID) .'</a></li>';
+    }
     echo $kiddies;
     echo '</ul>';
   } ?>
