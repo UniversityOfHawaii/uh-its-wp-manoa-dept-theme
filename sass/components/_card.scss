@@ -9,12 +9,18 @@
 }
 
 @media (min-width: $xlarge-device-breakpoint) {
+  #primary{
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: $xlarge-device-breakpoint) {
   #primary.widget-area.primary-sidebar-new-blocks .widget-container + .widget-container {
     margin-top: 30px;
   }
 }
 
-@media (max-width: $xlarge-device-breakpoint) {
+@media (max-width: 1199px) {
   #primary.widget-area.primary-sidebar-new-blocks {
     margin-top: 0;
     padding-top: 0;
