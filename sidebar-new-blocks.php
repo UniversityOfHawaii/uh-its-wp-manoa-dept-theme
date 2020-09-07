@@ -18,7 +18,7 @@
     $kiddies = wp_list_pages('sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0&link_before=');
   }
   if ($kiddies) {
-    echo '<ul class="secondary secondary-new-blocks">';
+    echo '<ul class="secondary secondary-new-blocks d-none d-xl-block">';
     if ($post->post_parent){
       echo '<li class="page_item parent-page-block-menu-title"><a href="'. get_post_permalink($post->post_parent) .'">'. get_the_title($post->post_parent) .'</a></li>';
     } else {

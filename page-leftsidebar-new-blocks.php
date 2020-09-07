@@ -10,11 +10,14 @@ get_header(); ?>
 
   <main id="main_area" class="left-sidebar left-sidebar-new-blocks" role="main">
     <div id="main_content" class="container">
+      <div class="uhm-block-dropdown row">
+        <?php get_template_part('uhm-block-dropdown'); ?>
+      </div>
       <div class="row">
-        <aside class="col-lg-3 col-md-12" role="complementary">
+        <aside class="col-xl-3 col-md-12" role="complementary">
           <?php get_sidebar('new-blocks'); ?>
         </aside>
-        <div class="col-lg-9 col-md-12">
+        <div class="col-xl-9 col-md-12">
 
           <?php
           /*

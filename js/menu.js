@@ -63,6 +63,13 @@ $(document).ready(function () {
     });
   });
 
+  //sidebar template block navigation
+  $(".dropdown-secondary-new-blocks > li:first-of-type > .caret").on("click", function(e) {
+    e.preventDefault();
+    $(this).parents('.dropdown-secondary-new-blocks').toggleClass("open");
+    $(this).parents('.dropdown-secondary-new-blocks').find('ul').toggleClass("show");
+  });
+
   // behavior for mobile - touch
   $("a[href^='#']").on("touchstart",function(e) {
     e.preventDefault();
@@ -101,6 +108,13 @@ $(document).ready(function () {
         return attr == 'true' ? 'false' : 'true'
       });
   });
+
+    //sidebar template block navigation
+    $(".dropdown-secondary-new-blocks > li:first-of-type > .caret").on("touchstart", function(e) {
+      e.preventDefault();
+      $(this).parents('.dropdown-secondary-new-blocks').toggleClass("open");
+      $(this).parents('.dropdown-secondary-new-blocks').find('ul').toggleClass("show");
+    });
 
   // run test on initial page load
   checkSize();
