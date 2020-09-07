@@ -700,7 +700,8 @@ body.logged-in #header_dropdown_container {
 
 .dropdown-secondary-new-blocks {
   margin: 0;
-  width: 100%; }
+  width: 100%;
+  padding: 0; }
   .dropdown-secondary-new-blocks > li:first-of-type {
     margin-top: 50px;
     list-style-type: none;
