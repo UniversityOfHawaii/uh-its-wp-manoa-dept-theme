@@ -870,7 +870,8 @@ body.logged-in #header_dropdown_container {
 #primary.primary-sidebar-new-blocks .secondary.secondary-new-blocks li {
   padding: 2px 0 2px 0; }
 #primary.primary-sidebar-new-blocks .secondary.secondary-new-blocks li.current_page_item > a {
-  border-left: solid 5px #024731; }
+  border-left: solid 5px #024731;
+  padding-left: 5px; }
 #primary.primary-sidebar-new-blocks .secondary.secondary-new-blocks li > a,
 #primary.primary-sidebar-new-blocks .secondary.secondary-new-blocks li.current_page_item > a {
   background: #fff;
