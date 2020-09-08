@@ -122,7 +122,7 @@ blockquote p {
 	margin: 0;
 }
 
-blockquote p+p {
+blockquote p + p {
 	margin-top: 18px;
 }
 
@@ -132,8 +132,8 @@ blockquote i {
 	font-style: normal;
 }
 
-p+.table-wrap,
-.table-wrap+p {
+p + .table-wrap,
+.table-wrap + p {
 	margin-top: 2rem;
 }
 
@@ -245,7 +245,7 @@ a:focus {
 #content {
 	/* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/
 
-	&>[class^="wp-block"] {
+	& > [class^="wp-block"] {
 		margin-top: 20px;
 		margin-bottom: 20px;
 		padding-top: 10px;
@@ -279,6 +279,14 @@ a:focus {
 			grid-column: 1;
 			-ms-grid-row: 1;
 			grid-row: 2;
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.left-sidebar-new-blocks {
+		> .container > .row {
+			flex-direction: column-reverse;
 		}
 	}
 }
