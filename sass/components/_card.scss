@@ -44,6 +44,23 @@
     .textwidget {
       padding: 20px 12px;
     }
+
+    /* Contact Us Widget */
+    .contact{
+      padding: 20px 12px;
+    }
+
+    address {
+      padding: 0px 12px 10px 12px;
+    }
+
+    .sm-header {
+      padding: 0px 12px 10px 12px;
+
+      a {
+        margin-right: 0.5em;
+      }
+    }
   }
 
   @media (min-width: $medium-device-breakpoint) and (max-width: 1199px) {
