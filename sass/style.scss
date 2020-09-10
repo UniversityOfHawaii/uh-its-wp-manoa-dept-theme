@@ -2036,6 +2036,18 @@ form.search-form.show {
 	font-family: inherit;
 }
 
+.widget-container address,
+.widget-container .contact,
+.widget-container .sm-header {
+	.contact-us-block-label {
+		font-weight: 600;
+	}
+}
+
+.widget-container address {
+	padding-top: 20px;
+}
+
 #content .homepage-widgets .widget_media_image h3.widget-title {
 	margin-bottom: 8px;
 }

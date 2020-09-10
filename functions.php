@@ -946,11 +946,11 @@ function add_additional_class_on_li($classes, $item, $args) {
 add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
 
 
+/** Featured Posts */
+include 'featured-posts/featured_posts.php';
 
-/**
- * Featured Posts
- */
- 
-include 'uh-featured-posts/featured_posts.php';
+
+/** Widgets */
+ include 'widgets/contact_us.php';
 
 ?>

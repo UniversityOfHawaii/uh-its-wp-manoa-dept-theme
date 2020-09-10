@@ -39,7 +39,7 @@
     <?php if (!empty($post_meta_dropdown_value) && $post_meta_dropdown_value != 0) : ?>
       <li class="widget-container">
         <?php
-        include 'uh-featured-posts/featured_post.php';
+        include 'featured-posts/featured_post_template.php';
         ?>
       </li>
     <?php endif ?>
