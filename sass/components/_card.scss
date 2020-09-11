@@ -9,7 +9,7 @@
 }
 
 @media (min-width: $xlarge-device-breakpoint) {
-  #primary{
+  #primary {
     margin-top: 30px;
   }
 }
@@ -27,6 +27,7 @@
   }
 }
 
+#footer_widget_area_full ul,
 #sidebar-new-blocks {
   > li {
     background-clip: border-box;
@@ -46,7 +47,7 @@
     }
 
     /* Contact Us Widget */
-    .contact{
+    .contact {
       padding: 20px 12px;
     }
 
@@ -62,7 +63,9 @@
       }
     }
   }
+}
 
+#sidebar-new-blocks {
   @media (min-width: $medium-device-breakpoint) and (max-width: 1199px) {
     display: flex;
     flex-wrap: wrap;
@@ -90,6 +93,31 @@
       width: 100%;
       align-self: flex-start;
       margin-top: 30px;
+    }
+  }
+}
+
+#footer_widget_area_full ul {
+  > li:first-of-type {
+    margin-top: 0;
+  }
+  @media (min-width: $medium-device-breakpoint) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+      width: calc(50% - 20px);
+      align-self: flex-start;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    > li:nth-child(odd) {
+      margin-right: 20px;
+    }
+
+    > li:nth-child(even) {
+      margin-left: 20px;
     }
   }
 }

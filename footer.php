@@ -73,6 +73,19 @@
     </div>
   <?php endif; // end primary widget area 
   ?>
+
+  <?php if (get_theme_mod('display_new_footer_widget') == 1) : ?>
+    <?php if (is_active_sidebar('full-footer-widget-area')) : ?>
+      <div id="footer_top_second">
+        <div id="footer_widget_area_full" class="container">
+          <ul class="xoxo">
+            <?php dynamic_sidebar('full-footer-widget-area'); ?>
+          </ul>
+        </div>
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+
   <div id="footer_mid" class="container pt-5 pb-5">
     <div id="footer_mid_content" class="row">
       <div class="uh_col col-md-3">
