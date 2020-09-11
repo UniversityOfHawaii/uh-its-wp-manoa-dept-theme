@@ -774,7 +774,7 @@ function manoa2018_customize_register($wp_customize)
       $wp_customize,
       'display_footer_widget',
       array(
-        'label'     => __('Display footer widget area with Contact Information', 'manoa2018'),
+        'label'     => __('Display footer widget area', 'manoa2018'),
         'section'   => 'static_front_page',
         'settings'  => 'display_footer_widget',
         'type'      => 'checkbox',
@@ -789,7 +789,7 @@ function manoa2018_customize_register($wp_customize)
       $wp_customize,
       'display_new_footer_widget',
       array(
-        'label'     => __('Display footer widget area without Contact Information', 'manoa2018'),
+        'label'     => __('Display full-width footer widget area', 'manoa2018'),
         'section'   => 'static_front_page',
         'settings'  => 'display_new_footer_widget',
         'type'      => 'checkbox',

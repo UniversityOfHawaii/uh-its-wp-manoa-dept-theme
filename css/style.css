@@ -829,32 +829,33 @@ body.logged-in #header_dropdown_container {
   #primary.widget-area.primary-sidebar-new-blocks {
     margin-top: 0;
     padding-top: 0; } }
-#footer_widget_area_full ul > li,
+#footer_widget_area_full > ul > li,
 #sidebar-new-blocks > li {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 30px;
   /* Contact Us Widget */ }
-  #footer_widget_area_full ul > li h3.widget-title,
+  #footer_widget_area_full > ul > li h3.widget-title,
   #sidebar-new-blocks > li h3.widget-title {
     font-weight: 500;
     background-color: #024731;
     color: #fff;
     padding: 20px 20px 15px 20px; }
-  #footer_widget_area_full ul > li .textwidget,
-  #sidebar-new-blocks > li .textwidget {
+  #footer_widget_area_full > ul > li .textwidget, #footer_widget_area_full > ul > li .tagcloud,
+  #sidebar-new-blocks > li .textwidget,
+  #sidebar-new-blocks > li .tagcloud {
     padding: 20px 12px; }
-  #footer_widget_area_full ul > li .contact,
+  #footer_widget_area_full > ul > li .contact,
   #sidebar-new-blocks > li .contact {
     padding: 20px 12px; }
-  #footer_widget_area_full ul > li address,
+  #footer_widget_area_full > ul > li address,
   #sidebar-new-blocks > li address {
     padding: 0px 12px 10px 12px; }
-  #footer_widget_area_full ul > li .sm-header,
+  #footer_widget_area_full > ul > li .sm-header,
   #sidebar-new-blocks > li .sm-header {
     padding: 0px 12px 10px 12px; }
-    #footer_widget_area_full ul > li .sm-header a,
+    #footer_widget_area_full > ul > li .sm-header a,
     #sidebar-new-blocks > li .sm-header a {
       margin-right: 0.5em; }
 
@@ -879,20 +880,20 @@ body.logged-in #header_dropdown_container {
       align-self: flex-start;
       margin-top: 30px; } }
 
-#footer_widget_area_full ul > li:first-of-type {
+#footer_widget_area_full > ul > li:first-of-type {
   margin-top: 0; }
 @media (min-width: 768px) {
-  #footer_widget_area_full ul {
+  #footer_widget_area_full > ul {
     display: flex;
     flex-wrap: wrap; }
-    #footer_widget_area_full ul > li {
+    #footer_widget_area_full > ul > li {
       width: calc(50% - 20px);
       align-self: flex-start;
       margin-top: 0;
       margin-bottom: 20px; }
-    #footer_widget_area_full ul > li:nth-child(odd) {
+    #footer_widget_area_full > ul > li:nth-child(odd) {
       margin-right: 20px; }
-    #footer_widget_area_full ul > li:nth-child(even) {
+    #footer_widget_area_full > ul > li:nth-child(even) {
       margin-left: 20px; } }
 
 #featured-post-card {

@@ -27,7 +27,7 @@
   }
 }
 
-#footer_widget_area_full ul,
+#footer_widget_area_full > ul,
 #sidebar-new-blocks {
   > li {
     background-clip: border-box;
@@ -42,7 +42,7 @@
       padding: 20px 20px 15px 20px;
     }
 
-    .textwidget {
+    .textwidget, .tagcloud {
       padding: 20px 12px;
     }
 
@@ -97,7 +97,7 @@
   }
 }
 
-#footer_widget_area_full ul {
+#footer_widget_area_full > ul {
   > li:first-of-type {
     margin-top: 0;
   }
