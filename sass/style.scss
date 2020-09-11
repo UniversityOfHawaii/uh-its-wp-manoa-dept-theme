@@ -548,7 +548,8 @@ a#skip2main {
 }
 
 /* footer */
-#footer_top {
+
+#footer_top, #footer_top_second {
 	background: $base-background-color;
 	padding: 0;
 }
@@ -565,6 +566,10 @@ a#skip2main {
 	#footer_top .social-media-links {
 		padding: 20px 0 30px;
 	}
+}
+
+#footer_top_second {
+	padding-bottom: 10px;
 }
 
 address {
@@ -1900,7 +1905,7 @@ ul.xoxo {
 	padding-left: 0;
 	line-height: 1.45;
 	list-style: none;
-	margin: 0 0 4em 0;
+	margin: 0 0 1em 0;
 }
 
 ul.xoxo ul {

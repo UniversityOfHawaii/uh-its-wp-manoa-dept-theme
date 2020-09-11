@@ -264,6 +264,19 @@ function manoa2018_widgets_init()
       'after_title'   => '</h3>',
     )
   );
+
+  // Area 4, located on the footer. Empty by default.
+  register_sidebar(
+    array(
+      'name'          => __('Footer Widget Area Full Width', 'manoa2018'),
+      'id'            => 'full-footer-widget-area',
+      'description'   => __('A widget area for your footer that takes up the whole width of the container.', 'manoa2018'),
+      'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+      'after_widget'  => '</li>',
+      'before_title'  => '<h3 class="widget-title">',
+      'after_title'   => '</h3>',
+    )
+  );
 }
 /** Register sidebars by running manoa2018_widgets_init() on the widgets_init hook. */
 add_action('widgets_init', 'manoa2018_widgets_init');
@@ -761,9 +774,24 @@ function manoa2018_customize_register($wp_customize)
       $wp_customize,
       'display_footer_widget',
       array(
-        'label'     => __('Display footer widget', 'manoa2018'),
+        'label'     => __('Display footer widget area with Contact Information', 'manoa2018'),
         'section'   => 'static_front_page',
         'settings'  => 'display_footer_widget',
+        'type'      => 'checkbox',
+      )
+    )
+  );
+  $wp_customize->add_setting('display_new_footer_widget', array(
+    'default'    => 0
+  ));
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'display_new_footer_widget',
+      array(
+        'label'     => __('Display footer widget area without Contact Information', 'manoa2018'),
+        'section'   => 'static_front_page',
+        'settings'  => 'display_new_footer_widget',
         'type'      => 'checkbox',
       )
     )
