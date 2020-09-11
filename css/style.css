@@ -1083,7 +1083,7 @@ a#skip2main {
     position: relative;
     text-align: left;
     z-index: 20; }
-    #header_btm ul > li:hover a + ul, #header_btm ul > li:focus a + ul, #header_btm ul > li:active a + ul {
+    #header_btm ul > li:hover a + ul, #header_btm ul > li:active a + ul {
       display: block; }
 
 @media only screen and (min-width: 769px) {
