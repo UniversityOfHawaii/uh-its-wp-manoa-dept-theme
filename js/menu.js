@@ -13,22 +13,18 @@ var keys = {
 	down:   40
 };
 
+function init(){
+  $('.menu-item-has-children > a, .page_item_has_children > a, .header-dropdown-menu > a').each(function(){
+    $(this).attr('aria-label', 'Open submenu of ' + $(this).text());
+  });
+}
+
 $(document).ready(function () {
-  // display sub-menu on keystroke tab focus
-  $("a[href^='#']:not('.open')").on("focus",function(e) {
-    e.preventDefault();
-    $(".sub-menu").removeClass("show");
-    $("a[href^='#']").not(this).removeClass("open");
-    $(this).addClass("open");
-    $(this).next(".sub-menu").addClass("show");
-  });
-  $(".sub-menu li:last-child").on("focusout",function(e) {
-    e.preventDefault();
-    $(this).parents(".sub-menu").removeClass("show");
-    $(this).parents("a[href^='#']").removeClass("open");
-  });
+  init();
+
   //toggle mobile menu
   $(".menu-toggle").on("click",function(e) {
+    e.stopPropagation();
     e.preventDefault();
 
     if(!$(this).hasClass('open')){
@@ -43,6 +39,7 @@ $(document).ready(function () {
   });
 
   $(".header-dropdown-menu > a").on("click", function(e) {
+    e.stopPropagation();
     if (window.outerWidth < 1200) {
       $(this).toggleClass('expanded');
       if(!$(this).hasClass('expanded')){
@@ -58,6 +55,7 @@ $(document).ready(function () {
   });
 
   $('.menu-item-has-children > a > .caret, .page_item_has_children > a > .caret').on("click", function(e){
+    e.stopPropagation();
     e.preventDefault();
     $(this).toggleClass('expanded');
     if(!$(this).hasClass('expanded')){
@@ -92,6 +90,7 @@ $(document).ready(function () {
 
   //sidebar template block navigation
   $(".dropdown-secondary-new-blocks > li:first-of-type > .caret").on("click", function(e) {
+    e.stopPropagation();
     e.preventDefault();
     $(this).parents('.dropdown-secondary-new-blocks').find('a:first').toggleClass("expanded");
     if(!$(this).parents('.dropdown-secondary-new-blocks').find('a:first').hasClass('expanded')){
@@ -216,36 +215,24 @@ $(document).ready(function () {
 
 
   // Runs all behaviour for spacebar, tab, and shift-tab
-  $(".header-dropdown-menu > a").on("keydown", function(e) {
-    if (e.keyCode === keys.space) {
-			e.preventDefault(); 
-			$(this).click();
-    }
-  });
 
-  $('.menu-item-has-children > a, .page_item_has_children > a').on("keydown", function(e) {
-    if (e.keyCode === keys.space) {
-			e.preventDefault(); 
-			$(this).find('.caret').click();
-    }
-  });
-
-  $('.dropdown-secondary-new-blocks > li:first-of-type > a').on("keydown", function(e){
-    if (e.keyCode === keys.space) {
-			e.preventDefault(); 
-			$(this).parent('li').find('.caret').click();
-		}
-  });
-
-  $('#header_btm_content.menu a, #header_btm_content.menu li').on("focus", function (e) {
-     if($(this).parent('li').hasClass('page_item_has_children'))
-      $(this).parent('.page_item_has_children').find('ul').show();
-  });
-
-  //If they leave the menu, close the menu.
   //Main menu
+  $(".header-dropdown-menu > a").on("keydown", function (e) {
+    if (e.keyCode === keys.space) {
+      e.preventDefault();
+      $(this).click();
+    }
+  });
+
+  $('.menu-item-has-children > a, .page_item_has_children > a').on("keydown", function (e) {
+    if (e.keyCode === keys.space) {
+      e.preventDefault();
+      $(this).find('.caret').click();
+    }
+  });
+
   $('#header_top_content li a').on("keydown", function (e) {
-    if (e.keyCode === keys.tab) {
+    if (e.keyCode === keys.tab && !e.shiftKey) {
       if ($('#header_top_content li:visible:last a:visible:last')[0] == $(this)[0]) {
         closeOpenMenus();
       }
@@ -253,6 +240,13 @@ $(document).ready(function () {
   });
 
   //Block menu
+  $('.dropdown-secondary-new-blocks > li:first-of-type > a').on("keydown", function (e) {
+    if (e.keyCode === keys.space) {
+      e.preventDefault();
+      $(this).parent('li').find('.caret').click();
+    }
+  });
+
   $('.dropdown-secondary-new-blocks a:not(:first)').on("keydown", function (e) {
     if (e.keyCode === keys.tab) {
       if ($('.dropdown-secondary-new-blocks a:visible:last')[0] == $(this)[0]) {
@@ -262,18 +256,29 @@ $(document).ready(function () {
   });
 
   //Submenu
-  $('#header_btm_content.menu a').on("keydown", function (e) {
-    if (e.keyCode === keys.tab) {
-      if ($(this).parent('li').parent('ul').find('a:last')[0] == $(this)[0]) {
-        $(this).parent('li').parent('ul').hide();
+  $('#header_btm_content.container a, #header_btm_content.container li').on("focus mouseover", function (e) {
+    if ($(this).parent('li').hasClass('page_item_has_children') || $(this).parent('li').hasClass('menu-item-has-children'))
+      $(this).parent('.page_item_has_children,.menu-item-has-children').find('ul').show();
+  });
+
+  $('#header_btm_content.container a').on("keydown", function (e) {
+    if (e.keyCode === keys.tab && !e.shiftKey) {
+      if ($(this).parent('li.menu-item, li.page_item').parent('ul.sub-menu, ul.children').find('a:last')[0] == $(this)[0]) {
+        $(this).parent('li.menu-item, li.page_item').parent('ul.sub-menu, ul.children').hide();
       }
-    }});
-    
-    $('#header_btm_content.menu a').on("blur", function (e) {
-        if ($(this).parent('li').parent('ul').find('a:last')[0] == $(this)[0]) {
-          $(this).parent('li').parent('ul').hide();
-        }
-    });
+    }
+  });
+
+  $('#header_btm_content.container ul:not(".children") > li > a').on("keydown", function(e){
+    if (e.keyCode === keys.tab && e.shiftKey) {
+      $(this).siblings('ul.children, ul.sub-menu').hide(); 
+    }
+  });
+
+  $('html').on("click", function (e) {
+    closeOpenMenus();
+  });
+
 });
 
 function openMainNavMenu(){
@@ -286,8 +291,7 @@ function openMainNavMenu(){
   $(".header-dropdown-menu > a").parent('.header-dropdown-menu').find('> ul').addClass("show");
   $(".header-dropdown-menu > a").attr('aria-expanded', function (i, attr) {
         return attr == 'true' ? 'false' : 'true'
-  });
-  
+  }); 
 }
 
 function closeOpenMenus(){
@@ -295,4 +299,5 @@ function closeOpenMenus(){
   $(".menu-toggle").removeClass('open');
   $(".dropdown-secondary-new-blocks").removeClass("open");
   $(".dropdown-secondary-new-blocks").find('ul').removeClass("show");
+  $('#header_btm_content.container ul.children').hide();
 }
