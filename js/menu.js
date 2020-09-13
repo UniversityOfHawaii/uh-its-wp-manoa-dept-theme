@@ -299,5 +299,5 @@ function closeOpenMenus(){
   $(".menu-toggle").removeClass('open');
   $(".dropdown-secondary-new-blocks").removeClass("open");
   $(".dropdown-secondary-new-blocks").find('ul').removeClass("show");
-  $('#header_btm_content.container ul.children').hide();
+  $('#header_btm_content.container ul.children, #header_btm_content.container ul.sub-menu').hide();
 }
