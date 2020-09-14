@@ -12,7 +12,7 @@ p {
 
 ul {
 	margin: 0 0 0 0.5em;
-	padding-inline-start: 0px;
+	padding-inline-start: 25px;
 }
 
 ol {
@@ -245,7 +245,7 @@ a:focus {
 #content {
 	/* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/
 
-	& > [class^="wp-block"] {
+	& > [class^="wp-block"]:not(:first-of-type) {
 		margin-top: 20px;
 		margin-bottom: 20px;
 		padding-top: 10px;

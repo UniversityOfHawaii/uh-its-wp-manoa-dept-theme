@@ -178,7 +178,7 @@ p {
 
 ul {
   margin: 0 0 0 0.5em;
-  padding-inline-start: 0px; }
+  padding-inline-start: 25px; }
 
 ol {
   list-style: decimal;
@@ -369,13 +369,13 @@ a:focus {
 
 #content {
   /* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/ }
-  #content > [class^="wp-block"] {
+  #content > [class^="wp-block"]:not(:first-of-type) {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-top: 10px;
     padding-bottom: 10px; }
     @media (min-width: 601px) {
-      #content > [class^="wp-block"] {
+      #content > [class^="wp-block"]:not(:first-of-type) {
         margin-top: 30px;
         margin-bottom: 30px;
         padding-top: 20px;
@@ -1711,7 +1711,7 @@ tr.odd td {
   margin-right: -20px;
   padding: 18px 20px; }
 .home #main_content {
-  padding: 40px 0 30px; }
+  padding: 0px 0 30px; }
   .home #main_content::after {
     clear: both;
     content: "";
@@ -3212,13 +3212,15 @@ html.fa-events-icons-loading button.menu-toggle:after {
   #department_name .site-name-description #header_sitedescription {
     font-size: 0.9em; } }
 /*GutenSlider*/
-#content > .wp-block-eedee-block-gutenslider {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw; }
+.wp-block-eedee-block-gutenslider .slick-prev:before, .wp-block-eedee-block-gutenslider .slick-next:before {
+  font-size: 50px !important;
+  opacity: 1 !important; }
+
+.wp-block-eedee-block-gutenslider .slick-arrow.slick-next {
+  right: 20px !important; }
+
+.wp-block-eedee-block-gutenslider .slick-arrow.slick-prev {
+  left: 20px !important; }
 
 /* =Article Archive
 -------------------------------------------------------------- */

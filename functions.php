@@ -1003,6 +1003,15 @@ add_action('init', function () {
       'style_handle' => 'uh-style',
     )
   );
+
+  register_block_style(
+    'core/group',
+    array(
+      'name'         => 'uh-full-width-group',
+      'label'        => 'Full Width',
+      'style_handle' => 'uh-style',
+    )
+  );
 });
 
 
