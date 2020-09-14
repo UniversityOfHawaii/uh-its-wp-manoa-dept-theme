@@ -59,7 +59,11 @@
     <?php get_template_part('uhm-header-dropdown'); ?>
     <div id="header_mid">
       <div class="container">
-        <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 746w, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 1492w" sizes="(min-width: 768px) 1492px" alt="University of Hawai&#699;i at M&#257;noa" />
+        <?php if (get_theme_mod('banner_image')): ?>
+          <img id="header_mid_logo" src="<?php echo get_theme_mod('banner_image'); ?>"  alt="University of Hawai&#699;i at M&#257;noa" />
+        <?php else: ?>
+          <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uhm-nameplate.png 746w, <?php echo get_template_directory_uri(); ?>/images/uhm-nameplate-2x.png 1492w" sizes="(min-width: 768px) 1492px" alt="University of Hawai&#699;i at M&#257;noa" />
+        <?php endif; ?>
       </div>
     </div>
     <nav id="header_btm" role="navigation" aria-label="main navigation">

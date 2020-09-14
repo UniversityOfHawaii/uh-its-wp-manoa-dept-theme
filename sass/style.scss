@@ -189,9 +189,10 @@ a#skip2main {
 
 #header_mid_logo {
 	display: block;
-	height: auto;
+	max-height: 150px;
 	margin: 0 auto;
 	max-width: 100%;
+	object-fit: cover;
 }
 
 #department_name {
@@ -2679,7 +2680,7 @@ code {
 
 @media only screen and (min-width: $medium-device-breakpoint) {
 	#header_mid_logo {
-		max-height: 80px;
+		max-height: 110px;
 	}
 }
 

@@ -663,6 +663,13 @@ function manoa2018_customize_register($wp_customize)
   // remove site icon
   $wp_customize->remove_control('site_icon');
 
+  $wp_customize->add_setting('banner_image');
+  $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'banner_image_control', array(
+    'label' => __('Banner Image', 'manoa2018'),
+    'section' => 'title_tagline',
+    'settings' => 'banner_image',
+  )));
+
   $wp_customize->add_section('contact-info', array(
     'title' => __('Contact Information', 'manoa2018'),
     'description' => __('Input your unit contact and social media information. Save/Publish to make sure your information displays. If you do not have a social media account or do not want to display it, leave the field blank.', 'manoa2018')

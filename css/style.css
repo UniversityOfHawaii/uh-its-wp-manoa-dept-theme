@@ -1064,9 +1064,10 @@ a#skip2main {
 
 #header_mid_logo {
   display: block;
-  height: auto;
+  max-height: 150px;
   margin: 0 auto;
-  max-width: 100%; }
+  max-width: 100%;
+  object-fit: cover; }
 
 #department_name {
   margin: 0 auto;
@@ -3036,7 +3037,7 @@ code {
     justify-content: space-between; } }
 @media only screen and (min-width: 768px) {
   #header_mid_logo {
-    max-height: 80px; } }
+    max-height: 110px; } }
 @media only screen and (max-width: 768px) {
   #footer_top_content .footer-top-middle-column {
     margin-top: 30px; } }
