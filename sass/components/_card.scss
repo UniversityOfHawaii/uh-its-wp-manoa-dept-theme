@@ -124,6 +124,15 @@
 
 #featured-post-card {
   border: none;
+
+  
+	img {
+		width: 100%;
+		max-width: 350px;
+		max-height: 230px;
+		overflow: hidden;
+		object-fit: cover;
+	}
 }
 
 #primary.primary-sidebar-new-blocks {

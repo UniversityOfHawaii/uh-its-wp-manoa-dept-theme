@@ -2937,9 +2937,11 @@ html.fa-events-icons-loading button.menu-toggle:after {
 	/* End Search Results */
 
 	img {
-		height: auto;
-		max-width: 100%;
-		width: auto;
+		width: 100%;
+		max-width: 350px;
+		max-height: 230px;
+		overflow: hidden;
+		object-fit: cover;
 	}
 
 	/* Small Devices, Tablets */

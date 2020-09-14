@@ -898,6 +898,12 @@ body.logged-in #header_dropdown_container {
 
 #featured-post-card {
   border: none; }
+  #featured-post-card img {
+    width: 100%;
+    max-width: 350px;
+    max-height: 230px;
+    overflow: hidden;
+    object-fit: cover; }
 
 #primary.primary-sidebar-new-blocks .secondary.secondary-new-blocks {
   border-radius: 0; }
@@ -3238,9 +3244,11 @@ html.fa-events-icons-loading button.menu-toggle:after {
   .article_archive .has-post-thumbnail .post-content {
     margin-left: unset; }
   .article_archive img {
-    height: auto;
-    max-width: 100%;
-    width: auto; }
+    width: 100%;
+    max-width: 350px;
+    max-height: 230px;
+    overflow: hidden;
+    object-fit: cover; }
   @media only screen and (min-width: 768px) {
     .article_archive .article_search {
       position: absolute;
