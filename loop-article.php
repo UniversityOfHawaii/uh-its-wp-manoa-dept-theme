@@ -94,10 +94,10 @@ while ( have_posts() ) :
               <div class="article_tags">
 
               <?php
-                  $posttags = get_the_tags();
+                  $posttags = get_the_terms( $post->ID, 'article-tag' );
                   if ($posttags) {
                     foreach($posttags as $tag) {
-                      echo '<a class="article_tag" href="' . get_tag_link($tag->term_id) . '">' . $tag->name . '</a>';
+                      echo '<a class="article_tag" href="' . get_term_link($tag, 'article-tag') . '&post_type=article">' . $tag->name . '</a>';
                     }
                   }
                 ?>
@@ -116,11 +116,13 @@ while ( have_posts() ) :
 
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $taxonomy = get_search_query();
+$keyword = get_query_var( 'article-tag' );
 $args = array(
      'post_type' => 'article',
      'posts_per_page' => get_option( 'posts_per_page' ),
      'paged' => $paged,
-     's' => $taxonomy
+     's' => $taxonomy,
+     'article-tag' => $keyword
 );
 $loop = new WP_Query( $args );
 ?>

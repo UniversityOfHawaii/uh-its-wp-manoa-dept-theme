@@ -685,7 +685,11 @@ body.logged-in #header_dropdown_container {
     display: none; }
 
   #header_btm_content {
-    width: auto; } }
+    width: auto; }
+
+  .menu-item-has-children li,
+  .page_item_has_children li {
+    border-bottom: 1px solid #d1d1d1; } }
 /*
 	Sidebar Block Navigation
 */
