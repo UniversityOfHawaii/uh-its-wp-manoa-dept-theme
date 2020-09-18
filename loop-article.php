@@ -97,7 +97,11 @@ while ( have_posts() ) :
                   $posttags = get_the_terms( $post->ID, 'article-tag' );
                   if ($posttags) {
                     foreach($posttags as $tag) {
-                      echo '<a class="article_tag" href="' . get_term_link($tag, 'article-tag') . '&post_type=article">' . $tag->name . '</a>';
+                      if ( get_option('permalink_structure') ) {
+                        echo '<a class="article_tag" href="' . get_term_link($tag, 'article-tag') . '?post_type=article">' . $tag->name . '</a>';
+                      }else{
+                        echo '<a class="article_tag" href="' . get_term_link($tag, 'article-tag') . '&post_type=article">' . $tag->name . '</a>';
+                      }
                     }
                   }
                 ?>
