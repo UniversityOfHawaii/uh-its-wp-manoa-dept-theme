@@ -127,6 +127,11 @@ $(document).ready(function () {
   $(".header-dropdown-menu > a").on("touchstart", function(e) {
     if (window.outerWidth < 1200) {
       $(this).toggleClass('expanded');
+      if(!$(this).hasClass('expanded')){
+        $(this).attr('aria-label', 'Open submenu of ' + $(this).find('.parent-dropdown').text());
+      } else{
+        $(this).attr('aria-label', 'Close submenu of ' + $(this).find('.parent-dropdown').text());
+      }
       $(this).parent('.header-dropdown-menu').find('> ul').toggleClass("show");
       $(this).attr('aria-expanded', function (i, attr) {
         return attr == 'true' ? 'false' : 'true'
@@ -136,7 +141,12 @@ $(document).ready(function () {
 
   $('.menu-item-has-children > a > .caret, .page_item_has_children > a > .caret').on("touchstart", function(e){
     e.preventDefault();
-    $(this).parent('a').toggleClass('expanded');
+    $(this).toggleClass('expanded');
+    if(!$(this).hasClass('expanded')){
+      $(this).parent('a').attr('aria-label', 'Open submenu of ' + $(this).parent('a').text());
+    } else{
+      $(this).parent('a').attr('aria-label', 'Close submenu of ' + $(this).parent('a').text());
+    }
     $(this).parent('a').parent('li').find('> ul').toggleClass("show");
     $(this).parent('a').attr('aria-expanded', function (i, attr) {
       return attr == 'true' ? 'false' : 'true'
