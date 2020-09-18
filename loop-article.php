@@ -59,7 +59,9 @@ while ( have_posts() ) :
 
           if ($hasThumbnail) : ?>
             <div class="entry-thumbnail col-md-6 col-lg-4">
-              <?php the_post_thumbnail('medium_large'); ?>
+            <a href="<?php the_permalink(); ?>">
+                <?php the_post_thumbnail('medium_large', array('alt'=> get_the_title() . ' image')); ?>
+            </a>
             </div>
           <?php endif; ?>
           <div class="post-content <?php if ($hasThumbnail) echo 'col-md-6 col-lg-8'; if(!$hasThumbnail) echo 'col-md-12 col-lg-12' ?>">

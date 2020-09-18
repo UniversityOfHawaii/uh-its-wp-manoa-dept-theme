@@ -1450,10 +1450,10 @@ h1 {
   h1.entry-title, h1.page-title {
     font-size: 2em; }
 
-#content h1:first-of-type {
+#content h1:first-of-type:not(.entry-title) {
   display: inline-block;
   margin-bottom: 40px; }
-  #content h1:first-of-type:after {
+  #content h1:first-of-type:not(.entry-title):after {
     position: relative;
     content: " ";
     display: block;
@@ -3323,5 +3323,9 @@ html.fa-events-icons-loading button.menu-toggle:after {
     border: solid 1px #000;
     border-radius: 10px;
     margin-right: 15px; }
+
+/** Page Template Specific */
+body[class*=rightsidebar-new-blocks] .breadcrumbs, body[class*=leftsidebar-new-blocks] .breadcrumbs {
+  margin-bottom: 30px; }
 
 /*# sourceMappingURL=style.css.map */

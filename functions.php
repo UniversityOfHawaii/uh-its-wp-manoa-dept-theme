@@ -926,6 +926,20 @@ function article_custom_type_in_categories( $query ) {
 }
 add_action( 'pre_get_posts', 'article_custom_type_in_categories' );
 
+function article_post_types_order($wp_query)
+{
+  if (!is_admin() && $wp_query->is_main_query()) {
+    $post_type = $wp_query->query['post_type'];
+    if ($post_type == 'article') {
+      $wp_query->set('orderby', 'date');
+      $wp_query->set('order', 'DESC');
+    }
+  }
+}
+
+add_filter('pre_get_posts', 'article_post_types_order');
+
+
 /** Custom Search for Article*/
 function search_article($template)   
 {    
