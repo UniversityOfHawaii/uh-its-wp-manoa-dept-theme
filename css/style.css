@@ -1070,7 +1070,7 @@ a#skip2main {
 
 #header_mid_logo {
   display: block;
-  max-height: 150px;
+  max-height: 80px;
   margin: 0 auto;
   max-width: 100%;
   object-fit: cover; }
