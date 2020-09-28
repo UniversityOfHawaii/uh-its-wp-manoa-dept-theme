@@ -3261,6 +3261,11 @@ html.fa-events-icons-loading button.menu-toggle:after {
     max-height: 230px;
     overflow: hidden;
     object-fit: cover; }
+  @media (max-width: 768px) {
+    .article_archive img {
+      max-width: none; }
+    .article_archive .has-post-thumbnail .entry-thumbnail {
+      width: 100%; } }
   @media only screen and (min-width: 768px) {
     .article_archive .article_search {
       position: absolute;

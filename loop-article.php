@@ -58,7 +58,7 @@ while ( have_posts() ) :
           $hasThumbnail = has_post_thumbnail() && ! post_password_required() && ! is_attachment();
 
           if ($hasThumbnail) : ?>
-            <div class="entry-thumbnail col-md-6 col-lg-4">
+            <div class="entry-thumbnail col-sm-12 col-md-6 col-lg-4">
             <a href="<?php the_permalink(); ?>">
                 <?php the_post_thumbnail('medium_large', array('alt'=> get_the_title() . ' image')); ?>
             </a>

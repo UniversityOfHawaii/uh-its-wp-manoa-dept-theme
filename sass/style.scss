@@ -2951,6 +2951,16 @@ html.fa-events-icons-loading button.menu-toggle:after {
 		object-fit: cover;
 	}
 
+	@media (max-width: 768px) {
+		img { 
+			max-width: none;
+		}
+
+		.has-post-thumbnail .entry-thumbnail {
+			width: 100%;
+		}
+	}
+
 	/* Small Devices, Tablets */
 	@media only screen and (min-width: 768px) {
 		.article_search {
