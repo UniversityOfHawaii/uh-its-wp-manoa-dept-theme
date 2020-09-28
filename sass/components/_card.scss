@@ -15,6 +15,10 @@
 }
 
 @media (min-width: $xlarge-device-breakpoint) {
+  #primary.widget-area.primary-sidebar-new-blocks {
+    margin-top: 150px;
+  }
+  
   #primary.widget-area.primary-sidebar-new-blocks .widget-container + .widget-container {
     margin-top: 30px;
   }

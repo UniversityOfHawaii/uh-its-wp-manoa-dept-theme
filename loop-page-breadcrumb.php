@@ -23,12 +23,6 @@ if ( have_posts() ) {
 
         <?php manoa2018_get_breadcrumbs(); ?>
 
-        <?php if(has_post_thumbnail()) : ?>
-          <div class="featured-image">
-              <?php the_post_thumbnail( 'full' ); ?>
-          </div>
-        <?php endif; ?>
-
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <?php if ( is_front_page() ) { ?>
             <h2 class="entry-title"><?php the_title(); ?></h2>
