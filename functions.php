@@ -548,9 +548,9 @@ if (!function_exists('manoa2018_get_breadcrumbs')) :
         $our_title = get_the_title($posts_page);
         $posts_url = get_permalink($posts_page);
         $posts_type = get_post_type_object(get_post_type());
+        $post_type_title = esc_html($posts_type->label);
 
-        //echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
-        echo '<li class="item-posts">' . esc_html($posts_type->label) . '</li>';
+        echo '<li class="item-posts"><a class="bread-link" href="' . get_post_type_archive_link(get_post_type()) . '" title="' . $post_type_title . '">'. $post_type_title . '</a></li>';
         echo '<li class="separator"> ' . $separator . ' </li>';
         echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
       } else if (is_page()) {
