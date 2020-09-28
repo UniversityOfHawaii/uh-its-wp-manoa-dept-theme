@@ -281,6 +281,16 @@ a:focus {
 			grid-row: 2;
 		}
 	}
+
+	img {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.wp-block-image {
+		margin-bottom: 1em;
+		margin-top: 1em;
+	}
 }
 
 @media (max-width: 1199px) {

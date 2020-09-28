@@ -395,6 +395,12 @@ a:focus {
         grid-column: 1;
         -ms-grid-row: 1;
         grid-row: 2; } }
+  #content img {
+    margin-top: 1em;
+    margin-bottom: 1em; }
+  #content .wp-block-image {
+    margin-bottom: 1em;
+    margin-top: 1em; }
 
 @media (max-width: 1199px) {
   .left-sidebar-new-blocks > .container > .row {
