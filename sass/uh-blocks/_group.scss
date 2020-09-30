@@ -1,0 +1,41 @@
+.is-style-uh-full-width-group {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  > .wp-block-group__inner-container{
+		margin: auto;
+		padding: 0 20px;
+		@media (min-width: 576px) {
+			max-width: 540px;
+			margin: auto;
+		}
+	
+		@media (min-width: 768px) {
+			max-width: 720px;
+			margin: auto;
+		}
+	
+		@media (min-width: 992px) {
+			max-width: 960px;
+			margin: auto;
+		}
+
+		@media (min-width: 1200px) {
+			max-width: 1140px;
+			margin: auto;
+		}
+  }
+  
+  .wp-block-eedee-block-gutenslider{
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
