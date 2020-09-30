@@ -17,6 +17,14 @@ function init(){
   $('.menu-item-has-children > a, .page_item_has_children > a, .header-dropdown-menu > a').each(function(){
     $(this).attr('aria-label', 'Open submenu of ' + $(this).text());
   });
+
+  $('.wp-block-eedee-block-gutenslider button.slick-next').each(function(){
+    $(this).attr('aria-label', 'Next slider');
+  });
+
+  $('.wp-block-eedee-block-gutenslider button.slick-prev').each(function(){
+    $(this).attr('aria-label', 'Previous slider');
+  });
 }
 
 $(document).ready(function () {
