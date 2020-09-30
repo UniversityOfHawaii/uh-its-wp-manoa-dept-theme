@@ -832,7 +832,7 @@ body.logged-in #header_dropdown_container {
     margin-top: 30px; } }
 @media (min-width: 1200px) {
   #primary.widget-area.primary-sidebar-new-blocks {
-    margin-top: 150px; }
+    margin-top: 80px; }
 
   #primary.widget-area.primary-sidebar-new-blocks .widget-container + .widget-container {
     margin-top: 30px; } }
