@@ -2858,8 +2858,7 @@ code {
   opacity: 0.5; }
 
 #header_btm .menu-toggle:after {
-  content: url("../images/icon-menu-toggle.png");
-  padding-left: 4px; }
+  content: url("../images/icon-menu-toggle.png"); }
 
 #header_btm .menu-toggle.open:after {
   content: url("../images/icon-menu-toggle-active.png"); }
