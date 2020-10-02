@@ -229,6 +229,7 @@ a:focus {
 /* Text meant only for screen readers */
 .screen-reader-text {
 	color: #000;
+	background: #FFF !important;
 	clip: rect(1px, 1px, 1px, 1px);
 	overflow: hidden;
 	position: absolute !important;
