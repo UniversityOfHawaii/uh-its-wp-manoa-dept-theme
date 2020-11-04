@@ -1,0 +1,308 @@
+/* =Global Elements
+-------------------------------------------------------------- */
+/* Main global 'theme' and typographic styles */
+/* Text elements */
+body {
+	overflow-x: hidden;
+}
+
+p {
+	margin: 0;
+}
+
+ul {
+	margin: 0 0 0 0.5em;
+	padding-inline-start: 25px;
+}
+
+ol {
+	list-style: decimal;
+	margin: 0 0 0 0.5em;
+}
+
+ol ol {
+	list-style: upper-alpha;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom: 0;
+}
+
+dl {
+	margin: 0 0 24px 0;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-bottom: 18px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+big {
+	font-size: 131.25%;
+}
+
+ins {
+	background: #ffc;
+	text-decoration: none;
+}
+
+blockquote {
+	background: #f7f7f7;
+	margin: 20px 0;
+	padding: 20px;
+}
+
+blockquote.note {
+	background: #f7f7f7;
+}
+
+blockquote.info {
+	background: transparent;
+	border: 1px solid #e7e7e7;
+	padding-left: 50px;
+	position: relative;
+}
+
+blockquote.info:before {
+	font-family: "FontAwesome";
+	color: #027431;
+	content: "\f05a";
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+blockquote.alert {
+	background: #f8eef0;
+	padding-left: 50px;
+	position: relative;
+}
+
+blockquote.alert:before {
+	font-family: "FontAwesome";
+	color: #b24b66;
+	content: "\f06a";
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+blockquote.quote {
+	background: transparent;
+	border-left: 4px solid #027431;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+blockquote p {
+	margin: 0;
+}
+
+blockquote p + p {
+	margin-top: 18px;
+}
+
+blockquote cite,
+blockquote em,
+blockquote i {
+	font-style: normal;
+}
+
+p + .table-wrap,
+.table-wrap + p {
+	margin-top: 2rem;
+}
+
+.anchor-container:before {
+	content: "";
+	display: block;
+	min-width: 1px;
+	padding-top: 36px;
+}
+
+code {
+	font-family: "Source Code Pro", monospace;
+	font-size: 0.9em;
+	line-height: 1.2;
+}
+
+.code {
+	background: #232323;
+	border-left: 8px solid #8cc63e;
+	color: $base-background-color;
+	font-family: "Source Code Pro", monospace;
+	font-size: 1.05em;
+	line-height: 1.2;
+	margin: 20px 0;
+	overflow-x: scroll;
+	padding: 16px 16px 22px 20px;
+	white-space: nowrap;
+}
+
+pre {
+	background: #f7f7f7;
+	color: #222;
+	line-height: 18px;
+	margin-bottom: 18px;
+	overflow: auto;
+	padding: 1.5em;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	bottom: 1ex;
+}
+
+sub {
+	top: 0.5ex;
+}
+
+small {
+	font-size: smaller;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+textarea {
+	background: #f9f9f9;
+	border: 1px solid rgba(2, 71, 49, 0.4);
+	-webkit-appearance: none;
+	padding: 2px;
+}
+
+a:link {
+	color: #217eab;
+}
+
+a:visited {
+	color: #743399;
+}
+
+a:active,
+a:hover,
+a:focus {
+	color: $uh-primary-green;
+	text-decoration: underline;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	color: #000;
+	background: #FFF !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	overflow: hidden;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+}
+
+#searchsubmit {
+	.screen-reader-text {
+		color: $uh-primary-green;
+		background-color: $base-background-color;
+	}
+}
+
+#content {
+	/* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/
+
+	& > [class^="wp-block"]:not(:first-of-type) {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+
+		@media (min-width: 601px) {
+			margin-top: 30px;
+			margin-bottom: 30px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+	}
+
+	.wp-block-media-text.has-media-on-the-right .wp-block-media-text__content {
+		padding: unset;
+	}
+
+	@media (max-width: 600px) {
+		.wp-block-media-text__content {
+			padding: unset;
+		}
+
+		/* Change order of text with media. Always keep media at the top.*/
+		.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media {
+			grid-column: 1;
+			-ms-grid-row: 1;
+			grid-row: 1;
+		}
+
+		.wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content {
+			grid-column: 1;
+			-ms-grid-row: 1;
+			grid-row: 2;
+		}
+	}
+
+	img {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.wp-block-eedee-block-gutenslider:first-of-type img{
+		margin-top: 0;
+	}
+
+	.wp-block-image {
+		margin-bottom: 1em;
+		margin-top: 1em;
+	}
+}
+
+@media (max-width: 1199px) {
+	.left-sidebar-new-blocks {
+		> .container > .row {
+			flex-direction: column-reverse;
+		}
+	}
+}
